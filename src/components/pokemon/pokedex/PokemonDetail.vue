@@ -66,6 +66,8 @@ export default {
           if (resp.status === 200) {
             return resp.json();
           }
+          // Ideally, show an error modal here
+          return {};
         })
         .then((data) => {
           this.pokemon = data;

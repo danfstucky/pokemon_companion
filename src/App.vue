@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Pokemon from './components/Pokemon';
+import Pokemon from './components/pokemon/pokedex/Pokemon';
 
 export default {
   components: {
