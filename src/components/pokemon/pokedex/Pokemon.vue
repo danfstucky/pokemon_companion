@@ -23,6 +23,8 @@ import PokemonDetail from './PokemonDetail';
 
 export default {
   data() {
+    // Instead of making request to the sprites, can also download locally.
+    // npm install --save github:PokeAPI/sprites
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
       apiUrl: 'https://pokeapi.co/api/v2/pokemon/',
