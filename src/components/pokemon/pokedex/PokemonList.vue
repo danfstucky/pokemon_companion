@@ -3,6 +3,7 @@
     <article v-for="(pokemon, index) in pokemons"
     :key="'poke'+index"
     @click="setPokemonUrl(pokemon.url)">
+      <h3 class="pokedex-num">{{ pokemon.id }}</h3>
       <img :src="imageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
       <h3>{{ pokemon.name }}</h3>
     </article>
@@ -33,20 +34,19 @@ export default {
           if (resp.status === 200) {
             return resp.json();
           }
+          return { count: 0, results: [] };
         })
         .then((data) => {
           // Need to filter these results to only include relevant Pokemon.
-          // default request limits 20 results. Should increase this to reduce api requests (there is a throttle) 
-          // Currently don't retrieve more until scroll
+          // Default api request limits 20 results.
+          // Should increase this to reduce api requests (there is a 100/min throttle)
+          // Currently don't retrieve more until scroll.
           this.nextUrl = data.next;
-          debugger;
           data.results.forEach((pokemon) => {
-            pokemon.id = pokemon.url.split('/')
-              .filter(part => !!part).pop();
-            this.pokemons.push(pokemon);
+            const id = pokemon.url.split('/').filter(part => !!part).pop();
+            const poke = { ...pokemon, ...{ id } };
+            this.pokemons.push(poke);
           });
-          console.log("Pokemon");
-          console.log(this.pokemons);
         })
         .catch((error) => {
           console.log(error);
@@ -86,18 +86,23 @@ export default {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 10px;
     width: 100%;
-    max-width: 510px;
+    max-width: 850px;
     article {
       height: 150px;
       background-color: #efefef;
       text-align: center;
       text-transform: capitalize;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 15px 30px rgba(0,0,0,.2),
                   0 10px 10px rgba(0,0,0,.2);
       h3 {
         margin: 0;
+      }
+      .pokedex-num {
+        float: left;
+        padding-left: 5px;
+        padding-top: 10px;
       }
     }
   }

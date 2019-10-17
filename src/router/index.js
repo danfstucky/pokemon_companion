@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Pokemon from './../components/Pokemon';
+import Pokemon from './../components/pokemon/pokedex/Pokemon';
 
 Vue.use(Router);
 
