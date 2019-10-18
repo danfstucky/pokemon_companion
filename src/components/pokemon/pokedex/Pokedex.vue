@@ -19,7 +19,7 @@
 <script>
 import PokemonSearch from './PokemonSearch';
 import PokemonList from './PokemonList';
-import PokemonDetail from './PokemonDetail';
+import PokemonDetail from './../PokemonDetail';
 
 export default {
   data() {

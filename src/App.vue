@@ -1,17 +1,11 @@
 <template>
   <div id="app">
-    <Pokemon />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Pokemon from './components/pokemon/pokedex/Pokemon';
 
-export default {
-  components: {
-    Pokemon,
-  },
-};
 </script>
 
 <style lang="less">
