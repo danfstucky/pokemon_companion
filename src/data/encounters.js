@@ -588,11 +588,11 @@ wildEncounterList = [
         pokemon: [
           {name: "NIDORINO"},
           {name: "NIDORINA"},
-          {name: "NUMEL"},
+          {name: "ARIADOS"},
           {name: "DELIBIRD"},
-          {name: "NATU"},
+          {name: "XATU"},
           {name: "CLEFABLE"},
-          {name: "SLAKOTH"},
+          {name: "SLOWKING"},
           {name: "MAGMAR"},
           {name: "ELECTABUZZ"},
           {name: "CHANSEY"}
