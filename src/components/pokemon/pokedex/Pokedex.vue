@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1>Pokemon's</h1>
+  <div class="pokedex-container">
+    <h1>Salmon Red Pokedex</h1>
     <PokemonSearch
       :apiUrl="apiUrl"
       @setPokemonUrl="setPokemonUrl" />
@@ -27,7 +27,7 @@ export default {
     // npm install --save github:PokeAPI/sprites
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-      apiUrl: 'https://pokeapi.co/api/v2/pokemon/',
+      apiUrl: 'https://pokeapi.co/api/v2/pokemon?limit=30',
       pokemonUrl: '',
       showDetail: false,
     };
@@ -52,18 +52,10 @@ export default {
 
 <style lang="less" scoped>
   @import (css) url('https://fonts.googleapis.com/css?family=Acme');
-  .container {
+  .pokedex-container {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 10px;
-    width: calc(100% - 20px);
-    min-height: calc(100vh - 20px);
-    background: radial-gradient(#156F99, #0A2E50);
-    font-family: 'Acme', arial;
-    font-size: 1rem;
-    font-weight: normal;
   }
   h1 { color: #efefef; }
 </style>

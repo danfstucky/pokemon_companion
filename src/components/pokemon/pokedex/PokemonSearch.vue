@@ -1,7 +1,7 @@
 <template>
   <div class="searchbar">
     <form @submit.prevent="setPokemonUrl">
-      <input type="text" v-model="searchvalue">
+      <input type="text" placeholder="Search Pokemon Full Name" v-model="searchvalue">
     </form>
     <i class="fas fa-search" @click="setPokemonUrl"></i>
   </div>
@@ -49,7 +49,7 @@ export default {
       top: 10px;
       right: 10px;
       font-size: 1.25rem;
-      color: #0A2E50;
+      color: rgb(8, 37, 65);
       cursor: pointer;
     }
   }

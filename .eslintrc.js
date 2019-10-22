@@ -46,7 +46,8 @@ module.exports = {
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    // Use windows line endings
-    // 'linebreak-style': ["error", "windows"]
+    // Ignore line endings because of windows
+    "linebreak-style": 0,
+    "func-names": ["error", "never"]
   }
 }

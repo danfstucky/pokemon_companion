@@ -40,7 +40,7 @@
         </div>
       </div>
       <h2 v-else>The pokemon was not found</h2>
-      <button class="close" @click="closeDetail">close</button>
+      <button class="close-detail" @click="closeDetail">close</button>
     </div>
     <i v-else class="fas fa-spinner fa-spin"></i>
   </div>
@@ -171,7 +171,8 @@ export default {
           .ability { background-color: #C73015; }
         }
       }
-      .close {
+      .close-detail {
+        opacity: 0.8;
         outline: none;
         border: none;
         border-radius: 5px;
@@ -181,6 +182,10 @@ export default {
         margin-bottom: 20px;
         font-size: 1.2rem;
         cursor: pointer;
+
+        &:hover {
+          opacity: 1.0;
+        }
       }
     }
     i {
