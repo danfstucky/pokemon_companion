@@ -1,6 +1,6 @@
 <template>
-  <div id="locations-chart">
-    <div class="location-1">
+  <div id='locations-chart'>
+    <div class='location-1'>
       <!-- <img src="./../../../assets/location_hexagons/salmon_town.png"> -->
     </div>
   </div>
@@ -17,10 +17,10 @@ export default {
   },
   mounted() {
     const data = [
-      { x: 0, y: 0, z: 0, order: 1, name: 'Salmon Town', type: 'CITY' },
-      { x: 1.2, y: 0, z: -1.2, order: 2, name: 'Route 1', type: 'ROUTE' },
-      { x: 1.2, y: -10, z: 0, order: 3, name: 'Neeromp Farm', type: 'CITY' },
-      { x: 2.4, y: -1, z: -1.2, order: 4, name: 'Route 5', type: 'ROUTE' },
+      { x: 0, y: 0, order: 1, name: 'Salmon Town', type: 'CITY' },
+      { x: 1.2, y: -1.2, order: 2, name: 'Route 1', type: 'ROUTE' },
+      { x: 1.2, y: 0, order: 3, name: 'Neeromp Farm', type: 'CITY' },
+      { x: 2.4, y: -1.2, order: 4, name: 'Route 5', type: 'ROUTE' },
     ];
 
     // Create SVG element for chart.
@@ -47,42 +47,59 @@ export default {
       });
       const pathGenerator = d3.geoPath().projection(projection);
 
-      const hexGroups = this.chart.selectAll('g.hex-group')
+      // Define background images as a pattern
+      const defs = this.chart.append('defs');
+      var imgPattern = defs
+      .append('pattern')
+          .attr('id', 1)
+          .attr('width', 1)
+          .attr('height', 1)
+          .attr('patternUnits', 'objectBoundingBox')
+        .append('image')
+          .attr('x', 0)
+          .attr('y', 0)
+          .attr('width', 80) // 100x100 dims with 100x100 image seems to work best
+          .attr('height', 80)
+          .attr('xlink:href', function(d) {
+            return 'http://lorempixel.com/80/80/people/';
+          })
+      
+      // Duplicate hexagons to add backfill
+      const hexGroups1 = this.chart.append('g')
+        .selectAll('path')
         .data(hexes.features)
-        .enter().append('g')
-        .attr('class', 'hex-group');
-
-      // Attach the hexagon
-      hexGroups.append('path')
-        .attr('class', 'hex')
-        .style('fill', 'white')
+        .enter()
+        .append('path')
+        .attr('class', 'poke-hex-bg')
         .attr('d', pathGenerator);
 
-      // There is a problem with how data is being generated and passed to this.
-      hexGroups.append('text')
-        .attr('x', function(d,i) { return (d.properties.rectCoords.x * radius) - radius; }) // x = i*100
-        .attr('y', function(d) { return d.properties.rectCoords.y * -radius; }) // top row y = 0
-        .text(function(d) { return d.properties.name;} );
-       
-        
+      const hexGroups = this.chart.append('g')
+        .selectAll('path')
+        .data(hexes.features)
+        .enter()
+        .append('path')
+        .attr('class', 'poke-hex')
+        .attr('d', pathGenerator)
+        .style('fill', 'url(#1)');
 
-      // const text = hexGroups.append("text")
-      //   .selectAll("tspan")
-      //   .data(d => { return d.properties.name.split(/(?=[A-Z][^A-Z])/g) })
-      //   .join("tspan")
-      //     .attr('x', function(d, i) { return 0; })
-      //     .attr('y', (d, i, nodes) => `${i - nodes.length / 2 + 0.8}em`)
-      //     .text(function(d) { return d;} );
+      const textGroups = this.chart.append('g')
+        .selectAll('labels')
+        .data(hexes.features)
+        .enter()
+        .append('text')
+        .attr('x', function(d) { return pathGenerator.centroid(d)[0]; })
+        .attr('y', function(d) { return pathGenerator.centroid(d)[1]; })
+        .text(function(d) { return d.properties.name; })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'central');
 
-        
-      // Prints all text in one spot
-      // hexGroups.selectAll('text')
-      //   .data(data)
-      //   .enter()
-      //   .append('text')
-      //   .text(function(d) { return d.name; })
-      //   .attr('x', function(d,i) { return d.x * radius})
-      //   .attr('y', function(d, i) { return (i%2 == 0 ? 0 : 1*100) })
+      // hexGroups.on('mouseover', function(d) {
+      //   d3.select(this).style('fill', 'blue');
+      // })
+      // ===================================================
+    },
+    xPos(d, hexRadius) {
+      return (d.properties.rectCoords.x * hexRadius) - hexRadius;
     },
     generateHexes(data) {
       return {
@@ -92,8 +109,8 @@ export default {
     },
     newHex(d) {
       // Conversion from hex coordinates to rect
-      const x = 2 * (d.x + (d.z / 2.0));
-      const y = 2 * d.z;
+      const x = 2 * (d.x + (d.y / 2.0));
+      const y = 2 * d.y;
       const center = {x: x, y: y + 0.5}
       return {
         type: 'Feature',
@@ -122,3 +139,30 @@ export default {
   },
 };
 </script>
+
+<style lang='less'>
+// Scoping these styles causes them not to show up for the svg elements
+ @import (css) url('https://fonts.googleapis.com/css?family=Acme');
+
+  svg {
+    path.poke-hex-bg {
+      fill: #ecebeb;
+    }
+    path.poke-hex {
+      opacity: 0.5;
+      stroke: #bb005c;
+      stroke-width: 2px;
+      &:hover {
+        cursor: pointer;
+        fill: #bb005c;
+        stroke: white;
+        stroke-width: 5px;
+      }
+    }
+    text {
+      pointer-events: none;
+      font-family: 'Acme', arial;
+      font-size: 16px;
+    }
+  }
+</style>
