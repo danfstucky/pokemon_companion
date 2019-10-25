@@ -13,14 +13,16 @@ export default {
   data() {
     return {
       chart: null,
+      townImg: 'https://bitbucket.org/Kaitrono/asset-storage/raw/dd6dd266c0168e2b2263dd6c1dfd543164d878cf/images/pokemon/town.png',
+      routeImg: 'https://bitbucket.org/Kaitrono/asset-storage/raw/e9143f3478c6f7ac4a1f40a586c85d1cc7c45277/images/pokemon/route_sign.png',
     };
   },
   mounted() {
     const data = [
-      { x: 0, y: 0, order: 1, name: 'Salmon Town', type: 'CITY' },
-      { x: 1.2, y: -1.2, order: 2, name: 'Route 1', type: 'ROUTE' },
-      { x: 1.2, y: 0, order: 3, name: 'Neeromp Farm', type: 'CITY' },
-      { x: 2.4, y: -1.2, order: 4, name: 'Route 5', type: 'ROUTE' },
+      { x: 0, y: 0, order: 1, name: 'Salmon Town', type: 'town' },
+      { x: 1.2, y: -1.2, order: 2, name: 'Route 1', type: 'route' },
+      { x: 1.2, y: 0, order: 3, name: 'Neeromp Farm', type: 'town' },
+      { x: 2.4, y: -1.2, order: 4, name: 'Route 5', type: 'route' },
     ];
 
     // Create SVG element for chart.
@@ -35,6 +37,7 @@ export default {
   },
   methods: {
     drawHexagons(data) {
+      const that = this;
       const hexes = this.generateHexes(data);
       const radius = 50;
       const dx = radius * 2 * Math.sin(Math.PI / 3);
@@ -49,57 +52,69 @@ export default {
 
       // Define background images as a pattern
       const defs = this.chart.append('defs');
-      var imgPattern = defs
-      .append('pattern')
-          .attr('id', 1)
-          .attr('width', 1)
-          .attr('height', 1)
-          .attr('patternUnits', 'objectBoundingBox')
+      defs.selectAll('pattern')
+        .data(data)
+        .enter()
+        .append('pattern')
+        .attr('id', d => d.order)
+        .attr('width', 1)
+        .attr('height', 1)
+        .attr('patternUnits', 'objectBoundingBox')
         .append('image')
-          .attr('x', 0)
-          .attr('y', 0)
-          .attr('width', 80) // 100x100 dims with 100x100 image seems to work best
-          .attr('height', 80)
+          .attr('x', 8)
+          .attr('y', 15)
+          .attr('width', 70)
+          .attr('height', 70)
+          .attr('class', 'poke-img')
           .attr('xlink:href', function(d) {
-            return 'http://lorempixel.com/80/80/people/';
-          })
+            if (d.type === 'town') {
+              return that.townImg;
+            } else {
+              return that.routeImg;
+            }
+          });
       
       // Duplicate hexagons to add backfill
-      const hexGroups1 = this.chart.append('g')
+      const hexagonsBG = this.chart.append('g')
+        .attr('class', 'hexagon-bgs-group')
         .selectAll('path')
         .data(hexes.features)
         .enter()
         .append('path')
+        .attr('id', d => `hex-bg-${d.properties.order}`)
         .attr('class', 'poke-hex-bg')
         .attr('d', pathGenerator);
 
-      const hexGroups = this.chart.append('g')
+      // Add hexagon paths
+      const hexagons = this.chart.append('g')
+        .attr('class', 'hexagons-group')
         .selectAll('path')
         .data(hexes.features)
         .enter()
         .append('path')
         .attr('class', 'poke-hex')
         .attr('d', pathGenerator)
-        .style('fill', 'url(#1)');
+        .attr('id', d => `hex-${d.properties.order}`)
+        .style('fill', d => `url(#${d.properties.order})`);
 
+      // Append text and position over hexagons
       const textGroups = this.chart.append('g')
+        .attr('class', 'text-group')
         .selectAll('labels')
         .data(hexes.features)
         .enter()
         .append('text')
+        .attr('id', d => `text-${d.properties.order}`)
         .attr('x', function(d) { return pathGenerator.centroid(d)[0]; })
         .attr('y', function(d) { return pathGenerator.centroid(d)[1]; })
         .text(function(d) { return d.properties.name; })
         .attr('text-anchor', 'middle')
         .attr('alignment-baseline', 'central');
 
-      // hexGroups.on('mouseover', function(d) {
-      //   d3.select(this).style('fill', 'blue');
-      // })
-      // ===================================================
-    },
-    xPos(d, hexRadius) {
-      return (d.properties.rectCoords.x * hexRadius) - hexRadius;
+      // Append mouse events
+      hexagons
+        .on('mouseover', this.handleMouseOver)
+        .on('mouseout', this.handleMouseOut);
     },
     generateHexes(data) {
       return {
@@ -136,6 +151,20 @@ export default {
         },
       };
     },
+    handleMouseOver(d) {
+      const order = d.properties.order;
+      d3.select(`#hex-bg-${order}`)
+        .style('fill', '#bb005c');
+      d3.select(`#text-${order}`)
+        .style('fill', 'white');
+    },
+    handleMouseOut(d) {
+      const order = d.properties.order;
+      d3.select(`#hex-bg-${order}`)
+        .style('fill', '#d3d3d3');
+      d3.select(`#text-${order}`)
+        .style('fill', 'black');
+    },
   },
 };
 </script>
@@ -145,11 +174,13 @@ export default {
  @import (css) url('https://fonts.googleapis.com/css?family=Acme');
 
   svg {
+    .poke-img {
+      opacity: 0.5;
+    }
     path.poke-hex-bg {
-      fill: #ecebeb;
+      fill: #d3d3d3;
     }
     path.poke-hex {
-      opacity: 0.5;
       stroke: #bb005c;
       stroke-width: 2px;
       &:hover {
