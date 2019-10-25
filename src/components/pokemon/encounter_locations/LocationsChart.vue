@@ -1,7 +1,6 @@
 <template>
   <div id='locations-chart'>
     <div class='location-1'>
-      <!-- <img src="./../../../assets/location_hexagons/salmon_town.png"> -->
     </div>
   </div>
 </template>
@@ -23,6 +22,9 @@ export default {
       { x: 1.2, y: -1.2, order: 2, name: 'Route 1', type: 'route' },
       { x: 1.2, y: 0, order: 3, name: 'Neeromp Farm', type: 'town' },
       { x: 2.4, y: -1.2, order: 4, name: 'Route 5', type: 'route' },
+      { x: 2.4, y: 0, order: 5, name: 'Test', type: 'route' },
+      { x: 3.6, y: -1.2, order: 6, name: 'Test', type: 'route' },
+      { x: 3.6, y: 0, order: 7, name: 'Test', type: 'route' },
     ];
 
     // Create SVG element for chart.
@@ -43,7 +45,7 @@ export default {
       const dx = radius * 2 * Math.sin(Math.PI / 3);
       const dy = radius * 1.5;
       const projection = d3.geoTransform({
-        point: function (x, y) {
+        point(x, y) {
           // eslint-disable-next-line no-bitwise
           return this.stream.point((x * dx) / 2, -(y - ((2 - (y & 1)) / 3)) * (dy / 2));
         },
@@ -61,21 +63,20 @@ export default {
         .attr('height', 1)
         .attr('patternUnits', 'objectBoundingBox')
         .append('image')
-          .attr('x', 8)
-          .attr('y', 15)
-          .attr('width', 70)
-          .attr('height', 70)
-          .attr('class', 'poke-img')
-          .attr('xlink:href', function(d) {
-            if (d.type === 'town') {
-              return that.townImg;
-            } else {
-              return that.routeImg;
-            }
-          });
-      
+        .attr('x', 8)
+        .attr('y', 15)
+        .attr('width', 70)
+        .attr('height', 70)
+        .attr('class', 'poke-img')
+        .attr('xlink:href', (d) => {
+          if (d.type === 'town') {
+            return that.townImg;
+          }
+          return that.routeImg;
+        });
+
       // Duplicate hexagons to add backfill
-      const hexagonsBG = this.chart.append('g')
+      this.chart.append('g')
         .attr('class', 'hexagon-bgs-group')
         .selectAll('path')
         .data(hexes.features)
@@ -98,23 +99,44 @@ export default {
         .style('fill', d => `url(#${d.properties.order})`);
 
       // Append text and position over hexagons
-      const textGroups = this.chart.append('g')
-        .attr('class', 'text-group')
-        .selectAll('labels')
+      const textGroup = this.chart.append('g')
+        .attr('class', 'location-name-text')
+        .selectAll('text')
         .data(hexes.features)
-        .enter()
+        .enter();
+
+      textGroup.append('text')
+        .attr('id', d => `text-${d.properties.order}`)
+        .attr('x', d => pathGenerator.centroid(d)[0])
+        .attr('y', d => pathGenerator.centroid(d)[1] - (radius / 2))
+        .attr('text-anchor', 'middle')
+        .each(function (d) {
+          const words = d.properties.name.split(' ');
+          const xPos = d3.select(this).attr('x');
+          d3.select(this).selectAll(null)
+            .data(words)
+            .enter()
+            .append('tspan')
+            .attr('dy', '1.2em')
+            .attr('x', xPos)
+            .text(String)
+            .attr('text-anchor', 'middle');
+        });
+      textGroup
         .append('text')
         .attr('id', d => `text-${d.properties.order}`)
-        .attr('x', function(d) { return pathGenerator.centroid(d)[0]; })
-        .attr('y', function(d) { return pathGenerator.centroid(d)[1]; })
-        .text(function(d) { return d.properties.name; })
+        .attr('x', d => pathGenerator.centroid(d)[0])
+        .attr('y', d => pathGenerator.centroid(d)[1])
         .attr('text-anchor', 'middle')
-        .attr('alignment-baseline', 'central');
+        .attr('class', 'text-location-order')
+        .attr('dy', -radius * (2 / 3))
+        .text(d => d.properties.order);
 
       // Append mouse events
       hexagons
         .on('mouseover', this.handleMouseOver)
-        .on('mouseout', this.handleMouseOut);
+        .on('mouseout', this.handleMouseOut)
+        .on('click', this.handleMouseClick);
     },
     generateHexes(data) {
       return {
@@ -126,7 +148,6 @@ export default {
       // Conversion from hex coordinates to rect
       const x = 2 * (d.x + (d.y / 2.0));
       const y = 2 * d.y;
-      const center = {x: x, y: y + 0.5}
       return {
         type: 'Feature',
         geometry: {
@@ -144,7 +165,6 @@ export default {
           ],
         },
         properties: {
-          rectCoords: center,
           order: d.order,
           name: d.name,
           type: d.type,
@@ -165,6 +185,13 @@ export default {
       d3.select(`#text-${order}`)
         .style('fill', 'black');
     },
+    handleMouseClick(d) {
+      const order = d.properties.order;
+      d3.select('path.active-hex')
+        .classed('active-hex', false);
+      d3.select(`#hex-bg-${order}`)
+        .classed('active-hex', true);
+    },
   },
 };
 </script>
@@ -175,7 +202,7 @@ export default {
 
   svg {
     .poke-img {
-      opacity: 0.5;
+      opacity: 0.4;
     }
     path.poke-hex-bg {
       fill: #d3d3d3;
@@ -193,7 +220,16 @@ export default {
     text {
       pointer-events: none;
       font-family: 'Acme', arial;
+      font-size: 20px;
+    }
+    text.text-location-order {
+      fill: #bb005c;
       font-size: 16px;
+    }
+    path.active-hex {
+      fill: #ff2b5c !important;
+      stroke: white !important;
+      stroke-width: 5px !important;
     }
   }
 </style>
