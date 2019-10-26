@@ -7,6 +7,7 @@
 
 <script>
 import * as d3 from 'd3';
+import locations from './../../../data/locations';
 
 export default {
   data() {
@@ -17,16 +18,6 @@ export default {
     };
   },
   mounted() {
-    const data = [
-      { x: 0, y: 0, order: 1, name: 'Salmon Town', type: 'town' },
-      { x: 1.2, y: -1.2, order: 2, name: 'Route 1', type: 'route' },
-      { x: 1.2, y: 0, order: 3, name: 'Neeromp Farm', type: 'town' },
-      { x: 2.4, y: -1.2, order: 4, name: 'Route 5', type: 'route' },
-      { x: 2.4, y: 0, order: 5, name: 'Test', type: 'route' },
-      { x: 3.6, y: -1.2, order: 6, name: 'Test', type: 'route' },
-      { x: 3.6, y: 0, order: 7, name: 'Test', type: 'route' },
-    ];
-
     // Create SVG element for chart.
     const chartDiv = document.getElementById('locations-chart');
     this.chart = d3.select('#locations-chart')
@@ -35,7 +26,7 @@ export default {
       .attr('height', 300)
       .append('g')
       .attr('transform', 'translate(60,60)');
-    this.drawHexagons(data);
+    this.drawHexagons(locations);
   },
   methods: {
     drawHexagons(data) {
@@ -191,6 +182,8 @@ export default {
         .classed('active-hex', false);
       d3.select(`#hex-bg-${order}`)
         .classed('active-hex', true);
+      // The location order is also the id
+      this.$emit('showLocationDetails', d.properties.order);
     },
   },
 };
