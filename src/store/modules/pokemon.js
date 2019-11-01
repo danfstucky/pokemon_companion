@@ -9,7 +9,7 @@ const getters = {
 };
 
 const mutations = {
-  closeDetails: state => state.showDetail = false,
+  closeDetails: (state) => { state.showDetail = false; },
   showDetails: (state, payload) => {
     state.showDetail = true;
     state.pokemonUrl = payload;

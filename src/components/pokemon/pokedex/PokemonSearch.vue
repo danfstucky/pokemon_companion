@@ -11,9 +11,6 @@
 import { mapMutations } from 'vuex';
 
 export default {
-  props: [
-    'apiUrl',
-  ],
   data() {
     return {
       searchvalue: '',
@@ -25,7 +22,7 @@ export default {
     ]),
     setPokemonUrl() {
       if (this.searchvalue !== '') {
-        this.showDetails(`${this.apiUrl}/${this.searchvalue.toLowerCase()}`);
+        this.showDetails(`https://pokeapi.co/api/v2/pokemon/${this.searchvalue.toLowerCase()}`);
       }
     },
   },

@@ -1,12 +1,8 @@
 <template>
   <div class="pokedex-container">
     <h1>Salmon Red Pokedex</h1>
-    <PokemonSearch
-      :apiUrl="baseApiUrl" />
-    <PokemonList
-      :imageUrl="imageUrl"
-      :apiUrl="baseApiUrl"
-      @setPokemonUrl="showDetails($event)" />
+    <PokemonSearch />
+    <PokemonList @setPokemonUrl="showDetails($event)" />
     <PokemonDetail
       v-if="showPokemonDetails"
       :pokemonUrl="pokemonUrl" />
@@ -14,10 +10,10 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
 import PokemonSearch from './PokemonSearch';
 import PokemonList from './PokemonList';
 import PokemonDetail from './../PokemonDetail';
-import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   data() {
@@ -25,7 +21,6 @@ export default {
     // npm install --save github:PokeAPI/sprites
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-      baseApiUrl: 'https://pokeapi.co/api/v2/pokemon',
     };
   },
   components: {

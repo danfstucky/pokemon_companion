@@ -48,6 +48,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // Ignore line endings because of windows
     "linebreak-style": 0,
-    "func-names": ["error", "never"]
+    "func-names": ["error", "never"],
+    // Vuex files always break no-shadow rule so ignore it for specific case
+    'no-shadow': ["error", { "allow": ["state"] }],
   }
 }

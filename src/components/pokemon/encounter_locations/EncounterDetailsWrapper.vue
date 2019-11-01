@@ -1,9 +1,14 @@
 <template>
   <div class="terrain-wrapper">
-    <template v-for="encounterLocation in encounter.encounters">
-      <div class="row terrain-block">
-        <div :class="['col-1', 'terrain-sidebar', `terrain-${encounterLocation.terrain.toLowerCase()}`]"><span>{{ encounterLocation.terrain }}</span></div>
-        <EncounterDetails class="col-11" 
+    <template v-for="encounterLocation in encounter.encounters" >
+      <div class="row terrain-block" :key="encounterLocation.terrain">
+        <div
+          :class="['col-1',
+            'terrain-sidebar',
+            `terrain-${encounterLocation.terrain.toLowerCase()}`]">
+          <span>{{ encounterLocation.terrain }}</span>
+        </div>
+        <EncounterDetails class="col-11"
           :encounterLocation="encounterLocation">
         </EncounterDetails>
       </div>

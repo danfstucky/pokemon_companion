@@ -210,7 +210,7 @@ const wildEncounterList = [
           { name: 'MARILL', id: 183 },
           { name: 'SKIPLOOM', id: 188 },
           { name: 'SKARMORY', id: 227 },
-          { name: 'BALTOY', id: 343 }
+          { name: 'BALTOY', id: 343 },
         ],
       },
       {
@@ -540,7 +540,7 @@ const wildEncounterList = [
     id: 21,
     location: 'Corlain City',
     encounters: [
-       {
+      {
         terrain: 'Land',
         pokemon: [
           { name: 'DIGLETT', id: 50 },

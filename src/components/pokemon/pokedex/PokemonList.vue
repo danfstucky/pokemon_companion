@@ -15,12 +15,9 @@
 
 <script>
 export default {
-  props: [
-    'imageUrl',
-    'apiUrl',
-  ],
   data() {
     return {
+      imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
       pokemons: [],
       nextUrl: '',
       currentUrl: '',
@@ -71,7 +68,7 @@ export default {
     },
   },
   created() {
-    this.currentUrl = `${this.apiUrl}?limit=30`;
+    this.currentUrl = 'https://pokeapi.co/api/v2/pokemon?limit=30';
     this.fetchData();
   },
   mounted() {
