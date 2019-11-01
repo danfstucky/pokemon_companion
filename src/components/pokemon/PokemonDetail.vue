@@ -47,18 +47,23 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: [
     'pokemonUrl',
-    'imageUrl',
   ],
   data() {
     return {
       show: false,
       pokemon: {},
+      imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
     };
   },
   methods: {
+    ...mapMutations([
+      'closeDetails',
+    ]),
     fetchData() {
       const req = new Request(this.pokemonUrl);
       fetch(req)
@@ -66,8 +71,8 @@ export default {
           if (resp.status === 200) {
             return resp.json();
           }
-          // Ideally, show an error modal here
-          return {};
+          // ID 0 will return a question mark image
+          return { id: 0, name: 'Unknown' };
         })
         .then((data) => {
           this.pokemon = data;
@@ -78,7 +83,7 @@ export default {
         });
     },
     closeDetail() {
-      this.$emit('closeDetail');
+      this.closeDetails();
     },
   },
   created() {

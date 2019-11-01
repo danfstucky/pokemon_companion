@@ -2,24 +2,36 @@
   <div>
     <p>Wild Pokemon</p>
     <LocationsChart @showLocationDetails="loadLocation($event)"></LocationsChart>
-    <EncounterDetails v-if="encounterDetails" :encounter="encounterDetails"></EncounterDetails>
+    <EncounterDetailsWrapper v-if="encounterDetails" :encounter="encounterDetails"></EncounterDetailsWrapper>
+    <PokemonDetail
+      v-if="showPokemonDetails"
+      :pokemonUrl="pokemonUrl" />
   </div>
 </template>
 
 <script>
 import LocationsChart from './LocationsChart';
-import EncounterDetails from './EncounterDetails';
+import EncounterDetailsWrapper from './EncounterDetailsWrapper';
 import encounters from './../../../data/encounters';
+import PokemonDetail from './../PokemonDetail';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
     LocationsChart,
-    EncounterDetails,
+    EncounterDetailsWrapper,
+    PokemonDetail,
   },
   data() {
     return {
       encounterDetails: null,
     };
+  },
+  computed: {
+    ...mapGetters([
+      'showPokemonDetails',
+      'pokemonUrl',
+    ]),
   },
   methods: {
     loadLocation(locationId) {

@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: [
     'apiUrl',
@@ -18,10 +20,12 @@ export default {
     };
   },
   methods: {
+    ...mapMutations([
+      'showDetails',
+    ]),
     setPokemonUrl() {
-      // Uses the GET /api/v2/pokemon/{id or name} endpoint
       if (this.searchvalue !== '') {
-        this.$emit('setPokemonUrl', this.apiUrl + this.searchvalue.toLowerCase());
+        this.showDetails(`${this.apiUrl}/${this.searchvalue.toLowerCase()}`);
       }
     },
   },

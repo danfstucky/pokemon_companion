@@ -2,17 +2,14 @@
   <div class="pokedex-container">
     <h1>Salmon Red Pokedex</h1>
     <PokemonSearch
-      :apiUrl="apiUrl"
-      @setPokemonUrl="setPokemonUrl" />
+      :apiUrl="baseApiUrl" />
     <PokemonList
       :imageUrl="imageUrl"
-      :apiUrl="apiUrl"
-      @setPokemonUrl="setPokemonUrl" />
+      :apiUrl="baseApiUrl"
+      @setPokemonUrl="showDetails($event)" />
     <PokemonDetail
-      v-if="showDetail"
-      :pokemonUrl="pokemonUrl"
-      :imageUrl="imageUrl"
-      @closeDetail="closeDetail" />
+      v-if="showPokemonDetails"
+      :pokemonUrl="pokemonUrl" />
   </div>
 </template>
 
@@ -20,6 +17,7 @@
 import PokemonSearch from './PokemonSearch';
 import PokemonList from './PokemonList';
 import PokemonDetail from './../PokemonDetail';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   data() {
@@ -27,9 +25,7 @@ export default {
     // npm install --save github:PokeAPI/sprites
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-      apiUrl: 'https://pokeapi.co/api/v2/pokemon?limit=30',
-      pokemonUrl: '',
-      showDetail: false,
+      baseApiUrl: 'https://pokeapi.co/api/v2/pokemon',
     };
   },
   components: {
@@ -37,14 +33,20 @@ export default {
     PokemonList,
     PokemonDetail,
   },
+  computed: {
+    ...mapGetters([
+      'showPokemonDetails',
+      'pokemonUrl',
+    ]),
+  },
   methods: {
+    ...mapMutations([
+      'showDetails',
+    ]),
     setPokemonUrl(url) {
-      this.pokemonUrl = url;
-      this.showDetail = true;
-    },
-    closeDetail() {
-      this.pokemonUrl = '';
-      this.showDetail = false;
+      debugger;
+      const pokemonUrl = url;
+      this.showDetails(pokemonUrl);
     },
   },
 };

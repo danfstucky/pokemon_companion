@@ -71,7 +71,7 @@ export default {
     },
   },
   created() {
-    this.currentUrl = this.apiUrl;
+    this.currentUrl = `${this.apiUrl}?limit=30`;
     this.fetchData();
   },
   mounted() {
