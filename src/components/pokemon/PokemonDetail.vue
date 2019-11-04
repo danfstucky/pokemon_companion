@@ -4,7 +4,7 @@
       <div v-if="pokemon" class="image">
         <img :src="imageUrl + pokemon.id + '.png'" alt="">
       </div>
-      <div v-if="pokemon" class="data">
+      <div v-if="pokemon && foundPokemon" class="data">
         <h2>{{ pokemon.name }}</h2>
         <div class="property">
           <div class="left">Base Experience</div>
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      <h2 v-else>The pokemon was not found</h2>
+      <h2 v-else>Pokemon not found</h2>
       <button class="close-detail" @click="closeDetail">close</button>
     </div>
     <i v-else class="fas fa-spinner fa-spin"></i>
@@ -50,14 +50,16 @@
 import { mapMutations } from 'vuex';
 
 export default {
-  props: [
-    'pokemonUrl',
-  ],
+  props: {
+    pokemonId: { required: true },
+  },
   data() {
     return {
       show: false,
       pokemon: {},
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
+      foundPokemon: false,
+      basePokemonUrl: 'https://pokeapi.co/api/v2/pokemon/',
     };
   },
   methods: {
@@ -65,13 +67,14 @@ export default {
       'closeDetails',
     ]),
     fetchData() {
-      const req = new Request(this.pokemonUrl);
+      const req = new Request(`${this.basePokemonUrl}${this.pokemonId}`);
       fetch(req)
         .then((resp) => {
           if (resp.status === 200) {
+            this.foundPokemon = true;
             return resp.json();
           }
-          // ID 0 will return a question mark image
+          this.foundPokemon = false;
           return { id: 0, name: 'Unknown' };
         })
         .then((data) => {
@@ -101,8 +104,8 @@ export default {
     top: 0;
     left: 0;
     padding: 90px 10px 10px;
-    width: calc(100% - 20px);
-    height: calc(100vh - 20px);
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, .7);
     .detail-view {
       display: flex;

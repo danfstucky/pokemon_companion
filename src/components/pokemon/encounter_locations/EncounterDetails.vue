@@ -3,7 +3,7 @@
     <div class="list">
       <article v-for="(pokemon, index) in encounterLocation.pokemon"
           :key="'poke'+ index"
-          @click="getPokemonDetails(pokemon.id)">
+          @click="showDetails(pokemon.id)">
         <h6 class="pokedex-num">{{ pokemon.id }}</h6>
         <img :src="imageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
         <h5>{{ pokemon.name }}</h5>
@@ -31,10 +31,6 @@ export default {
     ...mapMutations([
       'showDetails',
     ]),
-    getPokemonDetails(id) {
-      const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-      this.showDetails(url);
-    },
   },
 };
 </script>

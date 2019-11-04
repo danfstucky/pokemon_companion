@@ -1,28 +1,37 @@
 <template>
   <div class="searchbar">
-    <form @submit.prevent="setPokemonUrl">
-      <input type="text" placeholder="Search Pokemon Full Name" v-model="searchvalue">
+    <form @submit.prevent="setPokemonId">
+      <input type="text" placeholder="Search Pokemon Full Name" v-model="searchValue">
     </form>
-    <i class="fas fa-search" @click="setPokemonUrl"></i>
+    <i class="fas fa-search" @click="setPokemonId"></i>
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex';
+import salmonRedMixin from './../../../mixins/salmonRedMixin';
 
 export default {
   data() {
     return {
-      searchvalue: '',
+      searchValue: '',
     };
   },
+  mixins: [salmonRedMixin],
   methods: {
     ...mapMutations([
       'showDetails',
     ]),
-    setPokemonUrl() {
-      if (this.searchvalue !== '') {
-        this.showDetails(`https://pokeapi.co/api/v2/pokemon/${this.searchvalue.toLowerCase()}`);
+    setPokemonId() {
+      if (this.searchValue !== '') {
+        // When searching, use the pokemon name to retrieve a pokemon.
+        // The API accepts an id or name.
+        const pokemonName = this.searchValue.toLowerCase();
+        if (this.hasPokemonName(pokemonName)) {
+          this.showDetails(pokemonName);
+        } else {
+          this.showDetails('Does not exist');
+        }
       }
     },
   },

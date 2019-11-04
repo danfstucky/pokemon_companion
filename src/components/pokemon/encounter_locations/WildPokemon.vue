@@ -8,7 +8,7 @@
     </EncounterDetailsWrapper>
     <PokemonDetail
       v-if="showPokemonDetails"
-      :pokemonUrl="pokemonUrl" />
+      :pokemonId="pokemonId" />
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
   computed: {
     ...mapGetters([
       'showPokemonDetails',
-      'pokemonUrl',
+      'pokemonId',
     ]),
   },
   methods: {

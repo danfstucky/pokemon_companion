@@ -2,15 +2,15 @@
   <div class="pokedex-container">
     <h1>Salmon Red Pokedex</h1>
     <PokemonSearch />
-    <PokemonList @setPokemonUrl="showDetails($event)" />
+    <PokemonList />
     <PokemonDetail
       v-if="showPokemonDetails"
-      :pokemonUrl="pokemonUrl" />
+      :pokemonId="pokemonId" />
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
 import PokemonSearch from './PokemonSearch';
 import PokemonList from './PokemonList';
 import PokemonDetail from './../PokemonDetail';
@@ -31,18 +31,8 @@ export default {
   computed: {
     ...mapGetters([
       'showPokemonDetails',
-      'pokemonUrl',
+      'pokemonId',
     ]),
-  },
-  methods: {
-    ...mapMutations([
-      'showDetails',
-    ]),
-    setPokemonUrl(url) {
-      debugger;
-      const pokemonUrl = url;
-      this.showDetails(pokemonUrl);
-    },
   },
 };
 </script>

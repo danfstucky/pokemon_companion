@@ -1,19 +1,27 @@
 <template>
-  <div class="list">
-    <article v-for="(pokemon, index) in pokemons"
-    :key="'poke'+index"
-    @click="setPokemonUrl(pokemon.url)">
-      <h3 class="pokedex-num">{{ pokemon.id }}</h3>
-      <img :src="imageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
-      <h3>{{ pokemon.name }}</h3>
-    </article>
-    <div id="scroll-trigger" ref="infinitescrolltrigger">
+  <div>
+    <div class="list">
+      <article v-for="(pokemon, index) in pokemons"
+      :key="'poke'+index"
+      @click="showDetails(pokemon.id)">
+        <h3 class="pokedex-num">{{ pokemon.id }}</h3>
+        <img :src="`${imageUrl}${pokemon.id}.png`" width="96" height="96" alt="">
+        <h3>{{ pokemon.name }}</h3>
+      </article>
+    </div>
+    <div v-if="moreResults" id="scroll-trigger" ref="infinitescrolltrigger">
       <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <div v-else class="text-center end-results">
+      <div>End of Pokedex</div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+import salmonRedMixin from './../../../mixins/salmonRedMixin';
+
 export default {
   data() {
     return {
@@ -21,33 +29,44 @@ export default {
       pokemons: [],
       nextUrl: '',
       currentUrl: '',
+      lastPokeId: 1,
+      maxPokeId: 639,
+      moreResults: true,
     };
   },
+  mixins: [salmonRedMixin],
   methods: {
+    ...mapMutations([
+      'showDetails',
+    ]),
     fetchData() {
-      const req = new Request(this.currentUrl);
-      fetch(req)
-        .then((resp) => {
-          if (resp.status === 200) {
-            return resp.json();
-          }
-          return { count: 0, results: [] };
-        })
-        .then((data) => {
-          // Need to filter these results to only include relevant Pokemon.
-          // Default api request limits 20 results.
-          // Should increase this to reduce api requests (there is a 100/min throttle)
-          // Currently don't retrieve more until scroll.
-          this.nextUrl = data.next;
-          data.results.forEach((pokemon) => {
-            const id = pokemon.url.split('/').filter(part => !!part).pop();
-            const poke = { ...pokemon, ...{ id } };
-            this.pokemons.push(poke);
+      if (this.lastPokeId < this.maxPokeId) {
+        const req = new Request(this.currentUrl);
+        fetch(req)
+          .then((resp) => {
+            if (resp.status === 200) {
+              return resp.json();
+            }
+            return { count: 0, results: [] };
+          })
+          .then((data) => {
+            this.nextUrl = data.next;
+            const filteredResults = data.results.map((result) => {
+              const id = result.url.split('/').filter(part => !!part).pop();
+              return { name: result.name, id, url: result.url };
+            }).filter(result => this.hasPokemonId(parseInt(result.id, 10)));
+            this.lastPokeId = filteredResults[filteredResults.length - 1].id;
+            filteredResults.forEach((pokemon) => {
+              this.pokemons.push(pokemon);
+            });
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      } else {
+        this.moreResults = false;
+        this.nextUrl = '';
+      }
     },
     scrollTrigger() {
       const observer = new IntersectionObserver((entries) => {
@@ -63,12 +82,9 @@ export default {
       this.currentUrl = this.nextUrl;
       this.fetchData();
     },
-    setPokemonUrl(url) {
-      this.$emit('setPokemonUrl', url);
-    },
   },
   created() {
-    this.currentUrl = 'https://pokeapi.co/api/v2/pokemon?limit=30';
+    this.currentUrl = 'https://pokeapi.co/api/v2/pokemon?limit=40';
     this.fetchData();
   },
   mounted() {
@@ -111,5 +127,10 @@ export default {
     height: 150px;
     font-size: 2rem;
     color: #efefef;
+  }
+  .end-results {
+    color: white;
+    margin: 20px;
+    font-size: 26px;
   }
 </style>

@@ -1,18 +1,18 @@
 const state = {
   showDetail: false,
-  pokemonUrl: '',
+  pokemonId: 0,
 };
 
 const getters = {
   showPokemonDetails: state => state.showDetail,
-  pokemonUrl: state => state.pokemonUrl,
+  pokemonId: state => state.pokemonId,
 };
 
 const mutations = {
   closeDetails: (state) => { state.showDetail = false; },
   showDetails: (state, payload) => {
     state.showDetail = true;
-    state.pokemonUrl = payload;
+    state.pokemonId = payload;
   },
 };
 
