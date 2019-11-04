@@ -58,7 +58,7 @@ export default {
   .terrain-land {
     background-color: rgb(32, 184, 32);
   }
-  .terrain-water {
+  .terrain-surf {
     background-color: rgb(2, 78, 192);
   }
   .terrain-fishing {

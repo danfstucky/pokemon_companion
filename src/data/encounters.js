@@ -4,7 +4,7 @@ const wildEncounterList = [
     location: 'Salmon Town',
     encounters: [
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'TENTACOOL', id: 72 },
           { name: 'MANTYKE', id: 458 },
@@ -214,7 +214,7 @@ const wildEncounterList = [
         ],
       },
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'BASCULIN', id: 550 },
           { name: 'DUCKLETT', id: 580 },
@@ -239,7 +239,7 @@ const wildEncounterList = [
     location: 'Secluded Glave',
     encounters: [
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'TENTACOOL', id: 72 },
           { name: 'CORSOLA', id: 222 },
@@ -281,7 +281,7 @@ const wildEncounterList = [
         ],
       },
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'CHINCHOU', id: 170 },
           { name: 'WOOPER', id: 194 },
@@ -307,7 +307,7 @@ const wildEncounterList = [
     location: 'Koala Bay',
     encounters: [
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'TENTACOOL', id: 72 },
           { name: 'PSYDUCK', id: 54 },
@@ -333,7 +333,7 @@ const wildEncounterList = [
     location: 'Route 13',
     encounters: [
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'WINGULL', id: 278 },
           { name: 'WAILMER', id: 320 },
@@ -375,7 +375,7 @@ const wildEncounterList = [
         ],
       },
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'SEEL', id: 86 },
           { name: 'SHELLDER', id: 90 },
@@ -474,7 +474,7 @@ const wildEncounterList = [
     location: 'Harthril Lake',
     encounters: [
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'GOLDEEN', id: 118 },
           { name: 'POLIWHIRL', id: 61 },
@@ -603,7 +603,7 @@ const wildEncounterList = [
     location: 'Taelia Town',
     encounters: [
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'MAGIKARP', id: 129 },
           { name: 'POLIWHIRL', id: 61 },
@@ -644,7 +644,7 @@ const wildEncounterList = [
         ],
       },
       {
-        terrain: 'Water',
+        terrain: 'Surf',
         pokemon: [
           { name: 'FEEBAS', id: 349 },
           { name: 'POLIWHIRL', id: 61 },
