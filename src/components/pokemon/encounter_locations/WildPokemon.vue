@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <p>Wild Pokemon</p>
+  <div class="wild-pokemon">
     <LocationsChart @showLocationDetails="loadLocation($event)"></LocationsChart>
     <EncounterDetailsWrapper
       v-if="encounterDetails"
@@ -8,7 +7,8 @@
     </EncounterDetailsWrapper>
     <PokemonDetail
       v-if="showPokemonDetails"
-      :pokemonId="pokemonId" />
+      :pokemonId="pokemonId"
+      :isWildEncounter="true" />
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex';
 import LocationsChart from './LocationsChart';
 import EncounterDetailsWrapper from './EncounterDetailsWrapper';
 import encounters from './../../../data/encounters';
-import PokemonDetail from './../PokemonDetail';
+import PokemonDetail from './../pokemon_details/PokemonDetail';
 
 export default {
   components: {
@@ -44,3 +44,9 @@ export default {
   },
 };
 </script>
+
+<style lang="less" scoped>
+  .wild-pokemon {
+    text-align: center;
+  }
+</style>

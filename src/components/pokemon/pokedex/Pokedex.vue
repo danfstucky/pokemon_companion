@@ -13,7 +13,7 @@
 import { mapGetters } from 'vuex';
 import PokemonSearch from './PokemonSearch';
 import PokemonList from './PokemonList';
-import PokemonDetail from './../PokemonDetail';
+import PokemonDetail from './../pokemon_details/PokemonDetail';
 
 export default {
   data() {

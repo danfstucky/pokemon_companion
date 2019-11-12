@@ -1,8 +1,5 @@
 <template>
-  <div id='locations-chart'>
-    <div class='location-1'>
-    </div>
-  </div>
+  <div id='locations-chart'></div>
 </template>
 
 <script>
@@ -10,6 +7,7 @@ import * as d3 from 'd3';
 import locations from './../../../data/locations';
 
 export default {
+  /* eslint-disable max-len */
   data() {
     return {
       chart: null,
@@ -19,10 +17,9 @@ export default {
   },
   mounted() {
     // Create SVG element for chart.
-    const chartDiv = document.getElementById('locations-chart');
     this.chart = d3.select('#locations-chart')
       .append('svg')
-      .attr('width', chartDiv.clientWidth)
+      .attr('width', 1400)
       .attr('height', 300)
       .append('g')
       .attr('transform', 'translate(60,60)');

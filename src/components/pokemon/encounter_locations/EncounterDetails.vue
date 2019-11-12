@@ -3,7 +3,7 @@
     <div class="list">
       <article v-for="(pokemon, index) in encounterLocation.pokemon"
           :key="'poke'+ index"
-          @click="showDetails(pokemon.id)">
+          @click="showEncounterDetails(pokemon)">
         <h6 class="pokedex-num">{{ pokemon.id }}</h6>
         <img :src="imageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
         <h5>{{ pokemon.name }}</h5>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'showDetails',
+      'showEncounterDetails',
     ]),
   },
 };

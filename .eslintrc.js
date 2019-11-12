@@ -50,6 +50,8 @@ module.exports = {
     "linebreak-style": 0,
     "func-names": ["error", "never"],
     // Vuex files always break no-shadow rule so ignore it for specific case
-    'no-shadow': ["error", { "allow": ["state"] }],
+    'no-shadow': ['error', { 'allow': ['state'] }],
+    'no-restricted-syntax': ['error', 'never'],
+    'max-len': ['error', { 'code': 120 }]
   }
 }

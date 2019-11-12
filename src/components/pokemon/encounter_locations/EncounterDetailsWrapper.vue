@@ -1,6 +1,9 @@
 <template>
   <div class="terrain-wrapper">
-    <template v-for="encounterLocation in encounter.encounters" >
+    <div v-if="encounter.encounters.length === 0" class="terrain-block no-results">
+      There are no wild Pokemon in this area.
+    </div>
+    <template v-else v-for="encounterLocation in encounter.encounters" >
       <div class="row terrain-block" :key="encounterLocation.terrain">
         <div
           :class="['col-1',
@@ -66,5 +69,8 @@ export default {
   }
   .terrain-cave {
     background-color: #b5651d;
+  }
+  .no-results {
+    font-size: 24px;
   }
 </style>
