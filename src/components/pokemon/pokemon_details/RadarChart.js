@@ -2,6 +2,7 @@ import * as d3 from 'd3';
 
 const RadarChart = {
   draw(chartId, data, options) {
+    // Default config
     const cfg = {
       radius: 5,
       w: 600,
@@ -17,7 +18,8 @@ const RadarChart = {
       translateY: 0,
       extraWidthX: 100,
       extraWidthY: 100,
-      color: d3.scaleOrdinal().range(['#6F257F', '#CA0D59']),
+      areaColor: '#6F257F',
+      nodeColor: '#c43fe0',
     };
 
     if (typeof options !== 'undefined') {
@@ -104,7 +106,6 @@ const RadarChart = {
       .attr('y', (_, index) => ((cfg.h / 2) * (1 - Math.cos((index * cfg.radians) / total))) -
         (20 * Math.cos((index * cfg.radians) / total)));
 
-    let series = 0;
     const dataValues = [];
     data.forEach((y) => {
       radarGraph.selectAll('.nodes')
@@ -121,9 +122,9 @@ const RadarChart = {
         .data([dataValues])
         .enter()
         .append('polygon')
-        .attr('class', `radar-chart-serie${series}`)
+        .attr('class', 'radar-chart-area')
         .style('stroke-width', '2px')
-        .style('stroke', cfg.color(series))
+        .style('stroke', cfg.areaColor)
         .attr('points', (coords) => {
           let str = '';
           for (let pti = 0; pti < coords.length; pti += 1) {
@@ -131,7 +132,7 @@ const RadarChart = {
           }
           return str;
         })
-        .style('fill', () => cfg.color(series))
+        .style('fill', () => cfg.areaColor)
         .style('fill-opacity', cfg.opacityArea)
         .on('mouseover', function () {
           const z = `polygon.${d3.select(this).attr('class')}`;
@@ -147,15 +148,13 @@ const RadarChart = {
             .transition(200)
             .style('fill-opacity', cfg.opacityArea);
         });
-      series += 1;
     });
-    series = 0;
 
     data.forEach((y) => {
       radarGraph.selectAll('.nodes')
         .data(y).enter()
         .append('svg:circle')
-        .attr('class', `radar-chart-serie${series}`)
+        .attr('class', 'radar-chart-node')
         .attr('r', cfg.radius)
         .attr('alt', stat => Math.max(stat.value, 0))
         .attr('cx', (stat, index) => {
@@ -175,11 +174,11 @@ const RadarChart = {
         .attr('data-id', stat => stat.area)
         .style('fill', '#fff')
         .style('stroke-width', '2px')
-        .style('stroke', cfg.color(series))
+        .style('stroke', cfg.areaColor)
         .style('fill-opacity', 0.9)
         .on('mouseover', function () {
           d3.select(this)
-            .style('fill', '#737373')
+            .style('fill', cfg.nodeColor)
             .style('stroke-width', '3px');
         })
         .on('mouseout', function () {
@@ -189,8 +188,6 @@ const RadarChart = {
         })
         .append('svg:title')
         .text(stat => Math.max(stat.value, 0));
-
-      series += 1;
     });
 
     // Tooltip

@@ -11,16 +11,8 @@
           <div class="left">Encounter Level</div>
           <div class="right">{{ wildPokemonEncounter.level }}</div>
         </div>
-        <!-- Make the stats into a D3 radar chart. -->
+        <div v-else class="property"></div>
         <StatsChart :statsData="pokemon.stats" />
-        <!-- <div class="property">
-          <div class="left">Base Stats</div>
-          <ul class="right">
-            <li v-for="(value, index) in pokemon.stats" :key="'value' + index">
-              {{ value.stat.name }}: {{ value.base_stat }}
-            </li>
-          </ul>
-        </div> -->
         <div class="types detail-major-row">
           <h3>Types</h3>
           <div class="detail-major-row-values">

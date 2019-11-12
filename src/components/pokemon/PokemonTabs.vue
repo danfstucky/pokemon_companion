@@ -8,7 +8,7 @@
         <li>Wild Pokemon</li>
       </router-link>
       <router-link class="nav-link" to="Dummy" active-class="active">
-        <li>Dummy Link</li>
+        <li>Gyms</li>
       </router-link>
     </ul>
   </div>

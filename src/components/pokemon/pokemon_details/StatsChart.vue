@@ -1,4 +1,3 @@
-// d3 radar chart for Pokemon stats.
 <template>
   <div id='poke-stats-chart'></div>
 </template>
@@ -29,14 +28,15 @@ export default {
     drawRadarChart() {
       // Config for the Radar chart
       const config = {
-        w: 150,
-        h: 150,
+        w: 140,
+        h: 140,
         maxValue: 165,
-        levels: 3,
         extraWidthX: 200,
         extraWidthY: 80,
         translateX: 90,
         translateY: 25,
+        areaColor: '#07a83f',
+        nodeColor: '#73ffa3',
       };
       RadarChart.draw('#poke-stats-chart', this.formatBaseStats(), config);
     },
@@ -51,9 +51,3 @@ export default {
   },
 };
 </script>
-
-<style lang='less'>
-// Scoping these styles causes them not to show up for the svg elements
- @import (css) url('https://fonts.googleapis.com/css?family=Acme');
-
-</style>
