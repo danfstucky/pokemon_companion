@@ -1,4 +1,4 @@
-# salmon_red_companion_app
+# <p>salmon_red_companion_app <span style="float: right">[![Netlify Status](https://api.netlify.com/api/v1/badges/a1062a34-2709-46ec-b067-938685eb2f4e/deploy-status)](https://app.netlify.com/sites/dan-website/deploys)</span></p>
 
 > A Vue.js project
 
