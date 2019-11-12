@@ -30,7 +30,7 @@ export default {
       const config = {
         w: 140,
         h: 140,
-        maxValue: 165,
+        maxValue: 180,
         extraWidthX: 200,
         extraWidthY: 80,
         translateX: 90,
