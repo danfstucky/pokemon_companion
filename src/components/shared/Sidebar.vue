@@ -12,7 +12,7 @@
         <li>Dev Projects</li>
       </router-link>
       <router-link to='/pokemon' active-class='active'>
-        <li>Pokemon Stuff</li>
+        <li>Pokemon Salmon Red</li>
       </router-link>
       <router-link to='/research' active-class='active'>
         <li>Biology Research</li>

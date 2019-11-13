@@ -4,10 +4,10 @@
       <router-link class="nav-link" to="/pokemon" active-class="active" exact>
         <li>Pokedex</li>
       </router-link>
-      <router-link class="nav-link" to="/wild-encounters" active-class="active">
+      <router-link class="nav-link" to="/pokemon/wild-encounters" active-class="active">
         <li>Wild Pokemon</li>
       </router-link>
-      <router-link class="nav-link" to="/gyms" active-class="active">
+      <router-link class="nav-link" to="/pokemon/gyms" active-class="active">
         <li>Jims</li>
       </router-link>
     </ul>

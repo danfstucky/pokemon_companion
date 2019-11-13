@@ -21,9 +21,9 @@ export default new Router({
       name: 'PokemonHome',
       component: PokemonHome,
       children: [
-        { path: '', component: Pokedex }, // Sub-route root
-        { path: '/wild-encounters', component: WildPokemon },
-        { path: '/gyms', component: PokemonGyms },
+        { path: '/', component: Pokedex }, // Sub-route root
+        { path: '/pokemon/wild-encounters', component: WildPokemon },
+        { path: '/pokemon/gyms', component: PokemonGyms },
       ],
     },
     { path: '*', redirect: '/' }, // Catchall route to redirect
