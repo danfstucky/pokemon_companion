@@ -46,7 +46,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .wild-pokemon {
-    text-align: center;
-  }
+
 </style>

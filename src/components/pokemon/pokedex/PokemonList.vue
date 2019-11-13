@@ -4,7 +4,7 @@
       <article v-for="(pokemon, index) in pokemons"
       :key="'poke'+index"
       @click="showDetails(pokemon.id)">
-        <h3 class="pokedex-num">{{ pokemon.id }}</h3>
+        <p class="pokedex-num">{{ pokemon.id }}</p>
         <img :src="`${imageUrl}${pokemon.id}.png`" width="96" height="96" alt="">
         <h3>{{ pokemon.name }}</h3>
       </article>
@@ -102,6 +102,7 @@ export default {
     max-width: 850px;
     article {
       height: 150px;
+      width: 150px;
       background-color: #efefef;
       text-align: center;
       text-transform: capitalize;
@@ -115,10 +116,12 @@ export default {
         float: left;
         padding-left: 5px;
         padding-top: 10px;
+        font-size: 20px;
       }
 
       &:hover {
         cursor: pointer;
+        box-sizing: border-box;
         border: white solid 4px;
         background-color: #bb005c;
         color: white;

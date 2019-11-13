@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './../components/Home';
+import AboutMe from './../components/core/AboutMe';
+import DevProjects from './../components/core/DevProjects';
+import BiologyResearch from './../components/core/BiologyResearch';
+
 import PokemonHome from './../components/pokemon/PokemonHome';
 import Pokedex from './../components/pokemon/pokedex/Pokedex';
 import WildPokemon from './../components/pokemon/encounter_locations/WildPokemon';
@@ -10,14 +13,16 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    { path: '/', name: 'Home', component: Home }, // Root
+    { path: '/', component: AboutMe }, // Root
+    { path: '/dev-projects', component: DevProjects },
+    { path: '/research', component: BiologyResearch },
     {
       path: '/pokemon',
       name: 'PokemonHome',
       component: PokemonHome,
       children: [
-        { path: '', component: Pokedex },
-        { path: '/wild_pokemon', component: WildPokemon },
+        { path: '', component: Pokedex }, // Sub-route root
+        { path: '/wild-encounters', component: WildPokemon },
         { path: '/gyms', component: PokemonGyms },
       ],
     },

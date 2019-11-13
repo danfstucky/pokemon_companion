@@ -1,15 +1,28 @@
 <template>
-  <div>
-    <PokemonHome></PokemonHome> <!-- Direct to PokemonHome for now. Later make this dynamic -->
+  <div class='wrapper'>
+    <Sidebar />
+    <div class='main-content-container'>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import PokemonHome from './pokemon/PokemonHome';
+import Sidebar from './shared/Sidebar';
 
 export default {
   components: {
-    PokemonHome,
+    Sidebar,
   },
 };
 </script>
+
+<style lang="less" scoped>
+  .wrapper {
+    display: flex;
+
+    .main-content-container {
+      width: 110%;
+    }
+  }
+</style>
