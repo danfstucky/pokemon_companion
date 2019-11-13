@@ -42,6 +42,7 @@ export default {
           font-size: 1.75em;
           border-radius: 20px;
           border: none;
+          text-align: center;
         }
       }
       td {

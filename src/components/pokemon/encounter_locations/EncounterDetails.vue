@@ -53,7 +53,7 @@ export default {
                   0 10px 10px rgba(0,0,0,.2);
       &:hover {
         cursor: pointer;
-        border: white solid 5px;
+        border: white solid 4px;
         background-color: #bb005c;
         color: white;
       }
