@@ -68,7 +68,7 @@ export default {
       background: #63ac99;
       color: white;
       border: 3px solid #3c8373;
-      
+
       &:after{
         float: right;
         font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f101";
