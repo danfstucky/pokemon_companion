@@ -9,7 +9,7 @@ const locationsChart = [
   { x: 2.4, y: 0, order: 5, name: 'Zubat Cave', type: 'route' },
   { x: 3.6, y: -1.2, order: 6, name: 'Route 7', type: 'route' },
   { x: 4.8, y: -2.4, order: 7, name: 'Luprar Village', type: 'town' },
-  { x: 4.8, y: -1.2, order: 8, name: 'Echor Forest', type: 'route' },
+  { x: 4.8, y: -1.2, order: 8, name: 'Echol Forest', type: 'route' },
   { x: 4.8, y: 0, order: 9, name: 'Sideleaf City', type: 'town' },
   { x: 6.0, y: -1.2, order: 10, name: 'Route 12', type: 'route' },
   { x: 7.2, y: -2.4, order: 11, name: 'Koala Bay', type: 'town' },

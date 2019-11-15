@@ -8,6 +8,7 @@ import PokemonHome from './../components/pokemon/PokemonHome';
 import Pokedex from './../components/pokemon/pokedex/Pokedex';
 import WildPokemon from './../components/pokemon/encounter_locations/WildPokemon';
 import PokemonGyms from './../components/pokemon/gyms/PokemonGyms';
+import About from './../components/pokemon/About';
 
 Vue.use(Router);
 
@@ -24,6 +25,7 @@ export default new Router({
         { path: '/', component: Pokedex }, // Sub-route root
         { path: '/pokemon/wild-encounters', component: WildPokemon },
         { path: '/pokemon/gyms', component: PokemonGyms },
+        { path: '/pokemon/about', component: About },
       ],
     },
     { path: '*', redirect: '/' }, // Catchall route to redirect

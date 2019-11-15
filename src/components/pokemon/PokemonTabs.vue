@@ -8,7 +8,10 @@
         <li>Wild Pokemon</li>
       </router-link>
       <router-link class="nav-link" to="/pokemon/gyms" active-class="active">
-        <li>Jims</li>
+        <li>Gym Leaders</li>
+      </router-link>
+      <router-link class="nav-link" to="/pokemon/about" active-class="active">
+        <li>About Salmon Red</li>
       </router-link>
     </ul>
   </div>
