@@ -18,7 +18,7 @@
       Testing a game as large as Pokemon Salmon Red is a monumentous task. I would like to thank my
       friends Justin and Kelsey Speis for devoting many painful hours play-testing the game in it's
       early stages. I admit that I quite enjoyed watching them get stuck in various trees/buildings
-      and encountering bizarre bugs throughout their playthrough. Buahaha!
+      and encountering bizarre bugs throughout their playthrough. Especially Kelsey.... Buahaha!
     </p>
     <p>
       I would also like to thank my wife, Heather, who served as the inspiration for making this game
