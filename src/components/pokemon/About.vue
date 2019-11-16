@@ -27,12 +27,6 @@
   </div>
 </template>
 
-<script>
-export default {
-
-};
-</script>
-
 <style lang="less" scoped>
   .about-container {
     background-color: #d3d3d3;

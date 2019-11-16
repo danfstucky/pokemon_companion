@@ -15,7 +15,7 @@
         <li>Pokemon Salmon Red</li>
       </router-link>
       <router-link to='/research' active-class='active'>
-        <li>Biology Research</li>
+        <li>Genetics Research</li>
       </router-link>
     </ul>
   </nav>

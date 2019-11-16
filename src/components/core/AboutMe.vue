@@ -8,13 +8,15 @@
           <p>
             I have been working as a Full-Stack Web Dev for 4 years and am currently employed by a smaller software
             company named Storable. Our stack primarily consists of Rails with Postgres, but I get to play with
-            JS/React pretty often and recently even dabbled with <a href='https://vuejs.org/'>Vue.js</a> and
-            <a href='https://www.rust-lang.org/'>Rust</a>. I love writing software and working on projects
-            that have a positive and meaningful influence on people's lives. Prior to software development,
+            JS/React pretty often and recently even dabbled with 
+            <a href='https://vuejs.org/' target='_blank'>Vue.js</a>
+            and <a href='https://www.rust-lang.org/' target='_blank'>Rust</a>. I love writing software and working
+            on projects that have a positive and meaningful influence on people's lives. Prior to software development,
             I obtained a M.S. in molecular genetics and I'd like to someday combine my knowledge in
             these two fields, but have not yet found the right opportunity.
           </p>
-          <p>I built this site to provide some info on myself and keep a record of a few fun
+          <p>
+            I built this site to provide some info on myself and keep a record of a few fun
             projects I have engaged in outside of my employer. Take a look around and feel free to reach out.
           </p>
         </div>
@@ -53,9 +55,9 @@
           <p><i class="fas fa-map-marker-alt"></i> Kansas City, MO</p>
           <p>
             <i class="fab fa-linkedin"></i>
-            <a href='https://www.linkedin.com/in/daniel-stucky-580464a8/'>LinkedIn</a>
+            <a href='https://www.linkedin.com/in/daniel-stucky-580464a8/' target='_blank'>LinkedIn</a>
           </p>
-          <p><i class="fab fa-github"></i> <a href='https://github.com/danfstucky'>My GitHub</a></p>
+          <p><i class="fab fa-github"></i> <a href='https://github.com/danfstucky' target='_blank'>My GitHub</a></p>
         </div>
       </div>
     </div>
