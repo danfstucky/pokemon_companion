@@ -63,7 +63,10 @@ import StatsChart from './StatsChart';
 export default {
   props: {
     pokemonId: { required: true },
-    isWildEncounter: false,
+    isWildEncounter: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -187,7 +190,6 @@ export default {
         flex-direction: column;
         width: 100%;
         margin-top: 60px;
-        margin-bottom: 10px;
         .property {
           width: 90%;
           border-bottom: 1px solid #ccc;

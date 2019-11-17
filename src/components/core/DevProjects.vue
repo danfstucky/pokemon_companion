@@ -71,8 +71,8 @@
           and Amazon at a profit. It pulls down information for millions of items from both sites and outputs a
           list of the top picks based on profit margin, buyer reviews, and consumer demand.
         </p>
-        <i class="fab fa-github"></i> 
-        <a href='https://github.com/sulaimonlasisi/clearance-app' target='_blank'>Project Github Link</a>
+        <i class="fab fa-github"></i>
+        <a href='https://github.com/sulaimonlasisi/clearance-app' target='_blank'> Project Github Link</a>
       </div>
     </div>
 
@@ -94,8 +94,8 @@
           favorite and best god characters to play as, and compare their stats to in-game friends. It is only
           available for Android.
         </p>
-        <i class="fab fa-github"></i>
-        <a href='https://github.com/danfstucky/SmiteSpec' target='_blank'>Project Github Link</a>
+        <i class="fab fa-github"></i> 
+        <a href='https://github.com/danfstucky/SmiteSpec' target='_blank'> Project Github Link</a>
       </div>
     </div>
   </div>

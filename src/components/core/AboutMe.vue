@@ -55,7 +55,7 @@
           <p><i class="fas fa-map-marker-alt"></i> Kansas City, MO</p>
           <p>
             <i class="fab fa-linkedin"></i>
-            <a href='https://www.linkedin.com/in/daniel-stucky-580464a8/' target='_blank'>LinkedIn</a>
+            <a href='https://www.linkedin.com/in/daniel-stucky-580464a8/' target='_blank'> LinkedIn</a>
           </p>
           <p><i class="fab fa-github"></i> <a href='https://github.com/danfstucky' target='_blank'>My GitHub</a></p>
         </div>

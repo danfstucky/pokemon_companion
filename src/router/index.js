@@ -19,7 +19,6 @@ export default new Router({
     { path: '/research', component: BiologyResearch },
     {
       path: '/pokemon',
-      name: 'PokemonHome',
       component: PokemonHome,
       children: [
         { path: '/', component: Pokedex }, // Sub-route root

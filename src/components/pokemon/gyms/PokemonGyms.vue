@@ -3,13 +3,13 @@
     <div class='gym-leaders-wrapper'>
       <img v-for="gymNum in 9"
         :class="['gym-leader', {highlight: selectedGymId === gymNum}]"
-        :src="`./../../../static/images/gym_leaders/gym${gymNum}.png`"
+        :src="getImgUrl(`gym${gymNum}.png`)"
         :key="gymNum"
         @click="handleGymSelection(gymNum)">
     </div>
     <div v-if="selectedGymId">
       <img class='gym-city'
-        :src="`./../../../static/images/gym_leaders/city${selectedGymId}.png`">
+        :src="getImgUrl(`city${selectedGymId}.png`)">
       <p class='disclaimer'>Note: In-game graphics do not have gridlines</p>
     </div>
 
@@ -31,7 +31,7 @@
             :key="'poke'+ index"
             @click="showEncounterDetails(pokemon)">
           <h6 class="pokedex-num">{{ pokemon.id }}</h6>
-          <img :src="imageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
+          <img :src="pokeImageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
           <h5>{{ pokemon.name }}</h5>
         </article>
         </div>
@@ -57,13 +57,16 @@ export default {
     return {
       selectedGymId: null,
       gymLeader: null,
-      imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
+      pokeImageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
     };
   },
   methods: {
     ...mapMutations([
       'showEncounterDetails',
     ]),
+    getImgUrl(pic) {
+      return require(`./../../../../static/images/gym_leaders/${pic}`);
+    },
     handleGymSelection(gymNum) {
       this.selectedGymId = gymNum;
       this.gymLeader = gymLeaders.find(gym => gym.id === gymNum);
