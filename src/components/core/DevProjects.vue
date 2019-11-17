@@ -101,7 +101,7 @@
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .projects-container {
     margin: 10px;
 

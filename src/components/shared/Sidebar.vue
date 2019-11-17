@@ -27,8 +27,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-  @import (css) url('https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap');
+<style lang="scss" scoped>
+  @import url('https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap');
 
   .sidebar {
     width: 250px;

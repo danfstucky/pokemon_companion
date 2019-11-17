@@ -37,8 +37,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-  @import (css) url('https://fonts.googleapis.com/css?family=Acme');
+<style lang="scss" scoped>
+  @import url('https://fonts.googleapis.com/css?family=Acme');
   .pokedex-container {
     display: flex;
     align-items: center;

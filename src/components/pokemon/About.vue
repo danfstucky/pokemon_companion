@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .about-container {
     background-color: #d3d3d3;
     padding: 10px;

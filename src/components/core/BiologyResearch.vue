@@ -75,7 +75,7 @@
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .flex-wrapper {
     display: flex;
     .column {

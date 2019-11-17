@@ -186,9 +186,9 @@ export default {
 };
 </script>
 
-<style lang='less'>
+<style lang="scss">
 // Scoping these styles causes them not to show up for the svg elements
- @import (css) url('https://fonts.googleapis.com/css?family=Acme');
+ @import url('https://fonts.googleapis.com/css?family=Acme');
 
   svg {
     .poke-img {

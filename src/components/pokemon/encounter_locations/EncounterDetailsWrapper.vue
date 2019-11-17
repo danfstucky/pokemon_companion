@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .terrain-wrapper {
     display: inline-block;
   }

@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .poke-tabs {
     font-size: 22px;
     margin-bottom: 20px;

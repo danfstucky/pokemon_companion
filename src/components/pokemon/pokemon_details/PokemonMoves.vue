@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .pokemon-moves {
     background-color: #fff;
     height: 100%;

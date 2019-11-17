@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .list {
     display: grid;
     grid-template-columns: repeat(6, 130px [col-start]);

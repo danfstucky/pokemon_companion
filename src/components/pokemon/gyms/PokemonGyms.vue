@@ -81,7 +81,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .gyms-container {
     text-align: center;
 

@@ -136,7 +136,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .detail-container {
     position: fixed;
     top: 0;

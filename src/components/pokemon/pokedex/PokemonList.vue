@@ -93,7 +93,7 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
   .list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
