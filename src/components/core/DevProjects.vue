@@ -14,51 +14,19 @@
         </div>
 
         <div class='column column-2'>
-          <!-- <div id='poke-carousel' class='carousel slide{data: {ride: 'carousel'}}
-            %ol.carousel-indicators
-              %li.active{data: {target: '#poke-carousel', 'slide-to': 0}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 1}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 2}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 3}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 4}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 5}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 6}}
-              %li{data: {target: '#poke-carousel', 'slide-to': 7}}
-
-            .carousel-inner
-              .carousel-item.active
-                = image_tag('PokemonPics/screenshot1.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot2.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot3.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot4.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot5.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot6.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot7.png')
-
-              .carousel-item
-                = image_tag('PokemonPics/screenshot8.png')
-
-            .carousel-control-prev
-              = link_to '#poke-carousel', role: 'button', data: {slide: 'prev'} do
-                %span.carousel-control-prev-icon{'aria-hidden': true}
-                %span.sr-only= 'Previous'
-
-            .carousel-control-next
-              = link_to '#poke-carousel', role: 'button', data: {slide: 'next'} do
-                %span.carousel-control-next-icon{'aria-hidden': true}
-                %span.sr-only= 'Next' -->
+          <v-app>
+            <v-container>
+              <v-carousel height="400px">
+                <v-carousel-item
+                  v-for="(screenshot, i) in gameScreenshots"
+                  :key="i">
+                  <v-row class="fill-height" align="center" justify="center">
+                    <img :src="screenshot">
+                  </v-row>
+                </v-carousel-item>
+              </v-carousel>
+            </v-container>
+          </v-app>
         </div>
       </div>
     </div>
@@ -100,6 +68,26 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      gameScreenshots: [
+        require('./../../../static/images/dev_projects/pokemon/screenshot1.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot2.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot3.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot4.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot5.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot6.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot7.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot8.png'),
+        require('./../../../static/images/dev_projects/pokemon/screenshot9.png'),
+      ]
+    };
+  },
+}
+</script>
 
 <style lang="scss" scoped>
   .projects-container {
