@@ -31,34 +31,34 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot1.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot1.png">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot2.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot2.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot3.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot3.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot4.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot4.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot5.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot5.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot6.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot6.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot7.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot7.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot8.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot8.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot9.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot9.png">
               </div>
                <div class="carousel-item">
-                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot10.png" alt="First slide">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot10.png">
               </div>
             </div>
             <a class="carousel-control-prev" href="#pokemon-carousel" role="button" data-slide="prev">
