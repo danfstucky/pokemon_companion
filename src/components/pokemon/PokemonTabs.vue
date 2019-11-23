@@ -14,22 +14,6 @@
         <li>About Salmon Red</li>
       </router-link>
     </ul>
-    <!-- <v-toolbar flat color="transparent">
-      <v-toolbar-items>
-        <router-link to="/pokemon" active-class="active" exact>
-          <v-chip label>Pokedex</v-chip>
-        </router-link>
-        <router-link to="/pokemon/wild-encounters" active-class="active">
-          <li>Wild Pokemon</li>
-        </router-link>
-        <router-link to="/pokemon/gyms" active-class="active">
-          <li>Gym Leaders</li>
-        </router-link>
-        <router-link to="/pokemon/about" active-class="active">
-          <li>About Salmon Red</li>
-        </router-link>
-      </v-toolbar-items>
-    </v-toolbar> -->
   </div>
 </template>
 

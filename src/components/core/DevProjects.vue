@@ -10,23 +10,70 @@
             environment/character interaction. I completed this game in 2019 after 5 years of work, but it will
             never be used for profit as it borrows many assets from the Nintendo franchise. I have always enjoyed
             playing the Pokemon games and had a blast creating and play-testing this game with my own ideas.
+            It features 410 Pokemon, 8 gyms, an Elite 4 end-game battle, dozens of cities and routes to explore,
+            weather and night/day effects, egg hatching and daycare, and so much more!
           </p>
         </div>
 
         <div class='column column-2'>
-          <v-app>
-            <v-container>
-              <v-carousel height="400px">
-                <v-carousel-item
-                  v-for="(screenshot, i) in gameScreenshots"
-                  :key="i">
-                  <v-row class="fill-height" align="center" justify="center">
-                    <img :src="screenshot">
-                  </v-row>
-                </v-carousel-item>
-              </v-carousel>
-            </v-container>
-          </v-app>
+          <div id="pokemon-carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#pokemon-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="1"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="2"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="3"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="4"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="5"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="6"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="7"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="8"></li>
+              <li data-target="#pokemon-carousel" data-slide-to="9"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot1.png" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot2.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot3.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot4.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot5.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot6.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot7.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot8.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot9.png" alt="First slide">
+              </div>
+               <div class="carousel-item">
+                <img class="d-block w-100" src="./../../../static/images/dev_projects/pokemon/screenshot10.png" alt="First slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#pokemon-carousel" role="button" data-slide="prev">
+              <div class='carousel-control-wrapper'>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </div>
+            </a>
+            <a class="carousel-control-next" href="#pokemon-carousel" role="button" data-slide="next">
+              <div class='carousel-control-wrapper'>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -107,8 +154,30 @@ export default {
       }
     }
 
-    #poke-carousel {
-      width: 500px; // Set carousel size to same width of images.
+    #pokemon-carousel {
+      width: 600px;
+      .carousel-control-wrapper {
+        background: rgba(0, 0, 0, 0.445);
+        padding: 8px;
+        border-radius: 50%;
+        vertical-align: middle;
+        .carousel-control-next-icon, .carousel-control-prev-icon {
+          vertical-align: text-top;
+        }
+      }
+      .carousel-indicators {
+        background-color: rgba(0, 0, 0, 0.445);
+        width: 100%;
+        height: 50px;
+        margin: 0px;
+        align-items: center;
+
+        li {
+          width: 40px;
+          height: 5px;
+          margin-left: 10px
+        }
+      }
     }
 
     table.smite-spec-images {
