@@ -7,7 +7,6 @@ import * as d3 from 'd3';
 import locations from './../../../data/locations';
 
 export default {
-  /* eslint-disable max-len */
   data() {
     return {
       chart: null,

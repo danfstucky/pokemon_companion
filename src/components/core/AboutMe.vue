@@ -17,7 +17,7 @@
           </p>
           <p>
             I built this site to provide some info on myself and keep a record of a few fun
-            projects I have engaged in outside of my employer. Take a look around and feel free to reach out.
+            projects I have engaged in outside of my employment. Take a look around and feel free to reach out.
           </p>
         </div>
       </div>
@@ -45,7 +45,14 @@
       <div class='card skills-card'>
         <h4 class='card-header'>Skills</h4>
         <div class='card-body'>
-          <div id='skills-graph-container'>404 Skills Not Found</div>
+          <HorizontalBarChart
+            :data="skillData"
+            :chartOptions="{
+              chartId: 'skills-graph-container',
+              chartWidth: 500,
+              style: {barColor: '#3c8373', barHoverColor: '#63ac99'}
+            }"
+          />
         </div>
       </div>
 
@@ -65,8 +72,27 @@
 </template>
 
 <script>
-export default {
+import HorizontalBarChart from './../shared/HorizontalBarChart';
 
+export default {
+  components: {
+    HorizontalBarChart,
+  },
+  data() {
+    return {
+      skillData: [
+        {text: 'Ruby/Rails', score: 10},
+        {text: 'JavaScript', score: 9},
+        {text: 'React', score: 7},
+        {text: 'Vue.js', score: 6},
+        {text: 'Java', score: 5},
+        {text: 'Python', score: 8},
+        {text: 'Postgres/SQL', score: 6},
+        {text: 'HTML/CSS', score: 9},
+        {text: 'git', score: 9}
+      ],
+    };
+  },
 };
 </script>
 
