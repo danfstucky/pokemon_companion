@@ -1,57 +1,58 @@
 <template>
   <div class="detail-container">
-  <div class="detail">
-    <div class="detail-view" v-if="show">
-      <div v-if="pokemon" class="image">
-        <img :src="imageUrl + pokemon.id + '.png'" alt="">
-      </div>
-      <div v-if="pokemon && foundPokemon" class="data">
-        <h2>{{ pokemon.name }}</h2>
-        <div v-if="isWildEncounter" class="property">
-          <div class="left">Encounter Level</div>
-          <div class="right">{{ wildPokemonEncounter.level }}</div>
+    <div class="detail" >
+      <div class="detail-view" v-if="show">
+        <i class="close-modal-x fas fa-times" @click="closeDetail"></i>
+        <div v-if="pokemon" class="image">
+          <img :src="imageUrl + pokemon.id + '.png'" alt="">
         </div>
-        <div v-else class="property"></div>
-        <StatsChart :statsData="pokemon.stats" />
-        <div class="types detail-major-row">
-          <h3>Types</h3>
-          <div class="detail-major-row-values">
-            <div class="type pill-container"
-              v-for="(value, index) in pokemon.types"
-              :key="'value' + index">
-              {{ value.type.name }}
+        <div v-if="pokemon && foundPokemon" class="data">
+          <h2>{{ pokemon.name }}</h2>
+          <div v-if="isWildEncounter" class="property">
+            <div class="left">Encounter Level</div>
+            <div class="right">{{ wildPokemonEncounter.level }}</div>
+          </div>
+          <div v-else class="property"></div>
+          <StatsChart :statsData="pokemon.stats" />
+          <div class="types detail-major-row">
+            <h3>Types</h3>
+            <div class="detail-major-row-values">
+              <div class="type pill-container"
+                v-for="(value, index) in pokemon.types"
+                :key="'value' + index">
+                {{ value.type.name }}
+              </div>
+            </div>
+          </div>
+          <div class="abilities detail-major-row">
+            <h3>Abilities</h3>
+            <div class="detail-major-row-values">
+              <div class="ability pill-container"
+                v-for="(value, index) in pokemon.abilities"
+                :key="'value' + index">
+                {{ value.ability.name }}
+              </div>
+            </div>
+          </div>
+          <div class="detail-major-row">
+            <h3>Moves</h3>
+            <div class="pill-container moves-btn"
+              @click="handleToggleMoves"
+              :class="{'active-moves': showMoves}">
+              Show Moves
+              <i v-if="!showMoves" class="fas fa-angle-double-right"></i>
+              <i v-else class="fas fa-angle-double-left"></i>
             </div>
           </div>
         </div>
-        <div class="abilities detail-major-row">
-          <h3>Abilities</h3>
-          <div class="detail-major-row-values">
-            <div class="ability pill-container"
-              v-for="(value, index) in pokemon.abilities"
-              :key="'value' + index">
-              {{ value.ability.name }}
-            </div>
-          </div>
-        </div>
-        <div class="detail-major-row">
-          <h3>Moves</h3>
-          <div class="pill-container moves-btn"
-            @click="handleToggleMoves"
-            :class="{'active-moves': showMoves}">
-            Show Moves
-            <i v-if="!showMoves" class="fas fa-angle-double-right"></i>
-            <i v-else class="fas fa-angle-double-left"></i>
-          </div>
-        </div>
+        <h2 v-else>Pokemon not found</h2>
+        <button class="close-detail" @click="closeDetail">close</button>
       </div>
-      <h2 v-else>Pokemon not found</h2>
-      <button class="close-detail" @click="closeDetail">close</button>
+      <i v-else class="fas fa-spinner fa-spin"></i>
+      <transition name="slide">
+        <PokemonMoves v-if="showMoves" :moves="moves" />
+      </transition>
     </div>
-    <i v-else class="fas fa-spinner fa-spin"></i>
-    <transition name="slide">
-      <PokemonMoves v-if="showMoves" :moves="moves" />
-    </transition>
-  </div>
   </div>
 </template>
 
@@ -151,6 +152,8 @@ export default {
     position: fixed;
     display: flex;
     left: 30%;
+    min-height: 550px;
+    max-height: 650px;
 
     .detail-view {
       display: flex;
@@ -164,6 +167,20 @@ export default {
       border-radius: 5px;
       box-shadow: 0 15px 30px rgba(0,0,0,.2),
                   0 10px 10px rgba(0,0,0,.2);
+
+      .close-modal-x {
+        opacity: 0.4;
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 15px;
+        font-size: 18px;
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
 
       .image {
         display: flex;

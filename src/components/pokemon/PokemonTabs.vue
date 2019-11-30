@@ -10,6 +10,9 @@
       <router-link class="nav-link" to="/pokemon/gyms" active-class="active">
         <li>Gym Leaders</li>
       </router-link>
+      <router-link class="nav-link" to="/pokemon/types" active-class="active">
+        <li>Type Chart</li>
+      </router-link>
       <router-link class="nav-link" to="/pokemon/about" active-class="active">
         <li>About Salmon Red</li>
       </router-link>
