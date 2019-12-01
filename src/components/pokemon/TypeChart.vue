@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <td></td>
-          <td v-for="type in types" :key="`top-${type.name}`" :class="['type-header', type.name.toLowerCase()]">
+          <td v-for="type in types" :key="`top-${type.name}`" :class="['type-header', 'type-top-header', type.name.toLowerCase()]">
             {{ type.name }}
           </td>
         </tr>
@@ -50,20 +50,24 @@ export default {
 
 <style lang="scss" scoped>
   table {
-    td {
+    td, th {
       padding: 6px;
       text-align: center;
       border: 1px solid rgba(0, 0, 0, 0.247);
       &:hover {
         cursor: default;
         box-shadow:inset 0px 0px 0px 3px #f00;
-        // border: 3px solid white;
       }
     }
     td.type-header {
       font-size: 18px;
       color: white;
       padding: 8px;
+    }
+    td.type-top-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     td.normal { background-color:rgb(243, 206, 158); }
     td.fire { background-color:rgb(255, 104, 16); }
