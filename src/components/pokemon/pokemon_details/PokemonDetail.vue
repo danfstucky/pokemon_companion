@@ -125,7 +125,7 @@ export default {
 
       for (const moveData of this.pokemon.moves) {
         const groupDetails = moveData.version_group_details.find(
-          details => details.version_group.name === 'black-white',
+          details => details.version_group.name === 'black-2-white-2',
         );
         if (groupDetails && groupDetails.move_learn_method.name === 'level-up') {
           salmonRedMoves.push({ name: moveData.move.name, level: groupDetails.level_learned_at });
@@ -152,7 +152,7 @@ export default {
     position: fixed;
     display: flex;
     left: 30%;
-    min-height: 550px;
+    min-height: 600px;
     max-height: 650px;
 
     .detail-view {
