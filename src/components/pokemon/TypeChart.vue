@@ -3,7 +3,7 @@
     <table>
       <thead>
         <tr>
-          <td></td>
+          <td><img src='./../../../static/images/dev_projects/pokemon/ak_df.png'></td>
           <td v-for="type in types" :key="`top-${type.name}`" :class="['type-header', 'type-top-header', type.name.toLowerCase()]">
             {{ type.name }}
           </td>
@@ -90,6 +90,7 @@ export default {
     tbody {
       td.type-side-header {
         text-align: left;
+        width: 120px;
       }
       td.effective-1x{
         background-color: white;
