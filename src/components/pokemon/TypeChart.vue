@@ -3,7 +3,7 @@
     <table>
       <thead>
         <tr>
-          <td><img src='./../../../static/images/dev_projects/pokemon/ak_df.png'></td>
+          <td><img src='./../../../public/images/ak_df.png'></td>
           <td v-for="type in types" :key="`top-${type.name}`" :class="['type-header', 'type-top-header', type.name.toLowerCase()]">
             {{ type.name }}
           </td>

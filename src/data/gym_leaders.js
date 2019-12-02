@@ -25,10 +25,10 @@ const gymLeaders = [
         name: 'Kathy',
         type: 'Grass',
         pokemon: [
-          { name: 'tropius', id: 357, level: 20 },
-          { name: 'bellossom', id: 182, level: 22 },
+          { name: 'paras', id: 46, level: 21 },
+          { name: 'bellossom', id: 182, level: 21 },
           { name: 'breloom', id: 286, level: 22 },
-          { name: 'parasect', id: 47, level: 21 },
+          { name: 'tropius', id: 357, level: 22 },
         ],
       },
     ],
