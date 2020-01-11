@@ -65,7 +65,7 @@ export default {
       'showEncounterDetails',
     ]),
     getImgUrl(pic) {
-      return require(`./../../../../static/images/gym_leaders/${pic}`);
+      return require(`./../../../../static/images/pokemon/gym_leaders/${pic}`);
     },
     handleGymSelection(gymNum) {
       this.selectedGymId = gymNum;

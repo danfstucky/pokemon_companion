@@ -10,8 +10,8 @@ export default {
   data() {
     return {
       chart: null,
-      townImg: 'https://bitbucket.org/Kaitrono/asset-storage/raw/dd6dd266c0168e2b2263dd6c1dfd543164d878cf/images/pokemon/town.png',
-      routeImg: 'https://bitbucket.org/Kaitrono/asset-storage/raw/e9143f3478c6f7ac4a1f40a586c85d1cc7c45277/images/pokemon/route_sign.png',
+      townImg: require('./../../../../static/images/pokemon/town.png'),
+      routeImg: require('./../../../../static/images/pokemon/route_sign.png')
     };
   },
   mounted() {
