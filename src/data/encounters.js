@@ -605,6 +605,20 @@ const wildEncounterList = [
     location: 'Taelia Town',
     encounters: [
       {
+        terrain: 'Land',
+        pokemon: [
+          { name: 'EXEGGUTOR', id: 103, level: '38-42' },
+          { name: 'SPEAROW', id: 21, level: '38-42' },
+          { name: 'FEAROW', id: 22, level: '38-42' },
+          { name: 'IVYSAUR', id: 2, level: '38-42' },
+          { name: 'GROWLITHE', id: 58, level: '38-42' },
+          { name: 'KANGASKHAN', id: 115, level: '38-42' },
+          { name: 'DUGTRIO', id: 51, level: '38-42' },
+          { name: 'WEEPINBELL', id: 70, level: '38-42' },
+          { name: 'RAICHU', id: 26, level: '38-42' },
+        ],
+      },
+      {
         terrain: 'Surf',
         pokemon: [
           { name: 'MAGIKARP', id: 129, level: '25-35' },
