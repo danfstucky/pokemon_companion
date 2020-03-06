@@ -85,10 +85,10 @@ export default {
         {text: 'JavaScript', score: 9},
         {text: 'React', score: 7},
         {text: 'Vue.js', score: 6},
-        {text: 'Java', score: 5},
-        {text: 'Python', score: 8},
-        {text: 'Postgres/SQL', score: 6},
-        {text: 'HTML/CSS', score: 9},
+        {text: 'Java', score: 4},
+        {text: 'Python', score: 7},
+        {text: 'Postgres/SQL', score: 7},
+        {text: 'HTML/CSS', score: 10},
         {text: 'git', score: 9}
       ],
     };
