@@ -3,8 +3,8 @@
     <div v-if="encounter.encounters.length === 0" class="terrain-block no-results">
       There are no wild Pokemon in this area.
     </div>
-    <template v-else v-for="encounterLocation in encounter.encounters" >
-      <div class="row terrain-block" :key="encounterLocation.terrain">
+    <template v-else v-for="encounterLocation in encounter.encounters" :key="encounterLocation.terrain">
+      <div class="row terrain-block">
         <div
           :class="['col-1',
             'terrain-sidebar',
