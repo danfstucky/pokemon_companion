@@ -1,7 +1,7 @@
 <template>
   <div class="poke-tabs">
     <ul class="nav nav-pills">
-      <router-link class="nav-link" to="/pokemon" active-class="active" exact>
+      <router-link class="nav-link" to="/pokemon/pokedex" active-class="active">
         <li>Pokedex</li>
       </router-link>
       <router-link class="nav-link" to="/pokemon/wild-encounters" active-class="active">

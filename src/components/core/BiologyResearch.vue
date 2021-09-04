@@ -23,14 +23,14 @@
           <ul class='list-unstyled'>
             <li>
               <i class="fas fa-pencil-alt"></i>
-              <a href='https://academic.oup.com/jxb/article/66/1/189/2893415'>
+              <a href='https://academic.oup.com/jxb/article/66/1/189/2893415' target='_blank'>
                 Functional diversification of two UGT80 enzymes required for steryl glucoside synthesis
                 in Arabidopsis
               </a>
             </li>
             <li>
               <i class="fas fa-pencil-alt"></i>
-              <a href='http://krex.k-state.edu/dspace/handle/2097/16985'>
+              <a href='http://krex.k-state.edu/dspace/handle/2097/16985' target='_blank'>
                 Steryl glucosides: a genetic approach to determine their role in cellulose synthesis and lipid
                 metabolism in Arabidopsis
               </a>

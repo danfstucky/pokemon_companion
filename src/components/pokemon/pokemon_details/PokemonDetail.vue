@@ -272,13 +272,13 @@ export default {
       }
     }
 
-    .slide-enter {
+    .slide-enter-from {
       // Nothing needed
     }
     .slide-enter-active {
       animation: slide-in 1s ease-out forwards;
     }
-    .slide-leave {
+    .slide-leave-from {
       // Nothing needed
     }
     .slide-leave-active {

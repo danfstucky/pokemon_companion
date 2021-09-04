@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import AboutMe from './../components/core/AboutMe';
 import DevProjects from './../components/core/DevProjects';
 import BiologyResearch from './../components/core/BiologyResearch';
@@ -11,24 +10,27 @@ import PokemonGyms from './../components/pokemon/gyms/PokemonGyms';
 import TypeChart from './../components/pokemon/TypeChart';
 import About from './../components/pokemon/About';
 
-Vue.use(Router);
-
-export default new Router({
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
-    { path: '/', component: AboutMe }, // Root
+    { path: '/', redirect: '/about-me' }, // Root
+    { path: '/about-me', component: AboutMe },
     { path: '/dev-projects', component: DevProjects },
     { path: '/research', component: BiologyResearch },
     {
       path: '/pokemon',
       component: PokemonHome,
       children: [
-        { path: '/', component: Pokedex }, // Sub-route root
+        { path: '/pokemon', redirect: '/pokemon/pokedex' }, // Sub-route root
+        { path: '/pokemon/pokedex', component: Pokedex },
         { path: '/pokemon/wild-encounters', component: WildPokemon },
         { path: '/pokemon/gyms', component: PokemonGyms },
         { path: '/pokemon/types', component: TypeChart },
         { path: '/pokemon/about', component: About },
       ],
     },
-    { path: '*', redirect: '/' }, // Catchall route to redirect
+    { path: '/:notFound(.*)', redirect: '/about-me' }, // Catchall route to redirect
   ],
 });
+
+export default router;

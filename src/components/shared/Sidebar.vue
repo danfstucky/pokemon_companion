@@ -5,7 +5,7 @@
       <h5>Software Engineer</h5>
     </div>
     <ul class='list-unstyled'>
-      <router-link to='/' active-class='active' exact>
+      <router-link to='/about-me' active-class='active'>
         <li>Who I Am</li>
       </router-link>
       <router-link to='/dev-projects' active-class='active'>

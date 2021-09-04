@@ -1,14 +1,17 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './App';
 import router from './router';
 import store from './store/store';
 
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 
-new Vue({
-  render: h => h(App),
-  router,
-  store,
-}).$mount('#app')
+// const app = createApp({
+//   // render: h => h(App)
+// });
+const app = createApp(App);
+
+app.use(store);
+app.use(router);
+app.mount('#app');
