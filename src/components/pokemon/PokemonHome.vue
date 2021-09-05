@@ -1,7 +1,7 @@
 <template>
   <div class="pokemon-container">
-    <PokemonTabs></PokemonTabs>
-    <router-view></router-view>
+    <PokemonTabs />
+    <router-view />
   </div>
 </template>
 

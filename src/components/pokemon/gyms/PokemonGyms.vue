@@ -1,46 +1,73 @@
 <template>
-  <div class='gyms-container'>
-    <div class='gym-leaders-wrapper'>
-      <img v-for="gymNum in 9"
+  <div class="gyms-container">
+    <div class="gym-leaders-wrapper">
+      <img
+        v-for="gymNum in 9"
+        :key="gymNum"
         :class="['gym-leader', {highlight: selectedGymId === gymNum}]"
         :src="getImgUrl(`gym${gymNum}.png`)"
-        :key="gymNum"
-        @click="handleGymSelection(gymNum)">
+        @click="handleGymSelection(gymNum)"
+      >
     </div>
     <div v-if="selectedGymId">
-      <img class='gym-city'
-        :src="getImgUrl(`city${selectedGymId}.png`)">
-      <p class='disclaimer'>Note: In-game graphics do not have gridlines</p>
+      <img
+        class="gym-city"
+        :src="getImgUrl(`city${selectedGymId}.png`)"
+      >
+      <p class="disclaimer">
+        Note: In-game graphics do not have gridlines
+      </p>
     </div>
 
-    <div class='gym-details' v-if="gymLeader">
+    <div
+      v-if="gymLeader"
+      class="gym-details"
+    >
       {{ gymLeader.description }}
-      <div class='gym-leader-details' v-for="leader in gymLeader.leaders" :key="leader.name">
+      <div
+        v-for="leader in gymLeader.leaders"
+        :key="leader.name"
+        class="gym-leader-details"
+      >
         <table>
           <tr>
-            <td class='label'>Leader:</td>
+            <td class="label">
+              Leader:
+            </td>
             <td>{{ leader.name }}</td>
           </tr>
           <tr>
-            <td class='label'>Type:</td>
+            <td class="label">
+              Type:
+            </td>
             <td>{{ leader.type }}</td>
           </tr>
         </table>
-        <div class='gym-leader-pokemon'>
-          <article v-for="(pokemon, index) in leader.pokemon"
+        <div class="gym-leader-pokemon">
+          <article
+            v-for="(pokemon, index) in leader.pokemon"
             :key="'poke'+ index"
-            @click="showEncounterDetails(pokemon)">
-          <h6 class="pokedex-num">{{ pokemon.id }}</h6>
-          <img :src="pokeImageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
-          <h5>{{ pokemon.name }}</h5>
-        </article>
+            @click="showEncounterDetails(pokemon)"
+          >
+            <h6 class="pokedex-num">
+              {{ pokemon.id }}
+            </h6>
+            <img
+              :src="pokeImageUrl + pokemon.id + '.png'"
+              width="96"
+              height="96"
+              alt=""
+            >
+            <h5>{{ pokemon.name }}</h5>
+          </article>
         </div>
       </div>
     </div>
     <PokemonDetail
       v-if="showPokemonDetails"
-      :pokemonId="pokemonId"
-      :isWildEncounter="false" />
+      :pokemon-id="pokemonId"
+      :is-wild-encounter="false"
+    />
   </div>
 </template>
 
@@ -60,6 +87,12 @@ export default {
       pokeImageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
     };
   },
+  computed: {
+    ...mapGetters([
+      'showPokemonDetails',
+      'pokemonId',
+    ]),
+  },
   methods: {
     ...mapMutations([
       'showEncounterDetails',
@@ -71,12 +104,6 @@ export default {
       this.selectedGymId = gymNum;
       this.gymLeader = gymLeaders.find(gym => gym.id === gymNum);
     },
-  },
-  computed: {
-    ...mapGetters([
-      'showPokemonDetails',
-      'pokemonId',
-    ]),
   },
 };
 </script>

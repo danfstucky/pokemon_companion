@@ -1,19 +1,28 @@
 <template>
   <div class="terrain-wrapper">
-    <div v-if="encounter.encounters.length === 0" class="terrain-block no-results">
+    <div
+      v-if="encounter.encounters.length === 0"
+      class="terrain-block no-results"
+    >
       There are no wild Pokemon in this area.
     </div>
-    <template v-else v-for="encounterLocation in encounter.encounters" :key="encounterLocation.terrain">
+    <template
+      v-for="encounterLocation in encounter.encounters"
+      v-else
+      :key="encounterLocation.terrain"
+    >
       <div class="row terrain-block">
         <div
           :class="['col-1',
-            'terrain-sidebar',
-            `terrain-${encounterLocation.terrain.toLowerCase()}`]">
+                   'terrain-sidebar',
+                   `terrain-${encounterLocation.terrain.toLowerCase()}`]"
+        >
           <span>{{ encounterLocation.terrain }}</span>
         </div>
-        <EncounterDetails class="col-11"
-          :encounterLocation="encounterLocation">
-        </EncounterDetails>
+        <EncounterDetails
+          class="col-11"
+          :encounter-location="encounterLocation"
+        />
       </div>
     </template>
   </div>

@@ -3,18 +3,29 @@
     <table>
       <thead>
         <tr>
-          <td><img src='./../../../public/images/ak_df.png'></td>
-          <td v-for="type in types" :key="`top-${type.name}`" :class="['type-header', 'type-top-header', type.name.toLowerCase()]">
+          <td><img src="./../../../public/images/ak_df.png"></td>
+          <td
+            v-for="type in types"
+            :key="`top-${type.name}`"
+            :class="['type-header', 'type-top-header', type.name.toLowerCase()]"
+          >
             {{ type.name }}
           </td>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="type in types" :key="`left-${type.name}`">
-          <td :class="['type-header', 'type-side-header', type.name.toLowerCase()]">{{ type.name }}</td>
-          <td v-for="compareType in types"
+        <tr
+          v-for="type in types"
+          :key="`left-${type.name}`"
+        >
+          <td :class="['type-header', 'type-side-header', type.name.toLowerCase()]">
+            {{ type.name }}
+          </td>
+          <td
+            v-for="compareType in types"
             :key="`${type.name}-${compareType.name}`"
-            :class="['effectiveness-multiplier', `effective-${effectivenessMultiplier(type, compareType)}`]" >
+            :class="['effectiveness-multiplier', `effective-${effectivenessMultiplier(type, compareType)}`]"
+          >
             {{ effectivenessMultiplier(type, compareType) }}
           </td>
         </tr>

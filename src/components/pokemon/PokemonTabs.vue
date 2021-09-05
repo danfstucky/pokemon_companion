@@ -1,19 +1,39 @@
 <template>
   <div class="poke-tabs">
     <ul class="nav nav-pills">
-      <router-link class="nav-link" to="/pokemon/pokedex" active-class="active">
+      <router-link
+        class="nav-link"
+        to="/pokemon/pokedex"
+        active-class="active"
+      >
         <li>Pokedex</li>
       </router-link>
-      <router-link class="nav-link" to="/pokemon/wild-encounters" active-class="active">
+      <router-link
+        class="nav-link"
+        to="/pokemon/wild-encounters"
+        active-class="active"
+      >
         <li>Wild Pokemon</li>
       </router-link>
-      <router-link class="nav-link" to="/pokemon/gyms" active-class="active">
+      <router-link
+        class="nav-link"
+        to="/pokemon/gyms"
+        active-class="active"
+      >
         <li>Gym Leaders</li>
       </router-link>
-      <router-link class="nav-link" to="/pokemon/types" active-class="active">
+      <router-link
+        class="nav-link"
+        to="/pokemon/types"
+        active-class="active"
+      >
         <li>Type Chart</li>
       </router-link>
-      <router-link class="nav-link" to="/pokemon/about" active-class="active">
+      <router-link
+        class="nav-link"
+        to="/pokemon/about"
+        active-class="active"
+      >
         <li>About Salmon Red</li>
       </router-link>
     </ul>

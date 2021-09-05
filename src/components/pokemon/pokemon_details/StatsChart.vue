@@ -1,5 +1,5 @@
 <template>
-  <div id='poke-stats-chart'></div>
+  <div id="poke-stats-chart" />
 </template>
 
 <script>

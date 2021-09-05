@@ -1,25 +1,52 @@
 <template>
   <div class="detail-container">
-    <div class="detail" >
-      <div class="detail-view" v-if="show">
-        <i class="close-modal-x fas fa-times" @click="closeDetail"></i>
-        <div v-if="pokemon" class="image">
-          <img :src="imageUrl + pokemon.id + '.png'" alt="">
+    <div class="detail">
+      <div
+        v-if="show"
+        class="detail-view"
+      >
+        <i
+          class="close-modal-x fas fa-times"
+          @click="closeDetail"
+        />
+        <div
+          v-if="pokemon"
+          class="image"
+        >
+          <img
+            :src="imageUrl + pokemon.id + '.png'"
+            alt=""
+          >
         </div>
-        <div v-if="pokemon && foundPokemon" class="data">
+        <div
+          v-if="pokemon && foundPokemon"
+          class="data"
+        >
           <h2>{{ pokemon.name }}</h2>
-          <div v-if="isWildEncounter" class="property">
-            <div class="left">Encounter Level</div>
-            <div class="right">{{ wildPokemonEncounter.level }}</div>
+          <div
+            v-if="isWildEncounter"
+            class="property"
+          >
+            <div class="left">
+              Encounter Level
+            </div>
+            <div class="right">
+              {{ wildPokemonEncounter.level }}
+            </div>
           </div>
-          <div v-else class="property"></div>
-          <StatsChart :statsData="pokemon.stats" />
+          <div
+            v-else
+            class="property"
+          />
+          <StatsChart :stats-data="pokemon.stats" />
           <div class="types detail-major-row">
             <h3>Types</h3>
             <div class="detail-major-row-values">
-              <div class="type pill-container"
+              <div
                 v-for="(value, index) in pokemon.types"
-                :key="'value' + index">
+                :key="'value' + index"
+                class="type pill-container"
+              >
                 {{ value.type.name }}
               </div>
             </div>
@@ -27,30 +54,53 @@
           <div class="abilities detail-major-row">
             <h3>Abilities</h3>
             <div class="detail-major-row-values">
-              <div class="ability pill-container"
+              <div
                 v-for="(value, index) in pokemon.abilities"
-                :key="'value' + index">
+                :key="'value' + index"
+                class="ability pill-container"
+              >
                 {{ value.ability.name }}
               </div>
             </div>
           </div>
           <div class="detail-major-row">
             <h3>Moves</h3>
-            <div class="pill-container moves-btn"
+            <div
+              class="pill-container moves-btn"
+              :class="{'active-moves': showMoves}"
               @click="handleToggleMoves"
-              :class="{'active-moves': showMoves}">
+            >
               Show Moves
-              <i v-if="!showMoves" class="fas fa-angle-double-right"></i>
-              <i v-else class="fas fa-angle-double-left"></i>
+              <i
+                v-if="!showMoves"
+                class="fas fa-angle-double-right"
+              />
+              <i
+                v-else
+                class="fas fa-angle-double-left"
+              />
             </div>
           </div>
         </div>
-        <h2 v-else>Pokemon not found</h2>
-        <button class="close-detail" @click="closeDetail">close</button>
+        <h2 v-else>
+          Pokemon not found
+        </h2>
+        <button
+          class="close-detail"
+          @click="closeDetail"
+        >
+          close
+        </button>
       </div>
-      <i v-else class="fas fa-spinner fa-spin"></i>
+      <i
+        v-else
+        class="fas fa-spinner fa-spin"
+      />
       <transition name="slide">
-        <PokemonMoves v-if="showMoves" :moves="moves" />
+        <PokemonMoves
+          v-if="showMoves"
+          :moves="moves"
+        />
       </transition>
     </div>
   </div>
@@ -62,8 +112,12 @@ import PokemonMoves from './PokemonMoves';
 import StatsChart from './StatsChart';
 
 export default {
+  components: {
+    PokemonMoves,
+    StatsChart,
+  },
   props: {
-    pokemonId: { required: true },
+    pokemonId: { type: Number, required: true },
     isWildEncounter: {
       type: Boolean,
       default: false,
@@ -79,10 +133,6 @@ export default {
       showMoves: false,
       moves: [],
     };
-  },
-  components: {
-    PokemonMoves,
-    StatsChart,
   },
   computed: {
     ...mapGetters([
@@ -112,7 +162,7 @@ export default {
           this.show = true;
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
     },
     closeDetail() {

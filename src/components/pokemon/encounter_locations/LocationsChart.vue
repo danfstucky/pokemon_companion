@@ -1,5 +1,5 @@
 <template>
-  <div id='locations-chart'></div>
+  <div id="locations-chart" />
 </template>
 
 <script>
@@ -7,6 +7,7 @@ import * as d3 from 'd3';
 import locations from './../../../data/locations';
 
 export default {
+  emits: ['showLocationDetails'],
   data() {
     return {
       chart: null,
@@ -181,7 +182,7 @@ export default {
       // The location order is also the id
       this.$emit('showLocationDetails', d.properties.order);
     },
-  },
+  }
 };
 </script>
 

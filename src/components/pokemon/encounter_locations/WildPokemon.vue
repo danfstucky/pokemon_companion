@@ -1,14 +1,15 @@
 <template>
   <div class="wild-pokemon">
-    <LocationsChart @showLocationDetails="loadLocation($event)"></LocationsChart>
+    <LocationsChart @showLocationDetails="loadLocation($event)" />
     <EncounterDetailsWrapper
       v-if="encounterDetails"
-      :encounter="encounterDetails">
-    </EncounterDetailsWrapper>
+      :encounter="encounterDetails"
+    />
     <PokemonDetail
       v-if="showPokemonDetails"
-      :pokemonId="pokemonId"
-      :isWildEncounter="true" />
+      :pokemon-id="pokemonId"
+      :is-wild-encounter="true"
+    />
   </div>
 </template>
 

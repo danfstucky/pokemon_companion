@@ -1,11 +1,20 @@
 <template>
   <div>
     <div class="list">
-      <article v-for="(pokemon, index) in encounterLocation.pokemon"
-          :key="'poke'+ index"
-          @click="showEncounterDetails(pokemon)">
-        <h6 class="pokedex-num">{{ pokemon.id }}</h6>
-        <img :src="imageUrl + pokemon.id + '.png'" width="96" height="96" alt="">
+      <article
+        v-for="(pokemon, index) in encounterLocation.pokemon"
+        :key="'poke'+ index"
+        @click="showEncounterDetails(pokemon)"
+      >
+        <h6 class="pokedex-num">
+          {{ pokemon.id }}
+        </h6>
+        <img
+          :src="imageUrl + pokemon.id + '.png'"
+          width="96"
+          height="96"
+          alt=""
+        >
         <h5>{{ pokemon.name }}</h5>
       </article>
     </div>

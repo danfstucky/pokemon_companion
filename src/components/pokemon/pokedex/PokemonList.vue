@@ -1,18 +1,34 @@
 <template>
   <div>
     <div class="list">
-      <article v-for="(pokemon, index) in pokemons"
-      :key="'poke'+index"
-      @click="showDetails(pokemon.id)">
-        <p class="pokedex-num">{{ pokemon.id }}</p>
-        <img :src="`${imageUrl}${pokemon.id}.png`" width="96" height="96" alt="">
+      <article
+        v-for="(pokemon, index) in pokemons"
+        :key="'poke'+index"
+        @click="showDetails(pokemon.id)"
+      >
+        <p class="pokedex-num">
+          {{ pokemon.id }}
+        </p>
+        <img
+          :src="`${imageUrl}${pokemon.id}.png`"
+          width="96"
+          height="96"
+          alt=""
+        >
         <h3>{{ pokemon.name }}</h3>
       </article>
     </div>
-    <div v-if="moreResults" id="scroll-trigger" ref="infinitescrolltrigger">
-      <i class="fas fa-spinner fa-spin"></i>
+    <div
+      v-if="moreResults"
+      id="scroll-trigger"
+      ref="infinitescrolltrigger"
+    >
+      <i class="fas fa-spinner fa-spin" />
     </div>
-    <div v-else class="text-center end-results">
+    <div
+      v-else
+      class="text-center end-results"
+    >
       <div>End of Pokedex</div>
     </div>
   </div>
@@ -23,6 +39,7 @@ import { mapMutations } from 'vuex';
 import salmonRedMixin from './../../../mixins/salmonRedMixin';
 
 export default {
+  mixins: [salmonRedMixin],
   data() {
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
@@ -34,7 +51,13 @@ export default {
       moreResults: true,
     };
   },
-  mixins: [salmonRedMixin],
+  created() {
+    this.currentUrl = 'https://pokeapi.co/api/v2/pokemon?limit=40';
+    this.fetchData();
+  },
+  mounted() {
+    this.scrollTrigger();
+  },
   methods: {
     ...mapMutations([
       'showDetails',
@@ -61,7 +84,7 @@ export default {
             });
           })
           .catch((error) => {
-            console.log(error);
+            // console.log(error);
           });
       } else {
         this.moreResults = false;
@@ -82,13 +105,6 @@ export default {
       this.currentUrl = this.nextUrl;
       this.fetchData();
     },
-  },
-  created() {
-    this.currentUrl = 'https://pokeapi.co/api/v2/pokemon?limit=40';
-    this.fetchData();
-  },
-  mounted() {
-    this.scrollTrigger();
   },
 };
 </script>

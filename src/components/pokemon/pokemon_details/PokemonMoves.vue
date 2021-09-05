@@ -2,10 +2,17 @@
   <div class="pokemon-moves table-hover">
     <table class="table">
       <thead>
-        <tr><th colspan="2">Moves</th></tr>
+        <tr>
+          <th colspan="2">
+            Moves
+          </th>
+        </tr>
       </thead>
       <tbody>
-        <tr v-for="move in moves" :key="move.name">
+        <tr
+          v-for="move in moves"
+          :key="move.name"
+        >
           <td>{{ move.name }}</td>
           <td>lvl {{ move.level }}</td>
         </tr>

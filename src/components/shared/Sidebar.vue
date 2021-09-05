@@ -1,20 +1,32 @@
 <template>
-  <nav class='sidebar'>
-    <div class='sidebar-header'>
+  <nav class="sidebar">
+    <div class="sidebar-header">
       <h1>Dan Stucky</h1>
       <h5>Software Engineer</h5>
     </div>
-    <ul class='list-unstyled'>
-      <router-link to='/about-me' active-class='active'>
+    <ul class="list-unstyled">
+      <router-link
+        to="/about-me"
+        active-class="active"
+      >
         <li>Who I Am</li>
       </router-link>
-      <router-link to='/dev-projects' active-class='active'>
+      <router-link
+        to="/dev-projects"
+        active-class="active"
+      >
         <li>Dev Projects</li>
       </router-link>
-      <router-link to='/pokemon' active-class='active'>
+      <router-link
+        to="/pokemon"
+        active-class="active"
+      >
         <li>Pokemon Salmon Red</li>
       </router-link>
-      <router-link to='/research' active-class='active'>
+      <router-link
+        to="/research"
+        active-class="active"
+      >
         <li>Genetics Research</li>
       </router-link>
     </ul>

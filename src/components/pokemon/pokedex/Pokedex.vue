@@ -5,7 +5,8 @@
     <PokemonList />
     <PokemonDetail
       v-if="showPokemonDetails"
-      :pokemonId="pokemonId" />
+      :pokemon-id="pokemonId"
+    />
   </div>
 </template>
 
@@ -16,17 +17,17 @@ import PokemonList from './PokemonList';
 import PokemonDetail from './../pokemon_details/PokemonDetail';
 
 export default {
+  components: {
+    PokemonSearch,
+    PokemonList,
+    PokemonDetail,
+  },
   data() {
     // Instead of making request to the sprites, can also download locally.
     // npm install --save github:PokeAPI/sprites
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
     };
-  },
-  components: {
-    PokemonSearch,
-    PokemonList,
-    PokemonDetail,
   },
   computed: {
     ...mapGetters([

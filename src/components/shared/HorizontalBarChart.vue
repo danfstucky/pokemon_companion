@@ -1,5 +1,5 @@
 <template>
-  <div :id='chartOptions.chartId || defaultConfig.chartId'></div>
+  <div :id="chartOptions.chartId || defaultConfig.chartId" />
 </template>
 
 <script>

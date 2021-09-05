@@ -1,9 +1,16 @@
 <template>
   <div class="searchbar">
     <form @submit.prevent="setPokemonId">
-      <input type="text" placeholder="Search Pokemon Full Name" v-model="searchValue">
+      <input
+        v-model="searchValue"
+        type="text"
+        placeholder="Search Pokemon Full Name"
+      >
     </form>
-    <i class="fas fa-search" @click="setPokemonId"></i>
+    <i
+      class="fas fa-search"
+      @click="setPokemonId"
+    />
   </div>
 </template>
 
@@ -12,12 +19,12 @@ import { mapMutations } from 'vuex';
 import salmonRedMixin from './../../../mixins/salmonRedMixin';
 
 export default {
+  mixins: [salmonRedMixin],
   data() {
     return {
       searchValue: '',
     };
   },
-  mixins: [salmonRedMixin],
   methods: {
     ...mapMutations([
       'showDetails',

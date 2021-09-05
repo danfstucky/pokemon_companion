@@ -1,9 +1,11 @@
 <template>
-  <div class='flex-wrapper'>
-    <div class='column column-2'>
-      <div class='card'>
-        <h4 class='card-header'>Background</h4>
-        <div class='card-body'>
+  <div class="flex-wrapper">
+    <div class="column column-2">
+      <div class="card">
+        <h4 class="card-header">
+          Background
+        </h4>
+        <div class="card-body">
           <p>
             Something unique about me is that I began my professional life as a genetics researcher. I obtained my
             Masters in Molecular Genetics in 2014 at Kansas State University. During my freetime at graduate school
@@ -17,20 +19,28 @@
         </div>
       </div>
 
-      <div class='card'>
-        <h4 class='card-header'>Publications</h4>
-        <div class='card-body'>
-          <ul class='list-unstyled'>
+      <div class="card">
+        <h4 class="card-header">
+          Publications
+        </h4>
+        <div class="card-body">
+          <ul class="list-unstyled">
             <li>
-              <i class="fas fa-pencil-alt"></i>
-              <a href='https://academic.oup.com/jxb/article/66/1/189/2893415' target='_blank'>
+              <i class="fas fa-pencil-alt" />
+              <a
+                href="https://academic.oup.com/jxb/article/66/1/189/2893415"
+                target="_blank"
+              >
                 Functional diversification of two UGT80 enzymes required for steryl glucoside synthesis
                 in Arabidopsis
               </a>
             </li>
             <li>
-              <i class="fas fa-pencil-alt"></i>
-              <a href='http://krex.k-state.edu/dspace/handle/2097/16985' target='_blank'>
+              <i class="fas fa-pencil-alt" />
+              <a
+                href="http://krex.k-state.edu/dspace/handle/2097/16985"
+                target="_blank"
+              >
                 Steryl glucosides: a genetic approach to determine their role in cellulose synthesis and lipid
                 metabolism in Arabidopsis
               </a>
@@ -39,10 +49,12 @@
         </div>
       </div>
     </div>
-    <div class='column column-2'>
-      <div class='card'>
-        <h4 class='card-header'>Research Abstract</h4>
-        <div class='card-body'>
+    <div class="column column-2">
+      <div class="card">
+        <h4 class="card-header">
+          Research Abstract
+        </h4>
+        <div class="card-body">
           <p>
             Steryl glucosides are a common conjugate of sterols found in the plasma membranes of most plants
             and fungi. The cellular functions of steryl glucosides remain largely unknown, but they have
