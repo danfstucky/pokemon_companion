@@ -11,8 +11,8 @@ export default {
   data() {
     return {
       chart: null,
-      townImg: require('./../../../../static/images/pokemon/town.png'),
-      routeImg: require('./../../../../static/images/pokemon/route_sign.png')
+      townImg: './../../../assets/images/pokemon/town.png',
+      routeImg: './../../../assets/images/pokemon/route_sign.png'
     };
   },
   mounted() {

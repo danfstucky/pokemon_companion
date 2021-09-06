@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import AboutMe from './../components/core/AboutMe';
 import DevProjects from './../components/core/DevProjects';
 import BiologyResearch from './../components/core/BiologyResearch';
@@ -11,7 +11,7 @@ import TypeChart from './../components/pokemon/TypeChart';
 import About from './../components/pokemon/About';
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     { path: '/', redirect: '/about-me' }, // Root
     { path: '/about-me', component: AboutMe },
