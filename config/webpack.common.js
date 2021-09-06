@@ -40,7 +40,8 @@ module.exports = {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'index.html',
+            template: 'public/index.html',
+            favicon: 'public/favicon.png',
             inject: true
         })
     ]
