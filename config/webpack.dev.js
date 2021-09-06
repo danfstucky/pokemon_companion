@@ -9,9 +9,6 @@ module.exports = merge(common, {
         hot: true,
         devMiddleware: {
             stats: 'minimal',
-        },
-        static: {
-            directory: './dist'
         }
     },
 });

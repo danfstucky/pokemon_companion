@@ -5,14 +5,14 @@
         v-for="gymNum in 9"
         :key="gymNum"
         :class="['gym-leader', {highlight: selectedGymId === gymNum}]"
-        :src="`./../../../assets/images/pokemon/gym_info/gym${gymNum}.png`"
+        :src="getImgUrl(`gym${gymNum}.png`)"
         @click="handleGymSelection(gymNum)"
       >
     </div>
     <div v-if="selectedGymId">
       <img
         class="gym-city"
-        :src="`./../../../assets/images/pokemon/gym_info/city${selectedGymId}.png`"
+        :src="getImgUrl(`city${selectedGymId}.png`)"
       >
       <p class="disclaimer">
         Note: In-game graphics do not have gridlines
@@ -97,6 +97,10 @@ export default {
     ...mapMutations([
       'showEncounterDetails',
     ]),
+    getImgUrl(pic) {
+      // Need to call default because webpack returns required images as an Object
+      return require(`./../../../assets/images/pokemon/gym_info/${pic}`).default;
+    },
     handleGymSelection(gymNum) {
       this.selectedGymId = gymNum;
       this.gymLeader = gymLeaders.find(gym => gym.id === gymNum);
