@@ -7,7 +7,7 @@
       <div class="card-body flex-wrapper">
         <div class="column column-2">
           <img
-            src="./../../../static/images/dev_projects/pokemon/salmon_red_logo.png"
+            src="./../../assets/images/dev_projects/pokemon/salmon_red_logo.png"
             class="pokelogo"
           >
           <p>
@@ -73,61 +73,61 @@
               <div class="carousel-item active">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot1.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot1.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot2.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot2.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot3.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot3.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot4.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot4.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot5.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot5.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot6.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot6.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot7.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot7.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot8.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot8.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot9.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot9.png"
                 >
               </div>
               <div class="carousel-item">
                 <img
                   class="d-block w-100"
-                  src="./../../../static/images/dev_projects/pokemon/screenshot10.png"
+                  src="./../../assets/images/dev_projects/pokemon/screenshot10.png"
                 >
               </div>
             </div>
@@ -189,9 +189,9 @@
       <div class="card-body">
         <table class="smite-spec-images">
           <tr>
-            <td><img src="./../../../static/images/dev_projects/smite_spec/screenshot1.png"></td>
-            <td><img src="./../../../static/images/dev_projects/smite_spec/screenshot2.png"></td>
-            <td><img src="./../../../static/images/dev_projects/smite_spec/screenshot3.png"></td>
+            <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot1.png"></td>
+            <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot2.png"></td>
+            <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot3.png"></td>
           </tr>
         </table>
         <p>
@@ -213,23 +213,7 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      gameScreenshots: [
-        require('./../../../static/images/dev_projects/pokemon/screenshot1.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot2.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot3.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot4.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot5.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot6.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot7.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot8.png'),
-        require('./../../../static/images/dev_projects/pokemon/screenshot9.png'),
-      ]
-    };
-  },
-}
+// Vue JS code here
 </script>
 
 <style lang="scss" scoped>
