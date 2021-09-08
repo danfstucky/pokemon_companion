@@ -2,7 +2,7 @@
   <div>
     <div class="list">
       <article
-        v-for="(pokemon, index) in pokemons"
+        v-for="(pokemon, index) in pokedexEntries"
         :key="'poke'+index"
         @click="showDetails(pokemon.id)"
       >
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import salmonRedMixin from './../../../mixins/salmonRedMixin';
 
 export default {
@@ -43,54 +43,23 @@ export default {
   data() {
     return {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-      pokemons: [],
       nextUrl: '',
       currentUrl: '',
-      lastPokeId: 1,
-      maxPokeId: 639,
       moreResults: true,
     };
   },
-  created() {
-    this.currentUrl = 'https://pokeapi.co/api/v2/pokemon?limit=40';
-    this.fetchData();
-  },
   mounted() {
-    this.scrollTrigger();
+    // this.scrollTrigger();
+  },
+  computed: {
+    ...mapGetters([
+      'pokedexEntries',
+    ]),
   },
   methods: {
     ...mapMutations([
       'showDetails',
     ]),
-    fetchData() {
-      if (this.lastPokeId < this.maxPokeId) {
-        const req = new Request(this.currentUrl);
-        fetch(req)
-          .then((resp) => {
-            if (resp.status === 200) {
-              return resp.json();
-            }
-            return { count: 0, results: [] };
-          })
-          .then((data) => {
-            this.nextUrl = data.next;
-            const filteredResults = data.results.map((result) => {
-              const id = result.url.split('/').filter(part => !!part).pop();
-              return { name: result.name, id, url: result.url };
-            }).filter(result => this.hasPokemonId(parseInt(result.id, 10)));
-            this.lastPokeId = filteredResults[filteredResults.length - 1].id;
-            filteredResults.forEach((pokemon) => {
-              this.pokemons.push(pokemon);
-            });
-          })
-          .catch((error) => {
-            // console.log(error);
-          });
-      } else {
-        this.moreResults = false;
-        this.nextUrl = '';
-      }
-    },
     scrollTrigger() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

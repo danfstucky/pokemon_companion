@@ -1,13 +1,17 @@
+import salmonRedPokedex from '../../data/pokedex';
+
 const state = {
   showDetail: false,
   pokemonId: 0,
   pokemonEncounter: null,
+  pokedexEntries: salmonRedPokedex,
 };
 
 const getters = {
   showPokemonDetails: state => state.showDetail,
   pokemonId: state => state.pokemonId,
   wildPokemonEncounter: state => state.pokemonEncounter,
+  pokedexEntries: state => state.pokedexEntries,
 };
 
 const mutations = {
@@ -20,6 +24,10 @@ const mutations = {
     state.showDetail = true;
     state.pokemonId = payload.id;
     state.pokemonEncounter = payload;
+  },
+  updateSearchResults: (state, payload) => {
+    console.log("payload: " + payload);
+    state.pokedexEntries = payload;
   },
 };
 

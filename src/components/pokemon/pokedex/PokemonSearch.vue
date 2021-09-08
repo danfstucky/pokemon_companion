@@ -1,15 +1,14 @@
 <template>
   <div class="searchbar">
-    <form @submit.prevent="setPokemonId">
+    <form v-on:input="filterPokedex">
       <input
         v-model="searchValue"
         type="text"
-        placeholder="Search Pokemon Full Name"
+        placeholder="Search Pokemon Name"
       >
     </form>
     <i
       class="fas fa-search"
-      @click="setPokemonId"
     />
   </div>
 </template>
@@ -27,19 +26,10 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'showDetails',
+      'updateSearchResults',
     ]),
-    setPokemonId() {
-      if (this.searchValue !== '') {
-        // When searching, use the pokemon name to retrieve a pokemon.
-        // The API accepts an id or name.
-        const pokemonName = this.searchValue.toLowerCase();
-        if (this.hasPokemonName(pokemonName)) {
-          this.showDetails(pokemonName);
-        } else {
-          this.showDetails('Does not exist');
-        }
-      }
+    filterPokedex() {
+      this.updateSearchResults(this.searchPokedex(this.searchValue));
     },
   },
 };
@@ -67,7 +57,6 @@ export default {
       right: 10px;
       font-size: 1.25rem;
       color: rgb(8, 37, 65);
-      cursor: pointer;
     }
   }
 </style>
