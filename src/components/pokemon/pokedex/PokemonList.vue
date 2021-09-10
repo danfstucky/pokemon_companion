@@ -18,19 +18,6 @@
         <h3>{{ pokemon.name }}</h3>
       </article>
     </div>
-    <div
-      v-if="moreResults"
-      id="scroll-trigger"
-      ref="infinitescrolltrigger"
-    >
-      <i class="fas fa-spinner fa-spin" />
-    </div>
-    <div
-      v-else
-      class="text-center end-results"
-    >
-      <div>End of Pokedex</div>
-    </div>
   </div>
 </template>
 
@@ -45,11 +32,7 @@ export default {
       imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
       nextUrl: '',
       currentUrl: '',
-      moreResults: true,
     };
-  },
-  mounted() {
-    // this.scrollTrigger();
   },
   computed: {
     ...mapGetters([
@@ -59,21 +42,7 @@ export default {
   methods: {
     ...mapMutations([
       'showDetails',
-    ]),
-    scrollTrigger() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0 && this.nextUrl) {
-            this.next();
-          }
-        });
-      });
-      observer.observe(this.$refs.infinitescrolltrigger);
-    },
-    next() {
-      this.currentUrl = this.nextUrl;
-      this.fetchData();
-    },
+    ])
   },
 };
 </script>
@@ -112,19 +81,5 @@ export default {
         color: white;
       }
     }
-  }
-  #scroll-trigger {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 150px;
-    font-size: 2rem;
-    color: #efefef;
-  }
-  .end-results {
-    color: white;
-    margin: 20px;
-    font-size: 26px;
   }
 </style>

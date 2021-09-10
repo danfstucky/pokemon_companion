@@ -26,7 +26,6 @@ const mutations = {
     state.pokemonEncounter = payload;
   },
   updateSearchResults: (state, payload) => {
-    console.log("payload: " + payload);
     state.pokedexEntries = payload;
   },
 };

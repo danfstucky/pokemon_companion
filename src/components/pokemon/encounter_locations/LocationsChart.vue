@@ -71,7 +71,7 @@ export default {
         .enter()
         .append('path')
         .attr('id', d => `hex-bg-${d.properties.order}`)
-        .attr('class', 'poke-hex-bg')
+        .attr('class', d => { return d.properties.order === 1 ? 'poke-hex-bg active-hex' : 'poke-hex-bg' })
         .attr('d', pathGenerator);
 
       // Add hexagon paths
@@ -94,7 +94,7 @@ export default {
         .enter();
 
       textGroup.append('text')
-        .attr('id', d => `text-${d.properties.order}`)
+        .attr('id', d => `location-name-text-${d.properties.order}`)
         .attr('x', d => pathGenerator.centroid(d)[0])
         .attr('y', d => pathGenerator.centroid(d)[1] - (radius / 2))
         .attr('text-anchor', 'middle')
@@ -112,11 +112,11 @@ export default {
         });
       textGroup
         .append('text')
-        .attr('id', d => `text-${d.properties.order}`)
+        .attr('id', d => `location-order-text-${d.properties.order}`)
+        .attr('class', 'location-order-text')
         .attr('x', d => pathGenerator.centroid(d)[0])
         .attr('y', d => pathGenerator.centroid(d)[1])
         .attr('text-anchor', 'middle')
-        .attr('class', 'text-location-order')
         .attr('dy', -radius * (2 / 3))
         .text(d => d.properties.order);
 
@@ -163,15 +163,19 @@ export default {
       const order = d.properties.order;
       d3.select(`#hex-bg-${order}`)
         .style('fill', '#bb005c');
-      d3.select(`#text-${order}`)
+      d3.select(`#location-name-text-${order}`)
+        .style('fill', 'white');
+      d3.select(`#location-order-text-${order}`)
         .style('fill', 'white');
     },
     handleMouseOut(d) {
       const order = d.properties.order;
       d3.select(`#hex-bg-${order}`)
         .style('fill', '#d3d3d3');
-      d3.select(`#text-${order}`)
+      d3.select(`#location-name-text-${order}`)
         .style('fill', 'black');
+      d3.select(`#location-order-text-${order}`)
+        .style('fill', '#bb005c');
     },
     handleMouseClick(d) {
       const order = d.properties.order;
@@ -189,6 +193,13 @@ export default {
 <style lang="scss">
 // Scoping these styles causes them not to show up for the svg elements
  @import url('https://fonts.googleapis.com/css?family=Acme');
+
+  #locations-chart {
+    border-radius: 20px;
+    overflow-x: auto;
+    max-width: 980px;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230056b3' fill-opacity='0.36' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
 
   svg {
     .poke-img {
@@ -212,7 +223,7 @@ export default {
       font-family: 'Acme', arial;
       font-size: 20px;
     }
-    text.text-location-order {
+    text.location-order-text {
       fill: #bb005c;
       font-size: 16px;
     }

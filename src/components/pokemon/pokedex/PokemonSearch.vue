@@ -1,6 +1,6 @@
 <template>
   <div class="searchbar">
-    <form v-on:input="filterPokedex">
+    <form @input="filterPokedex">
       <input
         v-model="searchValue"
         type="text"

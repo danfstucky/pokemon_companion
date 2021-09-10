@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      encounterDetails: null,
+      encounterDetails: encounters[0]
     };
   },
   computed: {
