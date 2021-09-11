@@ -8,16 +8,14 @@
         <div class="card-body">
           <img src="./../../assets/images/dan_stucky.png">
           <p>
-            I have been working as a Full-Stack Web Dev for 4 years and am currently employed by a smaller software
+            I have been working as a Full-Stack Web Dev for 6 years and am currently employed by a smaller software
             company named Storable. Our stack primarily consists of Rails with Postgres, but I get to play with
             JS/React pretty often and recently even dabbled with 
-            <a
-              href="https://vuejs.org/"
-              target="_blank"
+            <a href="https://vuejs.org/"
+               target="_blank"
             >Vue.js</a>
-            and <a
-              href="https://www.rust-lang.org/"
-              target="_blank"
+            and <a href="https://www.rust-lang.org/"
+                   target="_blank"
             >Rust</a>. I love writing software and working
             on projects that have a positive and meaningful influence on people's lives. Prior to software development,
             I obtained a M.S. in molecular genetics and I'd like to someday combine my knowledge in

@@ -186,27 +186,31 @@
       <h4 class="card-header">
         Smite Spec
       </h4>
-      <div class="card-body">
-        <table class="smite-spec-images">
-          <tr>
-            <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot1.png"></td>
-            <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot2.png"></td>
-            <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot3.png"></td>
-          </tr>
-        </table>
-        <p>
-          Smite Spec is intended for all players of the popular multiplayer online battle arena game, Smite.
-          It allows users to find player and clan statistics to help improve their play style and team performance
-          in matches or simply have fun viewing your friends' data. Unlike other third party Smite apps such as
-          SmiteRepo, Smite Spec focuses on the player. The user can easily track personal statistics for their
-          favorite and best god characters to play as, and compare their stats to in-game friends. It is only
-          available for Android.
-        </p>
-        <i class="fab fa-github" /> 
-        <a
-          href="https://github.com/danfstucky/SmiteSpec"
-          target="_blank"
-        > Project Github Link</a>
+      <div class="card-body flex-wrapper">
+        <div class="column column-1">
+          <p>
+            Smite Spec is intended for all players of the popular multiplayer online battle arena game, Smite.
+            It allows users to find player and clan statistics to help improve their play style and team performance
+            in matches or simply have fun viewing your friends' data. Unlike other third party Smite apps such as
+            SmiteRepo, Smite Spec focuses on the player. The user can easily track personal statistics for their
+            favorite and best god characters to play as, and compare their stats to in-game friends. It is only
+            available for Android.
+          </p>
+          <i class="fab fa-github" /> 
+          <a
+            href="https://github.com/danfstucky/SmiteSpec"
+            target="_blank"
+          > Project Github Link</a>
+        </div>
+        <div class="smite-spec-images-container column column-3">
+          <table class="smite-spec-images">
+            <tr>
+              <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot1.png"></td>
+              <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot2.png"></td>
+              <td><img src="./../../assets/images/dev_projects/smite_spec/screenshot3.png"></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
@@ -228,10 +232,9 @@
       .column {
         padding: 0px 10px;
       }
-
-      .column-2 {
-        flex: 2;
-      }
+      .column-1 { flex: 1; }
+      .column-2 { flex: 2; }
+      .column-3 { flex: 3; }
     }
 
     #pokemon-carousel {
@@ -259,13 +262,15 @@
         }
       }
     }
+    .smite-spec-images-container {
+      flex: 3;
+      overflow: auto;
 
-    table.smite-spec-images {
-      float: right;
-
-      img {
-        height: 70%;
-        padding: 10px;
+      table.smite-spec-images {
+        img {
+          height: 70%;
+          padding: 10px;
+        }
       }
     }
   }
