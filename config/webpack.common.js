@@ -32,7 +32,22 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg)$/,
-                loader: 'file-loader',
+                use: [
+                    'file-loader',
+                    {
+                        // Image Optimization
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                enabled: true,
+                                progressive: true,
+                            },
+                            optipng: {
+                                enabled: true,
+                            },
+                        }
+                    }
+                ]
             }
         ]
     },
