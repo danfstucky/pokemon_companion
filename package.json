@@ -4,6 +4,9 @@
   "description": "A Vue.js project",
   "author": "Dan Stucky <danfstucky@gmail.com>",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "webpack --config config/webpack.prod.js",
