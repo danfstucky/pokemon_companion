@@ -1,5 +1,14 @@
 <template>
   <h1 class="text-center">Talon Commands Cheatsheet</h1>
+  <h5 class="text-center">
+    This cheatsheet assumes you have already installed the
+    <a href="https://github.com/talonhub/community" target="”_blank”"
+      >Community</a
+    >
+    and
+    <a href="https://github.com/david-tejada/rango" target="”_blank”">Rango</a>
+    script packages with your talon setup.
+  </h5>
   <div class="card">
     <h4 class="card-header">General</h4>
     <div class="card-body">
@@ -27,6 +36,9 @@
 
 <style lang="scss" scoped>
 h1 {
+  color: #efefef;
+}
+h5 {
   color: #efefef;
 }
 </style>
