@@ -1,43 +1,21 @@
 <template>
   <div class="detail-container">
     <div class="detail">
-      <div
-        v-if="show"
-        class="detail-view"
-      >
-        <i
-          class="close-modal-x fas fa-times"
-          @click="closeDetail"
-        />
-        <div
-          v-if="pokemon"
-          class="image"
-        >
-          <img
-            :src="imageUrl + pokemon.id + '.png'"
-            alt=""
-          >
+      <p>show: {{ show }}</p>
+      <div v-if="show" class="detail-view">
+        <i class="close-modal-x fas fa-times" @click="closeDetail" />
+        <div v-if="pokemon" class="image">
+          <img :src="imageUrl + pokemon.id + '.png'" alt="" />
         </div>
-        <div
-          v-if="pokemon && foundPokemon"
-          class="data"
-        >
+        <div v-if="pokemon && foundPokemon" class="data">
           <h2>{{ pokemon.name }}</h2>
-          <div
-            v-if="isWildEncounter"
-            class="property"
-          >
-            <div class="left">
-              Encounter Level
-            </div>
+          <div v-if="props.isWildEncounter" class="property">
+            <div class="left">Encounter Level</div>
             <div class="right">
-              {{ wildPokemonEncounter.level }}
+              {{ pokemonStore.wildPokemonEncounter.level }}
             </div>
           </div>
-          <div
-            v-else
-            class="property"
-          />
+          <div v-else class="property" />
           <StatsChart :stats-data="pokemon.stats" />
           <div class="types detail-major-row">
             <h3>Types</h3>
@@ -67,135 +45,107 @@
             <h3>Moves</h3>
             <div
               class="pill-container moves-btn"
-              :class="{'active-moves': showMoves}"
+              :class="{ 'active-moves': showMoves }"
               @click="handleToggleMoves"
             >
               Show Moves
-              <i
-                v-if="!showMoves"
-                class="fas fa-angle-double-right"
-              />
-              <i
-                v-else
-                class="fas fa-angle-double-left"
-              />
+              <i v-if="!showMoves" class="fas fa-angle-double-right" />
+              <i v-else class="fas fa-angle-double-left" />
             </div>
           </div>
         </div>
-        <h2 v-else>
-          Pokemon not found
-        </h2>
-        <button
-          class="close-detail"
-          @click="closeDetail"
-        >
-          close
-        </button>
+        <h2 v-else>Pokemon not found</h2>
+        <button class="close-detail" @click="closeDetail">close</button>
       </div>
-      <i
-        v-else
-        class="fas fa-spinner fa-spin"
-      />
+      <i v-else class="fas fa-spinner fa-spin" />
       <transition name="slide">
-        <PokemonMoves
-          v-if="showMoves"
-          :moves="moves"
-        />
+        <PokemonMoves v-if="showMoves" :moves="moves" />
       </transition>
     </div>
   </div>
 </template>
 
-<script>
-import { mapGetters, mapMutations } from 'vuex';
-import PokemonMoves from './PokemonMoves';
-import StatsChart from './StatsChart';
+<script setup>
+import { ref } from "vue";
+import { usePokemonStore } from "../../../stores/pokemon";
+import PokemonMoves from "./PokemonMoves";
+import StatsChart from "./StatsChart";
 
-export default {
-  components: {
-    PokemonMoves,
-    StatsChart,
+const props = defineProps({
+  pokemonId: { type: Number, required: true },
+  isWildEncounter: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    pokemonId: { type: Number, required: true },
-    isWildEncounter: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      show: false,
-      pokemon: {},
-      imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-      foundPokemon: false,
-      basePokemonUrl: 'https://pokeapi.co/api/v2/pokemon/',
-      showMoves: false,
-      moves: [],
-    };
-  },
-  computed: {
-    ...mapGetters([
-      'wildPokemonEncounter',
-    ]),
-  },
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    ...mapMutations([
-      'closeDetails',
-    ]),
-    fetchData() {
-      const req = new Request(`${this.basePokemonUrl}${this.pokemonId}`);
-      fetch(req)
-        .then((resp) => {
-          if (resp.status === 200) {
-            this.foundPokemon = true;
-            return resp.json();
-          }
-          this.foundPokemon = false;
-          return { id: 0, name: 'Unknown' };
-        })
-        .then((data) => {
-          this.pokemon = data;
-          this.show = true;
-        })
-        .catch((error) => {
-          // console.log(error);
-        });
-    },
-    closeDetail() {
-      this.closeDetails();
-    },
-    handleToggleMoves() {
-      this.showMoves = !this.showMoves;
-      if (!this.showMoves) { return; }
-      const salmonRedMoves = [];
+});
 
-      for (const moveData of this.pokemon.moves) {
-        const groupDetails = moveData.version_group_details.find(
-          details => details.version_group.name === 'black-2-white-2',
-        );
-        if (groupDetails && groupDetails.move_learn_method.name === 'level-up') {
-          salmonRedMoves.push({ name: moveData.move.name, level: groupDetails.level_learned_at });
-        }
+const pokemonStore = usePokemonStore();
+const imageUrl =
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+const basePokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
+let show = ref(false);
+let pokemon = ref({});
+let foundPokemon = ref(false);
+let showMoves = ref(false);
+const moves = ref([]);
+
+function fetchData() {
+  const req = new Request(`${basePokemonUrl}${props.pokemonId}`);
+  fetch(req)
+    .then((resp) => {
+      if (resp.status === 200) {
+        foundPokemon.value = true;
+        return resp.json();
       }
-      this.moves = salmonRedMoves.sort((a, b) => ((a.level > b.level) ? 1 : -1));
-    },
-  },
-};
+      foundPokemon.value = false;
+      return { id: 0, name: "Unknown" };
+    })
+    .then((data) => {
+      pokemon.value = data;
+      show.value = true;
+    })
+    .catch((error) => {
+      // console.log(error);
+    });
+}
+
+function closeDetail() {
+  pokemonStore.closeDetails();
+}
+
+function handleToggleMoves() {
+  showMoves.value = !showMoves.value;
+  if (!showMoves.value) {
+    return;
+  }
+  const salmonRedMoves = [];
+
+  for (const moveData of pokemon.value.moves) {
+    const groupDetails = moveData.version_group_details.find(
+      (details) => details.version_group.name === "black-2-white-2"
+    );
+    if (groupDetails && groupDetails.move_learn_method.name === "level-up") {
+      salmonRedMoves.push({
+        name: moveData.move.name,
+        level: groupDetails.level_learned_at,
+      });
+    }
+  }
+  moves.value = salmonRedMoves.sort((a, b) => (a.level > b.level ? 1 : -1));
+}
+// Calling a function inside the setup() method is equivalent to using the created() lifecycle hook.
+fetchData();
 </script>
 
 <style lang="scss" scoped>
-  .detail-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .7);
-    padding: 90px 10px 10px;
+.detail-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 90px 10px 10px;
   .detail {
     width: 80%;
     height: 75%;
@@ -215,8 +165,7 @@ export default {
       max-width: 550px;
       background-color: #fff;
       border-radius: 5px;
-      box-shadow: 0 15px 30px rgba(0,0,0,.2),
-                  0 10px 10px rgba(0,0,0,.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
 
       .close-modal-x {
         opacity: 0.4;
@@ -244,8 +193,8 @@ export default {
         border-radius: 50%;
         overflow: hidden;
         margin-bottom: 20px;
-        box-shadow: 0 15px 30px rgba(0,0,0,.2),
-                    0 10px 10px rgba(0,0,0,.2);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+          0 10px 10px rgba(0, 0, 0, 0.2);
       }
       h2 {
         text-transform: capitalize;
@@ -261,8 +210,12 @@ export default {
           width: 90%;
           border-bottom: 1px solid #ccc;
           margin-bottom: 10px;
-          .left { float: left; }
-          .right { float: right; }
+          .left {
+            float: left;
+          }
+          .right {
+            float: right;
+          }
         }
         .detail-major-row {
           border-bottom: 1px solid #ccc;
@@ -288,20 +241,24 @@ export default {
           word-break: keep-all;
           box-sizing: border-box;
         }
-        .type { background-color: #0A2E50; }
-        .ability { background-color: #C73015; }
+        .type {
+          background-color: #0a2e50;
+        }
+        .ability {
+          background-color: #c73015;
+        }
         .moves-btn {
           background-color: rgb(22, 117, 22);
           cursor: pointer;
 
           &:hover {
             background-color: rgb(21, 179, 21);
-            box-shadow:inset 0px 0px 0px 3px rgb(22, 117, 22);
+            box-shadow: inset 0px 0px 0px 3px rgb(22, 117, 22);
           }
         }
         .active-moves {
           background-color: rgb(21, 179, 21);
-          box-shadow:inset 0px 0px 0px 3px rgb(22, 117, 22);
+          box-shadow: inset 0px 0px 0px 3px rgb(22, 117, 22);
         }
       }
       .close-detail {
@@ -317,7 +274,7 @@ export default {
         cursor: pointer;
 
         &:hover {
-          opacity: 1.0;
+          opacity: 1;
         }
       }
     }
@@ -351,5 +308,5 @@ export default {
       }
     }
   }
-  }
+}
 </style>
