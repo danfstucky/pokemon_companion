@@ -62,11 +62,7 @@
         data-bs-parent="#scripts-accordion"
       >
         <div class="accordion-body">
-          <pre>
-            <code>
-              Mouse Movement Scripts
-            </code>
-          </pre>
+          <MouseScripts />
         </div>
       </div>
     </div>
@@ -74,7 +70,7 @@
 </template>
 
 <script setup>
-const mouseCode = 1;
+import MouseScripts from "./MouseScripts.vue";
 </script>
 
 <style lang="scss" scoped>

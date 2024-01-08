@@ -2,7 +2,7 @@
   <nav class="sidebar">
     <div class="sidebar-header">
       <h1>Dan Stucky</h1>
-      <h5>Software Engineer</h5>
+      <h5>Senior Software Engineer</h5>
     </div>
     <ul class="list-unstyled">
       <router-link to="/about-me" active-class="active">

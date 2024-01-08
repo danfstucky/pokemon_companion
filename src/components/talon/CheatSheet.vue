@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center">Talon Commands Cheatsheet</h1>
   <h5 class="text-center">
-    This cheatsheet assumes you have already installed the
+    This cheatsheet assumes you have installed the
     <a href="https://github.com/talonhub/community" target="”_blank”"
       >Community</a
     >
@@ -12,7 +12,7 @@
   <div class="card">
     <h4 class="card-header">General</h4>
     <div class="card-body">
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
           <tr>
             <th>Voice Command</th>

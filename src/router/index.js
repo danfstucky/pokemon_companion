@@ -12,7 +12,7 @@ import About from "./../components/pokemon/About";
 
 import TalonHome from "./../components/talon/TalonHome";
 import CheatSheet from "./../components/talon/CheatSheet";
-import CustomScripts from "./../components/talon/CustomScripts";
+import CustomScripts from "./../components/talon/scripts/CustomScripts";
 
 const router = createRouter({
   history: createWebHashHistory(),
