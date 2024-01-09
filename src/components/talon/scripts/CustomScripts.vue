@@ -1,8 +1,8 @@
 <template>
   <h1 class="text-center">Custom Scripts</h1>
   <h5 class="text-center">
-    Some additional commands/modifications I added to talon. Custom scripts can
-    be added to the <code>talon/user</code> directory.
+    Some additional commands/modifications I added to talon. Custom scripts can be added to the
+    <code>talon/user</code> directory.
   </h5>
 
   <div class="accordion" id="scripts-accordion">
@@ -29,13 +29,11 @@
           <ul>
             <li>
               All of the community package CSV files located within
-              <code>community/settings/*</code> are customizable. For example,
-              to modify the default talon alphabet, update the
-              <code>alphabet.csv</code> file.
+              <code>community/settings/*</code> are customizable. For example, to modify the default talon alphabet,
+              update the <code>alphabet.csv</code> file.
             </li>
             <li>
-              You can update any of the default talon settings by modifying the
-              config options located in
+              You can update any of the default talon settings by modifying the config options located in
               <code>community/settings.talon</code>.
             </li>
           </ul>
@@ -70,7 +68,7 @@
 </template>
 
 <script setup>
-import MouseScripts from "./MouseScripts.vue";
+import MouseScripts from './MouseScripts.vue';
 </script>
 
 <style lang="scss" scoped>

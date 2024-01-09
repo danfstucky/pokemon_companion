@@ -100,7 +100,7 @@
       <p><code>mouse_movement.talon</code></p>
       <pre>
       <code>
-      {{ mouseScripts }}
+      {{ scripts }}
       </code>
   </pre>
     </li>
@@ -108,7 +108,7 @@
 </template>
 
 <script setup>
-const mouseScripts = `
+const scripts = `
 # Move mouse up by a number
 (up | move mouse up) [<number>]:
   n = number or 1
