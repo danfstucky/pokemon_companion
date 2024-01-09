@@ -1,4 +1,4 @@
-import salmonRedPokedex from "../data/pokedex";
+import salmonRedPokedex from '../data/pokedex';
 
 const hasPokemonId = (id) => {
   return !!salmonRedPokedex.find((pokemon) => pokemon.id === id);
@@ -9,7 +9,7 @@ const hasPokemonName = (name) => {
 };
 
 const searchPokedex = (searchValue) => {
-  if (searchValue === "") {
+  if (searchValue === '') {
     return salmonRedPokedex;
   } else {
     return salmonRedPokedex.filter((pokemon) => {

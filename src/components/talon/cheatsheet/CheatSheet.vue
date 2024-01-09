@@ -7,11 +7,13 @@
     <a href="https://github.com/david-tejada/rango" target="”_blank”">Rango</a>
     script packages with your talon setup.
   </h5>
-  <GeneralCommands />
+  <GeneralCommands class="mb-5 mt-4" />
+  <KeyboardKeyCommands class="mb-5" />
 </template>
 
 <script setup>
 import GeneralCommands from './GeneralCommands.vue';
+import KeyboardKeyCommands from './KeyboardKeyCommands.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -21,4 +23,7 @@ h1 {
 h5 {
   color: #efefef;
 }
+// .card {
+//   margin-
+// }
 </style>

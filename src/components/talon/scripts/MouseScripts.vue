@@ -3,7 +3,7 @@
     <li>
       <strong>Voice Command Overview:</strong>
       <table>
-        <table class="table table-striped table-hover table-bordered ">
+        <table class="table table-striped table-hover table-bordered">
           <thead class="thead-dark">
             <tr>
               <th>Voice Command</th>
@@ -13,13 +13,12 @@
           <tbody>
             <tr>
               <td>
-                <p>up {{'<number>'}},</p>
-                <p>move mouse up {{'<number>'}}</p>
+                <p>up {{ talonService.encloseInCarets('number') }},</p>
+                <p>move mouse up {{ talonService.encloseInCarets('number') }}</p>
               </td>
               <td>
                 <p>
-                  Move the mouse up an amount proportional to the given number.
-                  Defaults to 1 when no number provided.
+                  Move the mouse up an amount proportional to the given number. Defaults to 1 when no number provided.
                 </p>
                 <p>Example: "up 5".</p>
               </td>
@@ -33,13 +32,12 @@
             </tr>
             <tr>
               <td>
-                <p>down {{'<number>'}},</p>
-                <p>move mouse down {{'<number>'}}</p>
+                <p>down {{ talonService.encloseInCarets('number') }},</p>
+                <p>move mouse down {{ talonService.encloseInCarets('number') }}</p>
               </td>
               <td>
                 <p>
-                  Move the mouse down an amount proportional to the given
-                  number. Defaults to 1 when no number provided.
+                  Move the mouse down an amount proportional to the given number. Defaults to 1 when no number provided.
                 </p>
                 <p>Example: "down 5".</p>
               </td>
@@ -53,13 +51,12 @@
             </tr>
             <tr>
               <td>
-                <p>left {{'<number>'}},</p>
-                <p>move mouse left {{'<number>'}}</p>
+                <p>left {{ talonService.encloseInCarets('number') }},</p>
+                <p>move mouse left {{ talonService.encloseInCarets('number') }}</p>
               </td>
               <td>
                 <p>
-                  Move the mouse left an amount proportional to the given
-                  number. Defaults to 1 when no number provided.
+                  Move the mouse left an amount proportional to the given number. Defaults to 1 when no number provided.
                 </p>
                 <p>Example: "left 5".</p>
               </td>
@@ -73,13 +70,13 @@
             </tr>
             <tr>
               <td>
-                <p>right {{'<number>'}},</p>
-                <p>move mouse right {{'<number>'}}</p>
+                <p>right {{ talonService.encloseInCarets('number') }},</p>
+                <p>move mouse right {{ talonService.encloseInCarets('number') }}</p>
               </td>
               <td>
                 <p>
-                  Move the mouse right an amount proportional to the given
-                  number. Defaults to 1 when no number provided.
+                  Move the mouse right an amount proportional to the given number. Defaults to 1 when no number
+                  provided.
                 </p>
                 <p>Example: "right 5".</p>
               </td>
@@ -108,6 +105,8 @@
 </template>
 
 <script setup>
+import talonService from '../../../services/talonService';
+
 const scripts = `
 # Move mouse up by a number
 (up | move mouse up) [<number>]:
