@@ -9,11 +9,13 @@
   </h5>
   <GeneralCommands class="mb-5 mt-4" />
   <KeyboardKeyCommands class="mb-5" />
+  <DictationCommands class="mb-5" />
 </template>
 
 <script setup>
 import GeneralCommands from './GeneralCommands.vue';
 import KeyboardKeyCommands from './KeyboardKeyCommands.vue';
+import DictationCommands from './DictationCommands.vue';
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <h4 class="card-header">General</h4>
+  <div class="m-3 card card-border">
+    <h3 class="card-header">General</h3>
     <div class="card-body">
       <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
@@ -46,15 +46,36 @@
             <td>help close</td>
             <td>Hide any open help window again.</td>
           </tr>
+          <tr>
+            <td>
+              phrase {{ talonService.encloseInAngles('any phrase') }},<br />
+              say {{ talonService.encloseInAngles('any phrase') }}
+            </td>
+            <td>
+              Instructs talon to treat the words spoken after "phrase/say" as if they were in dictation mode. This means
+              the words will be handled as text instead of commands. It is a helpful shortcut to avoid switching modes
+              when you have a small phrase to enter, such as into a search box.<br />
+              Example: "phrase hello, my dog is named Benji" will type "hello, my dog is named Benji" into the active
+              application.
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
 </template>
 
+<script setup>
+import talonService from '../../../services/talonService';
+</script>
+
 <style lang="scss" scoped>
 .card-header {
   background: rgb(211, 168, 235);
+}
+.card-border {
+  border-width: 5px;
+  border-color: rgb(255, 123, 123);
 }
 .width-20 {
   width: 20%;

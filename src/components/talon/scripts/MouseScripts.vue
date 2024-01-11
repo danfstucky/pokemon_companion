@@ -13,8 +13,8 @@
           <tbody>
             <tr>
               <td>
-                <p>up {{ talonService.encloseInCarets('number') }},</p>
-                <p>move mouse up {{ talonService.encloseInCarets('number') }}</p>
+                <p>up {{ talonService.encloseInAngles('number') }},</p>
+                <p>move mouse up {{ talonService.encloseInAngles('number') }}</p>
               </td>
               <td>
                 <p>
@@ -32,8 +32,8 @@
             </tr>
             <tr>
               <td>
-                <p>down {{ talonService.encloseInCarets('number') }},</p>
-                <p>move mouse down {{ talonService.encloseInCarets('number') }}</p>
+                <p>down {{ talonService.encloseInAngles('number') }},</p>
+                <p>move mouse down {{ talonService.encloseInAngles('number') }}</p>
               </td>
               <td>
                 <p>
@@ -51,8 +51,8 @@
             </tr>
             <tr>
               <td>
-                <p>left {{ talonService.encloseInCarets('number') }},</p>
-                <p>move mouse left {{ talonService.encloseInCarets('number') }}</p>
+                <p>left {{ talonService.encloseInAngles('number') }},</p>
+                <p>move mouse left {{ talonService.encloseInAngles('number') }}</p>
               </td>
               <td>
                 <p>
@@ -70,8 +70,8 @@
             </tr>
             <tr>
               <td>
-                <p>right {{ talonService.encloseInCarets('number') }},</p>
-                <p>move mouse right {{ talonService.encloseInCarets('number') }}</p>
+                <p>right {{ talonService.encloseInAngles('number') }},</p>
+                <p>move mouse right {{ talonService.encloseInAngles('number') }}</p>
               </td>
               <td>
                 <p>

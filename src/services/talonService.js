@@ -1,5 +1,5 @@
-const encloseInCarets = (text) => `<${text}>`;
+const encloseInAngles = (text) => `<${text}>`;
 
 export default {
-  encloseInCarets,
+  encloseInAngles,
 };
