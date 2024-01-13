@@ -10,12 +10,18 @@
   <GeneralCommands class="mb-5 mt-4" />
   <KeyboardKeyCommands class="mb-5" />
   <DictationCommands class="mb-5" />
+  <MouseCommands class="mb-5" />
+  <ManageAppWindowCommands class="mb-5" />
+  <ManageBrowserCommands class="mb-5" />
 </template>
 
 <script setup>
 import GeneralCommands from './GeneralCommands.vue';
 import KeyboardKeyCommands from './KeyboardKeyCommands.vue';
 import DictationCommands from './DictationCommands.vue';
+import MouseCommands from './MouseCommands.vue';
+import ManageAppWindowCommands from './ManageAppWindowCommands.vue';
+import ManageBrowserCommands from './ManageBrowserCommands.vue';
 </script>
 
 <style lang="scss" scoped>

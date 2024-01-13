@@ -1,6 +1,6 @@
 <template>
   <div class="m-3 card card-border">
-    <h3 class="card-header">Dictation Mode</h3>
+    <h2 class="card-header">Dictation Mode</h2>
     <p class="p-3 helper-text">
       When in dictation mode, most speech will be transcribed directly as it's spoken. Dictation mode is great for when
       you need to write a text document or email with lots of text. However, there are a few commands that are
@@ -32,7 +32,7 @@
                   </tr>
                   <tr>
                     <td>press super d</td>
-                    <td>Presses the "super-d" keys to bring up the Windows start menu.</td>
+                    <td>Presses the "super-d" keys to hide all open windows and show Desktop.</td>
                   </tr>
                 </tbody>
               </table>
@@ -154,8 +154,292 @@
               <p>Note that spaces count as characters.</p>
             </td>
           </tr>
+          <tr>
+            <td>clear left {{ talonService.encloseInAngles('number') }} words</td>
+            <td>Extend selection left n words and delete.</td>
+            <td>
+              <p>
+                Given the line:
+                <span class="sample-line">"Hello world. Talon<i class="bi bi-cursor-text"></i> is fun!"</span>
+              </p>
+              <p>The command "clear left 3 words" will result in the following deletion:</p>
+              <p>
+                <span class="sample-line">"Hello Talon is fun!"</span>
+              </p>
+              <p>Note that the period (or any punctuation such as a comma, question mark, etc.) counts as a word.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>clear right {{ talonService.encloseInAngles('number') }} words</td>
+            <td>Extend selection right n words and delete.</td>
+            <td>
+              <p>
+                Given the line:
+                <span class="sample-line">"<i class="bi bi-cursor-text"></i>Hello world. Talon is fun!"</span>
+              </p>
+              <p>The command "select right 5 words" will result in the following deletion:</p>
+              <p>
+                <span class="sample-line">"fun!"</span>
+              </p>
+              <p>Note that the period (or any punctuation such as a comma, question mark, etc.) counts as a word.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>clear left {{ talonService.encloseInAngles('number') }} characters</td>
+            <td>Extend selection left n characters and delete.</td>
+            <td>
+              <p>
+                Given the line:
+                <span class="sample-line">"Hello world. Talon<i class="bi bi-cursor-text"></i> is fun!"</span>
+              </p>
+              <p>The command "clear left 3 characters" will result in the following deletion:</p>
+              <p>
+                <span class="sample-line">"Hello world. Ta is fun!"</span>
+              </p>
+              <p>Note that spaces count as characters.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>clear right {{ talonService.encloseInAngles('number') }} characters</td>
+            <td>Extend selection right n characters and delete.</td>
+            <td>
+              <p>
+                Given the line:
+                <span class="sample-line">"Hello wor<i class="bi bi-cursor-text"></i>ld. Talon is fun!"</span>
+              </p>
+              <p>The command "clear right 5 characters" will result in the following deletion:</p>
+              <p>
+                <span class="sample-line">"Hello woralon is fun!"</span>
+              </p>
+              <p>Note that spaces count as characters.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>scratch that</td>
+            <td>Clears the last phrase.</td>
+            <td>
+              A phrase is the last group of spoken words without a pause. Saying "Hello world", followed by a pause,
+              followed by "scratch that" will delete the "hello world" phrase.
+            </td>
+          </tr>
+          <tr>
+            <td>scratch selection</td>
+            <td>Delete selection.</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>select that</td>
+            <td>Selects the last phrase.</td>
+            <td>
+              A phrase is the last group of spoken words without a pause. Saying "Hello world", followed by a pause,
+              followed by "select that" will select the "hello world" phrase.
+            </td>
+          </tr>
+          <tr>
+            <td>spell that {{ talonService.encloseInAngles('letters') }}</td>
+            <td>Dictate individual letters with normal formatting.</td>
+            <td>
+              <table class="table table-striped table-bordered">
+                <tbody>
+                  <tr>
+                    <td>spell that h-e-l-l-o</td>
+                    <td>hello</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              spell that {{ talonService.encloseInAngles('formatters') }} {{ talonService.encloseInAngles('letters') }}
+            </td>
+            <td>Dictate individual letters with specified formatting.</td>
+            <td>
+              <table class="table table-striped table-bordered">
+                <tbody>
+                  <tr>
+                    <td>spell that all caps h-e-l-l-o</td>
+                    <td>HELLO</td>
+                  </tr>
+                  <tr>
+                    <td>spell that all caps dubstring h-e-l-l-o</td>
+                    <td>"HELLO"</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>escape {{ talonService.encloseInAngles('user text') }}</td>
+            <td>Inserts dictated text with escaping any dictation commands.</td>
+            <td>
+              "hello world period talon is fun exclamation mark" will be written as " hello world period talon is fun
+              exclamation mark".<br />Note that the punctuation is written out.
+            </td>
+          </tr>
         </tbody>
       </table>
+
+      <h4 class="mt-4">Dictation Mode Keywords</h4>
+      <div class="row">
+        <h5 class="mt-1">Punctuation</h5>
+        <p>Words for inserting punctuation while in dictation mode.</p>
+        <div class="col">
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Voice Command</th>
+                <th>Punctuation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>period, full stop</td>
+                <td>.</td>
+              </tr>
+              <tr>
+                <td>question mark</td>
+                <td>?</td>
+              </tr>
+              <tr>
+                <td>exclamation mark, exclamation point</td>
+                <td>!</td>
+              </tr>
+              <tr>
+                <td>comma</td>
+                <td>,</td>
+              </tr>
+              <tr>
+                <td>semicolon</td>
+                <td>;</td>
+              </tr>
+              <tr>
+                <td>colon</td>
+                <td>:</td>
+              </tr>
+              <tr>
+                <td>grave, backtick</td>
+                <td>`</td>
+              </tr>
+              <tr>
+                <td>hyphen</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Voice Command</th>
+                <th>Punctuation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>forward slash</td>
+                <td>/</td>
+              </tr>
+              <tr>
+                <td>asterisk</td>
+                <td>*</td>
+              </tr>
+              <tr>
+                <td>hash sign, number sign</td>
+                <td>#</td>
+              </tr>
+              <tr>
+                <td>percent sign</td>
+                <td>%</td>
+              </tr>
+              <tr>
+                <td>at sign</td>
+                <td>@</td>
+              </tr>
+              <tr>
+                <td>and sign, ampersand</td>
+                <td>&</td>
+              </tr>
+              <tr>
+                <td>dollar sign</td>
+                <td>$</td>
+              </tr>
+              <tr>
+                <td>left paren, L paren</td>
+                <td>(</td>
+              </tr>
+              <tr>
+                <td>right paren, R paren</td>
+                <td>)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="mt-1">Formatters</h5>
+          <p>Commands that can be used to apply formatting to phrases in dication mode.</p>
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Voice Command</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>all cap</td>
+                <td>capitalize all words</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <h5 class="mt-1">Prose</h5>
+          <p>Commands that can be used for formatting prose in dictation mode.</p>
+          <table class="table table-striped table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Voice Command</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>spacebar</td>
+                <td>Type a space.</td>
+              </tr>
+              <tr>
+                <td>new line</td>
+                <td>Create a new line.</td>
+              </tr>
+              <tr>
+                <td>new paragraph</td>
+                <td>Create two new lines.</td>
+              </tr>
+              <tr>
+                <td>open quote</td>
+                <td>"</td>
+              </tr>
+              <tr>
+                <td>close quote</td>
+                <td>"</td>
+              </tr>
+              <tr>
+                <td>smiley</td>
+                <td>:-)</td>
+              </tr>
+              <tr>
+                <td>frowny</td>
+                <td>:-(</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </template>

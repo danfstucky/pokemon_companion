@@ -1,6 +1,6 @@
 <template>
   <div class="m-3 card card-border">
-    <h3 class="card-header">Individual Keyboard Keys</h3>
+    <h2 class="card-header">Individual Keyboard Keys</h2>
     <div class="card-body">
       <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                   <td>press super d</td>
-                  <td>Presses the "super-d" keys to bring up the Windows start menu.</td>
+                  <td>Presses the "super-d" keys to hide all open windows and show Desktop.</td>
                 </tr>
               </table>
             </td>

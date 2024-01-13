@@ -1,6 +1,6 @@
 <template>
   <div class="m-3 card card-border">
-    <h3 class="card-header">General</h3>
+    <h2 class="card-header">General</h2>
     <div class="card-body">
       <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
