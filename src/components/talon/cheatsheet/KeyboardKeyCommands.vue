@@ -317,7 +317,7 @@
           </table>
         </div>
         <div class="col">
-          <h5 class="mt-5">Modifier Keys</h5>
+          <h5 id="modifier-keys" class="mt-5">Modifier Keys</h5>
           <table class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
               <tr>

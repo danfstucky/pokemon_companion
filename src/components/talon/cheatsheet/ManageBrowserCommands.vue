@@ -1,6 +1,6 @@
 <template>
   <div class="m-3 card card-border">
-    <h2 class="card-header">Manage Browser Commands</h2>
+    <h2 class="card-header">Manage Web Browsers</h2>
     <div class="card-body">
       <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
