@@ -61,7 +61,13 @@
           </tr>
           <tr>
             <td>snap {{ talonService.encloseInAngles('window snap position') }}</td>
-            <td>Move the active window to a specific position on the screen.</td>
+            <td>
+              Move the active window to a specific
+              <button class="btn btn-link plain-btn" @click="talonService.scrollToId('snap-positions')">
+                snap position
+              </button>
+              on the screen.
+            </td>
           </tr>
           <tr>
             <td>snap screen {{ talonService.encloseInAngles('number') }}</td>
@@ -76,7 +82,11 @@
               {{ talonService.encloseInAngles('window snap position') }}
             </td>
             <td>
-              Move the specified application to a specific position on the screen.<br />
+              Move the specified application to a specific
+              <button class="btn btn-link plain-btn" @click="talonService.scrollToId('snap-positions')">
+                snap position
+              </button>
+              on the screen.<br />
               Example: "snap explorer left" will snap the file explorer application to the left side of the screen.
             </td>
           </tr>
@@ -94,7 +104,7 @@
         </tbody>
       </table>
       <div class="row">
-        <h5 class="mt-1">Snap Positions</h5>
+        <h5 id="snap-positions" class="mt-1">Snap Positions</h5>
         <div class="col">
           <table class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
@@ -242,5 +252,10 @@ import talonService from '../../../services/talonService';
 }
 .width-20 {
   width: 20%;
+}
+.plain-btn {
+  padding: 0px 0px 4px 0px;
+  margin: 0;
+  border-width: 0;
 }
 </style>

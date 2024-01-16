@@ -1,6 +1,11 @@
 <template>
   <div class="m-3 card card-border">
     <h2 class="card-header">Manage Web Browsers</h2>
+    <p class="p-3 helper-text">
+      Many of the browser commands rely on the
+      <a href="https://github.com/david-tejada/rango" target="”_blank”">Rango</a>
+      script package. If you have not already, install it with your talon setup.
+    </p>
     <div class="card-body">
       <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
@@ -34,5 +39,8 @@ import talonService from '../../../services/talonService';
 }
 .width-20 {
   width: 20%;
+}
+.helper-text {
+  background: #e9ecef;
 }
 </style>

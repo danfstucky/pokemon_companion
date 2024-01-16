@@ -3,9 +3,7 @@
   <h5 class="text-center">
     This cheatsheet assumes you have installed the
     <a href="https://github.com/talonhub/community" target="”_blank”">Community</a>
-    and
-    <a href="https://github.com/david-tejada/rango" target="”_blank”">Rango</a>
-    script packages with your talon setup.
+    script package with your talon setup.
   </h5>
   <GeneralCommands class="mb-5 mt-4" />
   <KeyboardKeyCommands class="mb-5" />
