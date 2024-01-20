@@ -280,6 +280,7 @@
         </tbody>
       </table>
 
+      <br />
       <h4 class="mt-4">Dictation Mode Keywords</h4>
       <div class="row">
         <h5 class="mt-1">Punctuation</h5>
@@ -381,7 +382,7 @@
       <div class="row">
         <div class="col">
           <h5 class="mt-1">Formatters</h5>
-          <p>Commands that can be used to apply formatting to phrases in dication mode.</p>
+          <p>Commands that can be used to apply formatting to phrases in dictation mode.</p>
           <table class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
               <tr>

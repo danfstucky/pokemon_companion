@@ -54,6 +54,7 @@
         </tbody>
       </table>
 
+      <br />
       <div class="row">
         <h5 class="mt-1">Mouse Actions</h5>
         <div class="col">

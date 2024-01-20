@@ -103,6 +103,7 @@
           </tr>
         </tbody>
       </table>
+      <br />
       <div class="row">
         <h5 id="snap-positions" class="mt-1">Snap Positions</h5>
         <div class="col">
