@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Sidebar from './shared/Sidebar';
+import Sidebar from './shared/Sidebar.vue';
 
 export default {
   components: {

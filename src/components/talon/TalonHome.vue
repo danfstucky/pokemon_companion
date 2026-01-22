@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import TalonTabs from "./TalonTabs";
+import TalonTabs from "./TalonTabs.vue";
 </script>
 
 <style lang="scss" scoped>

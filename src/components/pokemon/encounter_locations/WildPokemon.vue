@@ -16,10 +16,10 @@
 <script setup>
 import { ref } from "vue";
 import { usePokemonStore } from "../../../stores/pokemon";
-import LocationsChart from "./LocationsChart";
-import EncounterDetailsWrapper from "./EncounterDetailsWrapper";
+import LocationsChart from "./LocationsChart.vue";
+import EncounterDetailsWrapper from "./EncounterDetailsWrapper.vue";
+import PokemonDetail from "./../pokemon_details/PokemonDetail.vue";
 import encounters from "./../../../data/encounters";
-import PokemonDetail from "./../pokemon_details/PokemonDetail";
 
 const pokemonStore = usePokemonStore();
 let encounterDetails = ref(encounters[0]);

@@ -5,14 +5,16 @@
 <script>
 import * as d3 from 'd3';
 import locations from './../../../data/locations';
+import townImg from './../../../assets/images/pokemon/town.png'
+import routeImg from './../../../assets/images/pokemon/route_sign.png'
 
 export default {
   emits: ['showLocationDetails'],
   data() {
     return {
       chart: null,
-      townImg: require('./../../../assets/images/pokemon/town.png').default,
-      routeImg: require('./../../../assets/images/pokemon/route_sign.png').default,
+      townImg,
+      routeImg
     };
   },
   mounted() {

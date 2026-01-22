@@ -5,12 +5,11 @@
   "author": "Dan Stucky <danfstucky@gmail.com>",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "webpack --config config/webpack.prod.js",
-    "dev": "webpack-dev-server --config config/webpack.dev.js",
+    "build": "vite build",
+    "dev": "vite",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -25,28 +24,11 @@
     "vue-router": "^4.0.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-service": "^5.0.8",
+    "@vitejs/plugin-vue": "^6.0.3",
     "@vue/compiler-sfc": "^3.4.6",
-    "babel-eslint": "^10.1.0",
-    "css-loader": "^6.2.0",
     "eslint": "^8.56.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.2",
-    "image-webpack-loader": "^8.1.0",
     "sass": "^1.26.0",
-    "sass-loader": "^9.0.3",
-    "vue-loader": "^16.4.1",
-    "webpack": "^5.90.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5.10.0"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+    "vite": "^6.4.1"
   },
   "browserslist": [
     "> 1%",
