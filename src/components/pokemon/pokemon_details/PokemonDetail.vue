@@ -68,8 +68,8 @@
 <script setup>
 import { ref } from "vue";
 import { usePokemonStore } from "../../../stores/pokemon";
-import PokemonMoves from "./PokemonMoves";
-import StatsChart from "./StatsChart";
+import PokemonMoves from "./PokemonMoves.vue";
+import StatsChart from "./StatsChart.vue";
 
 const props = defineProps({
   pokemonId: { type: Number, required: true },

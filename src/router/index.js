@@ -1,18 +1,18 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import AboutMe from "./../components/core/AboutMe";
-import DevProjects from "./../components/core/DevProjects";
-import BiologyResearch from "./../components/core/BiologyResearch";
+import AboutMe from "./../components/core/AboutMe.vue";
+import DevProjects from "./../components/core/DevProjects.vue";
+import BiologyResearch from "./../components/core/BiologyResearch.vue";
 
-import PokemonHome from "./../components/pokemon/PokemonHome";
-import Pokedex from "./../components/pokemon/pokedex/Pokedex";
-import WildPokemon from "./../components/pokemon/encounter_locations/WildPokemon";
-import PokemonGyms from "./../components/pokemon/gyms/PokemonGyms";
-import TypeChart from "./../components/pokemon/TypeChart";
-import About from "./../components/pokemon/About";
+import PokemonHome from "./../components/pokemon/PokemonHome.vue";
+import Pokedex from "./../components/pokemon/pokedex/Pokedex.vue";
+import WildPokemon from "./../components/pokemon/encounter_locations/WildPokemon.vue";
+import PokemonGyms from "./../components/pokemon/gyms/PokemonGyms.vue";
+import TypeChart from "./../components/pokemon/TypeChart.vue";
+import About from "./../components/pokemon/About.vue";
 
-import TalonHome from "./../components/talon/TalonHome";
-import CheatSheet from "./../components/talon/cheatsheet/CheatSheet";
-import CustomScripts from "./../components/talon/scripts/CustomScripts";
+import TalonHome from "./../components/talon/TalonHome.vue";
+import CheatSheet from "./../components/talon/cheatsheet/CheatSheet.vue";
+import CustomScripts from "./../components/talon/scripts/CustomScripts.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),

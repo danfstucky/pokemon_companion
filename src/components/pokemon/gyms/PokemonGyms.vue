@@ -63,7 +63,11 @@
 import { ref } from "vue";
 import { usePokemonStore } from "../../../stores/pokemon";
 import gymLeaders from "./../../../data/gym_leaders";
-import PokemonDetail from "./../pokemon_details/PokemonDetail";
+import PokemonDetail from "./../pokemon_details/PokemonDetail.vue";
+const images = import.meta.glob(
+  './../../../assets/images/pokemon/gym_info/*',
+  { eager: true, import: 'default' }
+)
 
 const pokemonStore = usePokemonStore();
 const pokeImageUrl =
@@ -72,8 +76,8 @@ const selectedGymId = ref(null);
 const gymLeader = ref(null);
 
 function getImgUrl(pic) {
-  // Need to call default because webpack returns required images as an Object
-  return require(`./../../../assets/images/pokemon/gym_info/${pic}`).default;
+  // Load all gym leader images
+  return images[`../../../assets/images/pokemon/gym_info/${pic}`]
 }
 function handleGymSelection(gymNum) {
   selectedGymId.value = gymNum;

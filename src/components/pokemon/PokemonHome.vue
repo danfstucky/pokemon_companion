@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import PokemonTabs from './PokemonTabs';
+import PokemonTabs from './PokemonTabs.vue';
 
 export default {
   components: {

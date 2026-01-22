@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import EncounterDetails from './EncounterDetails';
+import EncounterDetails from './EncounterDetails.vue';
 
 export default {
   components: {

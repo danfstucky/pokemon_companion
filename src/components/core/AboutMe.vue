@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import HorizontalBarChart from "./../shared/HorizontalBarChart";
+import HorizontalBarChart from "./../shared/HorizontalBarChart.vue";
 
 export default {
   components: {

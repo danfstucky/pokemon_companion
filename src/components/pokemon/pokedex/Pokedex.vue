@@ -12,9 +12,9 @@
 
 <script setup>
 import { usePokemonStore } from "../../../stores/pokemon";
-import PokemonSearch from "./PokemonSearch";
-import PokemonList from "./PokemonList";
-import PokemonDetail from "./../pokemon_details/PokemonDetail";
+import PokemonSearch from "./PokemonSearch.vue";
+import PokemonList from "./PokemonList.vue";
+import PokemonDetail from "./../pokemon_details/PokemonDetail.vue";
 
 const pokemonStore = usePokemonStore();
 </script>
