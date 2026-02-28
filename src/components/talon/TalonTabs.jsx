@@ -1,9 +1,8 @@
-import { NavLink } from 'react-router-dom'
-import styles from './TalonTabs.module.scss'
+import { NavLink } from 'react-router-dom';
+import styles from './TalonTabs.module.scss';
 
 export default function TalonTabs() {
-  const getLinkClass = ({ isActive }) =>
-    `nav-link me-2${isActive ? ` ${styles.active}` : ''}`
+  const getLinkClass = ({ isActive }) => `nav-link me-2${isActive ? ` ${styles.active}` : ''}`;
 
   return (
     <div className={styles.talonTabs}>
@@ -16,5 +15,5 @@ export default function TalonTabs() {
         </NavLink>
       </ul>
     </div>
-  )
+  );
 }

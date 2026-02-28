@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap");
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap');
 
 .sidebar {
   width: 250px;
@@ -10,13 +10,14 @@
   top: 0;
   background: #e1ece8;
   color: #63ac99;
-  font-family: "ZCOOL QingKe HuangYou", serif;
+  font-family: 'ZCOOL QingKe HuangYou', serif;
 
   .sidebarHeader {
     text-align: center;
     padding: 20px;
 
-    h1, h5 {
+    h1,
+    h5 {
       color: #63ac99;
     }
   }
@@ -47,9 +48,9 @@
 
       &:after {
         float: right;
-        font-family: "Font Awesome 5 Free";
+        font-family: 'Font Awesome 5 Free';
         font-weight: 900;
-        content: "\f101";
+        content: '\f101';
       }
     }
   }

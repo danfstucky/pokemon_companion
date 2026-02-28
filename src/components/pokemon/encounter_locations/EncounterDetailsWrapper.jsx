@@ -1,13 +1,11 @@
-import EncounterDetails from './EncounterDetails'
-import styles from './EncounterDetailsWrapper.module.scss'
+import EncounterDetails from './EncounterDetails';
+import styles from './EncounterDetailsWrapper.module.scss';
 
 export default function EncounterDetailsWrapper({ encounter }) {
   return (
     <div className={styles.terrainWrapper}>
       {encounter.encounters.length === 0 ? (
-        <div className={`${styles.terrainBlock} ${styles.noResults}`}>
-          There are no wild Pokemon in this area.
-        </div>
+        <div className={`${styles.terrainBlock} ${styles.noResults}`}>There are no wild Pokemon in this area.</div>
       ) : (
         encounter.encounters.map((encounterLocation) => (
           <div key={encounterLocation.terrain} className={`row ${styles.terrainBlock}`}>
@@ -23,5 +21,5 @@ export default function EncounterDetailsWrapper({ encounter }) {
         ))
       )}
     </div>
-  )
+  );
 }

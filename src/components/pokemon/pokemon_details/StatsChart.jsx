@@ -1,14 +1,12 @@
-import { useRef, useEffect } from 'react'
-import * as d3 from 'd3'
-import RadarChart from './RadarChart'
+import { useRef, useEffect } from 'react';
+import * as d3 from 'd3';
+import RadarChart from './RadarChart';
 
 export default function StatsChart({ statsData }) {
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    if (!containerRef.current || !statsData) return
-
-    const svg = d3.select(containerRef.current).append('svg')
+    if (!containerRef.current || !statsData) return;
 
     const config = {
       w: 140,
@@ -20,20 +18,20 @@ export default function StatsChart({ statsData }) {
       translateY: 25,
       areaColor: '#07a83f',
       nodeColor: '#73ffa3',
-    }
+    };
 
     const graphData = statsData.map((stat) => {
-      let statName = stat.stat.name
-      statName = statName.charAt(0).toUpperCase() + statName.slice(1)
-      return { area: statName, value: stat.base_stat }
-    })
+      let statName = stat.stat.name;
+      statName = statName.charAt(0).toUpperCase() + statName.slice(1);
+      return { area: statName, value: stat.base_stat };
+    });
 
-    RadarChart.draw(containerRef.current, [graphData], config)
+    RadarChart.draw(containerRef.current, [graphData], config);
 
     return () => {
-      d3.select(containerRef.current).selectAll('*').remove()
-    }
-  }, [statsData])
+      d3.select(containerRef.current).selectAll('*').remove();
+    };
+  }, [statsData]);
 
-  return <div ref={containerRef} />
+  return <div ref={containerRef} />;
 }

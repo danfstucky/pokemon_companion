@@ -9,9 +9,11 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended",
   ],
   rules: {
     "no-console": "warn",
+    "react/prop-types": "off",
   },
   settings: {
     react: {
@@ -25,4 +27,15 @@ module.exports = {
       jsx: true,
     },
   },
+  overrides: [
+    {
+      files: ["tests/**/*.{js,jsx}"],
+      env: {
+        jest: true,
+      },
+      globals: {
+        vi: "readonly",
+      },
+    },
+  ],
 }

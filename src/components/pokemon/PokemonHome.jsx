@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom'
-import PokemonTabs from './PokemonTabs'
-import styles from './PokemonHome.module.scss'
+import { Outlet } from 'react-router-dom';
+import PokemonTabs from './PokemonTabs';
+import styles from './PokemonHome.module.scss';
 
 export default function PokemonHome() {
   return (
@@ -8,5 +8,5 @@ export default function PokemonHome() {
       <PokemonTabs />
       <Outlet />
     </div>
-  )
+  );
 }

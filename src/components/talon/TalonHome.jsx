@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom'
-import TalonTabs from './TalonTabs'
-import styles from './TalonHome.module.scss'
+import { Outlet } from 'react-router-dom';
+import TalonTabs from './TalonTabs';
+import styles from './TalonHome.module.scss';
 
 export default function TalonHome() {
   return (
@@ -8,5 +8,5 @@ export default function TalonHome() {
       <TalonTabs />
       <Outlet />
     </div>
-  )
+  );
 }

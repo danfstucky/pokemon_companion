@@ -3,7 +3,8 @@ const gymLeaders = [
   {
     id: 1,
     city: 'Neeromp Farm',
-    description: 'Neeromp Farm is responsible for providing food for the entire Kaito Region. It is also home to the ruthless plantation owner, Danimala. Danimala is the only Gym leader that does not adhere to a certain type of Pokemon. She found that she could work her Pokemon twice as hard if she uses them for both battling and farm work. As a result, her team consists of various farm animal Pokemon that look unusually tired.',
+    description:
+      'Neeromp Farm is responsible for providing food for the entire Kaito Region. It is also home to the ruthless plantation owner, Danimala. Danimala is the only Gym leader that does not adhere to a certain type of Pokemon. She found that she could work her Pokemon twice as hard if she uses them for both battling and farm work. As a result, her team consists of various farm animal Pokemon that look unusually tired.',
     leaders: [
       {
         name: 'Danimala',
@@ -19,7 +20,8 @@ const gymLeaders = [
   {
     id: 2,
     city: 'Luprar Village',
-    description: "Luprar is a quiet town nestled in the woods, but it has fallen under the control of Team Puff. One of Team Puff's executives was placed in charge of the Gym while their leader handles more important matters. The local trainers are too weak to overthrow the new hostile leaders on their own.",
+    description:
+      "Luprar is a quiet town nestled in the woods, but it has fallen under the control of Team Puff. One of Team Puff's executives was placed in charge of the Gym while their leader handles more important matters. The local trainers are too weak to overthrow the new hostile leaders on their own.",
     leaders: [
       {
         name: 'Kathy',
@@ -36,7 +38,8 @@ const gymLeaders = [
   {
     id: 3,
     city: 'Sideleaf City',
-    description: "Sideleaf is the largest city in all of Kaito and has earned a great reputation for it's shopping, biking, and dance scene. Over 100,000 citizens reside in the sprawling city and it even boasts a Pokemon daycare! The city was founded by it's Gym leader, the Great Salmon King, who is also renown for his handsomeness.",
+    description:
+      "Sideleaf is the largest city in all of Kaito and has earned a great reputation for it's shopping, biking, and dance scene. Over 100,000 citizens reside in the sprawling city and it even boasts a Pokemon daycare! The city was founded by it's Gym leader, the Great Salmon King, who is also renown for his handsomeness.",
     leaders: [
       {
         name: 'Salmon King',
@@ -53,7 +56,8 @@ const gymLeaders = [
   {
     id: 4,
     city: 'Koala Bay',
-    description: "Long ago a group of koala bears banded together and formed the city of Koala Bay on the coastline of the warmest part of Kaito. Due to the extreme neediness of koalas, the city soon became the medical center of the region after the construction of a massive hospital system fully staffed with nurses and koala aids.",
+    description:
+      'Long ago a group of koala bears banded together and formed the city of Koala Bay on the coastline of the warmest part of Kaito. Due to the extreme neediness of koalas, the city soon became the medical center of the region after the construction of a massive hospital system fully staffed with nurses and koala aids.',
     leaders: [
       {
         name: 'Heather Feather',
@@ -70,7 +74,8 @@ const gymLeaders = [
   {
     id: 5,
     city: 'Eagle Island',
-    description: "Eagle Island is a beautiful tropical paradise near Koala Bay. Island folklore says the eagles watch over the village's people who often try to kidnap koalas from the nearby Koala Bay to appease them. However, the small village was taken over by Team Puff who placed one of their executives in charge of the Gym.",
+    description:
+      "Eagle Island is a beautiful tropical paradise near Koala Bay. Island folklore says the eagles watch over the village's people who often try to kidnap koalas from the nearby Koala Bay to appease them. However, the small village was taken over by Team Puff who placed one of their executives in charge of the Gym.",
     leaders: [
       {
         name: 'Slake',
@@ -87,7 +92,8 @@ const gymLeaders = [
   {
     id: 6,
     city: 'Mossrithe Town',
-    description: "Mossrithe Town was once a quiet, charming place hidden deep within the woods of northern Kaito, but now it is only quiet. Dead quiet. Disaster struck Mossrithe and all of the town's residents have disappeared including the Gym leader, Valora. There are many dark secrets to discover here as the ominous silence of Mossrithe ripples throughout all of Kaito.",
+    description:
+      "Mossrithe Town was once a quiet, charming place hidden deep within the woods of northern Kaito, but now it is only quiet. Dead quiet. Disaster struck Mossrithe and all of the town's residents have disappeared including the Gym leader, Valora. There are many dark secrets to discover here as the ominous silence of Mossrithe ripples throughout all of Kaito.",
     leaders: [
       {
         name: 'Valora',
@@ -104,7 +110,8 @@ const gymLeaders = [
   {
     id: 7,
     city: 'Corlain City',
-    description: "Corlain City is home to the famous archaeologist Dr. Hudman who also serves as the city's Gym leader. The city is extremely environmentally conscious due to the strict regulation put in place by Hudman. It's location in the mountains also makes it an ideal location for fossil hunting and home to Kaito's largest musuem.",
+    description:
+      "Corlain City is home to the famous archaeologist Dr. Hudman who also serves as the city's Gym leader. The city is extremely environmentally conscious due to the strict regulation put in place by Hudman. It's location in the mountains also makes it an ideal location for fossil hunting and home to Kaito's largest musuem.",
     leaders: [
       {
         name: 'Dr. Hudman',
@@ -121,7 +128,8 @@ const gymLeaders = [
   {
     id: 8,
     city: 'Taelia Town',
-    description: "Taelia is one of the larger cities and home to some of the wealthiest residents in all of Kaito. The city attractions include a large outdoor marketplace, casino, and sparkling waterfalls. Very little is known about the Gym Leader, Anthella, but there are increasing reports of Team Puff's presence in the city.",
+    description:
+      "Taelia is one of the larger cities and home to some of the wealthiest residents in all of Kaito. The city attractions include a large outdoor marketplace, casino, and sparkling waterfalls. Very little is known about the Gym Leader, Anthella, but there are increasing reports of Team Puff's presence in the city.",
     leaders: [
       {
         name: 'Anthella',
@@ -138,7 +146,8 @@ const gymLeaders = [
   {
     id: 9,
     city: 'Salmon Plateau',
-    description: "Salmon Plateau is the final destination for Kaito trainers as it contains the Elite 4 Headquarters. Very strong Pokemon roam the small island's grassy fields and as a result, officials have restricted access to trainers who have proven themselves by obtaining all 8 Kaito badges.",
+    description:
+      "Salmon Plateau is the final destination for Kaito trainers as it contains the Elite 4 Headquarters. Very strong Pokemon roam the small island's grassy fields and as a result, officials have restricted access to trainers who have proven themselves by obtaining all 8 Kaito badges.",
     leaders: [
       {
         name: 'Elite 4 Chad',

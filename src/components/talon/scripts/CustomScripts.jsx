@@ -1,5 +1,5 @@
-import MouseScripts from './MouseScripts'
-import styles from './CustomScripts.module.scss'
+import MouseScripts from './MouseScripts';
+import styles from './CustomScripts.module.scss';
 
 export default function CustomScripts() {
   return (
@@ -33,9 +33,9 @@ export default function CustomScripts() {
             <div className="accordion-body">
               <ul>
                 <li>
-                  All of the community package CSV files located within{' '}
-                  <code>community/settings/*</code> are customizable. For example, to modify the default talon alphabet,
-                  update the <code>alphabet.csv</code> file.
+                  All of the community package CSV files located within <code>community/settings/*</code> are
+                  customizable. For example, to modify the default talon alphabet, update the <code>alphabet.csv</code>{' '}
+                  file.
                 </li>
                 <li>
                   You can update any of the default talon settings by modifying the config options located in{' '}
@@ -71,5 +71,5 @@ export default function CustomScripts() {
         </div>
       </div>
     </>
-  )
+  );
 }

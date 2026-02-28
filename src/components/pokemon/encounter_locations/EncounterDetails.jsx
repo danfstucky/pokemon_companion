@@ -1,10 +1,10 @@
-import { usePokemonStore } from '../../../stores/pokemon'
-import styles from './EncounterDetails.module.scss'
+import { usePokemonStore } from '../../../stores/pokemon';
+import styles from './EncounterDetails.module.scss';
 
-const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
 export default function EncounterDetails({ encounterLocation }) {
-  const showEncounterDetails = usePokemonStore((s) => s.showEncounterDetails)
+  const showEncounterDetails = usePokemonStore((s) => s.showEncounterDetails);
 
   return (
     <div className={styles.list}>
@@ -16,5 +16,5 @@ export default function EncounterDetails({ encounterLocation }) {
         </article>
       ))}
     </div>
-  )
+  );
 }

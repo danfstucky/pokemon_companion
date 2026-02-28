@@ -1,8 +1,8 @@
-import { NavLink } from 'react-router-dom'
-import styles from './Sidebar.module.scss'
+import { NavLink } from 'react-router-dom';
+import styles from './Sidebar.module.scss';
 
 export default function Sidebar() {
-  const getLinkClass = ({ isActive }) => isActive ? styles.active : ''
+  const getLinkClass = ({ isActive }) => (isActive ? styles.active : '');
 
   return (
     <nav className={styles.sidebar}>
@@ -28,5 +28,5 @@ export default function Sidebar() {
         </NavLink>
       </ul>
     </nav>
-  )
+  );
 }

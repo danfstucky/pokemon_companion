@@ -1,11 +1,11 @@
-import { usePokemonStore } from '../../../stores/pokemon'
-import styles from './PokemonList.module.scss'
+import { usePokemonStore } from '../../../stores/pokemon';
+import styles from './PokemonList.module.scss';
 
-const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
 export default function PokemonList() {
-  const displayedPokedexEntries = usePokemonStore((s) => s.displayedPokedexEntries)
-  const showDetails = usePokemonStore((s) => s.showDetails)
+  const displayedPokedexEntries = usePokemonStore((s) => s.displayedPokedexEntries);
+  const showDetails = usePokemonStore((s) => s.showDetails);
 
   return (
     <div>
@@ -19,5 +19,5 @@ export default function PokemonList() {
         ))}
       </div>
     </div>
-  )
+  );
 }

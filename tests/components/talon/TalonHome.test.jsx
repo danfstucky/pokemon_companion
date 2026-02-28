@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react'
-import { MemoryRouter, Routes, Route } from 'react-router-dom'
-import TalonHome from '../../../src/components/talon/TalonHome'
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import TalonHome from '../../../src/components/talon/TalonHome';
 
 describe('TalonHome', () => {
   it('renders the TalonTabs navigation', () => {
@@ -10,8 +10,8 @@ describe('TalonHome', () => {
           <Route path="/talon/*" element={<TalonHome />} />
         </Routes>
       </MemoryRouter>
-    )
-    expect(screen.getByText('Cheatsheet')).toBeInTheDocument()
-    expect(screen.getByText('Custom Scripts')).toBeInTheDocument()
-  })
-})
+    );
+    expect(screen.getByText('Cheatsheet')).toBeInTheDocument();
+    expect(screen.getByText('Custom Scripts')).toBeInTheDocument();
+  });
+});
