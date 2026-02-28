@@ -1,0 +1,36 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+  width: 100%;
+  max-width: 850px;
+
+  article {
+    height: 150px;
+    width: 150px;
+    background-color: #efefef;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
+
+    h3 {
+      margin: 0;
+    }
+
+    .pokedexNum {
+      float: left;
+      padding-left: 5px;
+      padding-top: 10px;
+      font-size: 20px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-sizing: border-box;
+      border: white solid 4px;
+      background-color: #bb005c;
+      color: white;
+    }
+  }
+}

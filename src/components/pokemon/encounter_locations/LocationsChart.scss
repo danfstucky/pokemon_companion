@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+
+#locations-chart {
+  border-radius: 20px;
+  overflow-x: auto;
+  max-width: 980px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230056b3' fill-opacity='0.36' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+svg {
+  .poke-img {
+    opacity: 0.4;
+  }
+
+  path.poke-hex-bg {
+    fill: #d3d3d3;
+  }
+
+  path.poke-hex {
+    stroke: #bb005c;
+    stroke-width: 2px;
+
+    &:hover {
+      cursor: pointer;
+      fill: #bb005c;
+      stroke: white;
+      stroke-width: 5px;
+    }
+  }
+
+  text {
+    pointer-events: none;
+    font-family: 'Acme', arial;
+    font-size: 20px;
+  }
+
+  text.location-order-text {
+    fill: #bb005c;
+    font-size: 16px;
+  }
+
+  path.active-hex {
+    fill: #ff2b5c !important;
+    stroke: white !important;
+    stroke-width: 5px !important;
+  }
+}

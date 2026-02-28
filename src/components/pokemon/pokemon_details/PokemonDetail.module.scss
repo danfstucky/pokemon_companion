@@ -1,0 +1,186 @@
+.detailContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 90px 10px 10px;
+
+  .detail {
+    width: 80%;
+    height: 75%;
+    position: fixed;
+    display: flex;
+    left: 30%;
+    min-height: 600px;
+    max-height: 650px;
+
+    .detailView {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      max-width: 550px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
+
+      .closeModalX {
+        opacity: 0.4;
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 15px;
+        font-size: 18px;
+
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+      }
+
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -60px;
+        width: 120px;
+        height: 120px;
+        background-color: #333;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        text-transform: capitalize;
+      }
+
+      .data {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 60px;
+
+        .property {
+          width: 90%;
+          border-bottom: 1px solid #ccc;
+          margin-bottom: 10px;
+
+          .left {
+            float: left;
+          }
+
+          .right {
+            float: right;
+          }
+        }
+
+        .detailMajorRow {
+          border-bottom: 1px solid #ccc;
+          margin-bottom: 10px;
+          justify-content: space-between;
+          display: flex;
+          flex-wrap: wrap;
+          width: 90%;
+
+          h3 {
+            margin-right: 20px;
+          }
+        }
+
+        .pillContainer {
+          display: inline-block;
+          margin: 0 10px 10px 0;
+          padding: 5px 10px;
+          border-radius: 20px;
+          color: #fff;
+          font-size: 1rem;
+          letter-spacing: 2px;
+          text-transform: capitalize;
+          word-wrap: none;
+          word-break: keep-all;
+          box-sizing: border-box;
+        }
+
+        .type {
+          background-color: #0a2e50;
+        }
+
+        .ability {
+          background-color: #c73015;
+        }
+
+        .movesBtn {
+          background-color: rgb(22, 117, 22);
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgb(21, 179, 21);
+            box-shadow: inset 0px 0px 0px 3px rgb(22, 117, 22);
+          }
+        }
+
+        .activeMoves {
+          background-color: rgb(21, 179, 21);
+          box-shadow: inset 0px 0px 0px 3px rgb(22, 117, 22);
+        }
+      }
+
+      .closeDetail {
+        opacity: 0.8;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #efefef;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .slideWrapper {
+      width: 300px;
+      z-index: -10; // so slides in from behind the modal
+
+      &.slideEnterActive {
+        animation: slide-in 1s ease-out forwards;
+      }
+      &.slideLeaveActive {
+        animation: slide-out 1s ease-out forwards;
+      }
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(-300px);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slide-out {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-300px);
+      }
+    }
+  }
+}
