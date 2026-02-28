@@ -4,16 +4,16 @@ import { useUiStore } from '../../stores/ui';
 import styles from './AboutMe.module.scss';
 
 const skillData = [
-  { text: 'Ruby/Rails', score: 10 },
-  { text: 'JavaScript', score: 9 },
-  { text: 'React', score: 9 },
-  { text: 'Vue.js', score: 5 },
-  { text: 'Java', score: 4 },
-  { text: 'Python', score: 6 },
-  { text: 'Postgres/SQL', score: 8 },
-  { text: 'AWS', score: 7 },
-  { text: 'HTML/CSS', score: 10 },
-  { text: 'git', score: 9 },
+  { text: 'Ruby/Rails', score: 10, color: '#e32431' },
+  { text: 'JavaScript', score: 9, color: '#f2f23f' },
+  { text: 'React', score: 9, color: '#20bde8' },
+  { text: 'Vue.js', score: 5, color: '#1eba79' },
+  { text: 'Postgres/SQL', score: 9, color: '#8d18d6' },
+  { text: 'AWS', score: 7, color: '#f5ae33' },
+  { text: 'HTML/CSS', score: 10, color: '#f78036' },
+  { text: 'Java', score: 4, color: '#e717eb' },
+  { text: 'Python', score: 6, color: '#214cdb' },
+  { text: 'git', score: 9, color: '#4e4f4e' },
 ];
 
 export default function AboutMe() {
