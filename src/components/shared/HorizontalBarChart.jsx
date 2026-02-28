@@ -61,15 +61,18 @@ export default function HorizontalBarChart({ data, chartOptions = {} }) {
       .attr('y', (d) => yScale(d.text))
       .attr('width', (d) => xScale(d.score))
       .attr('height', config.barHeight - config.barPadding)
-      .style('fill', config.style.barColor);
+      .style('fill', (d) => d.color || config.style.barColor)
+      .style('stroke', '#000000')
+      .style('stroke-width', '1px')
+      .style('fill-opacity', 0.8);
 
     rowGroups
       .selectAll('rect')
       .on('mouseover', function () {
         d3.select(this).style('fill', config.style.barHoverColor);
       })
-      .on('mouseout', function () {
-        d3.select(this).style('fill', config.style.barColor);
+      .on('mouseout', function (_event, d) {
+        d3.select(this).style('fill', d.color || config.style.barColor);
       });
 
     chart.append('g').attr('class', 'axis y').attr('transform', 'translate(0,0)').call(yAxis);
