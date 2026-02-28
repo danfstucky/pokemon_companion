@@ -11,6 +11,8 @@
   background: #e1ece8;
   color: #63ac99;
   font-family: 'ZCOOL QingKe HuangYou', serif;
+  display: flex;
+  flex-direction: column;
 
   .sidebarHeader {
     text-align: center;
@@ -52,6 +54,19 @@
         font-weight: 900;
         content: '\f101';
       }
+    }
+  }
+
+  .darkModeToggle {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    color: #63ac99;
+    font-size: 14px;
+
+    :global(.form-check-input:checked) {
+      background-color: #3c8373;
+      border-color: #3c8373;
     }
   }
 }

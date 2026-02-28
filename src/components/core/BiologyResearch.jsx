@@ -1,8 +1,11 @@
+import { useUiStore } from '../../stores/ui';
 import styles from './BiologyResearch.module.scss';
 
 export default function BiologyResearch() {
+  const darkMode = useUiStore((state) => state.darkMode);
+
   return (
-    <div className={styles.flexWrapper}>
+    <div className={`${styles.flexWrapper} ${darkMode ? styles.dark : ''}`}>
       <div className={`${styles.column} ${styles.column2}`}>
         <div className="card">
           <h4 className="card-header">Background</h4>

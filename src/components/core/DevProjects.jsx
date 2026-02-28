@@ -14,10 +14,12 @@ import screenshot10 from '../../assets/images/dev_projects/pokemon/screenshot10.
 import smiteScreenshot1 from '../../assets/images/dev_projects/smite_spec/screenshot1.png';
 import smiteScreenshot2 from '../../assets/images/dev_projects/smite_spec/screenshot2.png';
 import smiteScreenshot3 from '../../assets/images/dev_projects/smite_spec/screenshot3.png';
+import { useUiStore } from '../../stores/ui';
 import styles from './DevProjects.module.scss';
 
 export default function DevProjects() {
   const carouselRef = useRef(null);
+  const darkMode = useUiStore((state) => state.darkMode);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -26,7 +28,7 @@ export default function DevProjects() {
   }, []);
 
   return (
-    <div className={styles.projectsContainer}>
+    <div className={`${styles.projectsContainer} ${darkMode ? styles.dark : ''}`}>
       <div className="card">
         <h4 className="card-header">Pokemon Fan Game</h4>
         <div className={`card-body ${styles.flexWrapper}`}>
