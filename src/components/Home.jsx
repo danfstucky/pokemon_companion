@@ -1,18 +1,18 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Sidebar from './shared/Sidebar'
-import AboutMe from './core/AboutMe'
-import DevProjects from './core/DevProjects'
-import BiologyResearch from './core/BiologyResearch'
-import PokemonHome from './pokemon/PokemonHome'
-import Pokedex from './pokemon/pokedex/Pokedex'
-import WildPokemon from './pokemon/encounter_locations/WildPokemon'
-import PokemonGyms from './pokemon/gyms/PokemonGyms'
-import TypeChart from './pokemon/TypeChart'
-import PokemonAbout from './pokemon/About'
-import TalonHome from './talon/TalonHome'
-import CheatSheet from './talon/cheatsheet/CheatSheet'
-import CustomScripts from './talon/scripts/CustomScripts'
-import styles from './Home.module.scss'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Sidebar from './shared/Sidebar';
+import AboutMe from './core/AboutMe';
+import DevProjects from './core/DevProjects';
+import BiologyResearch from './core/BiologyResearch';
+import PokemonHome from './pokemon/PokemonHome';
+import Pokedex from './pokemon/pokedex/Pokedex';
+import WildPokemon from './pokemon/encounter_locations/WildPokemon';
+import PokemonGyms from './pokemon/gyms/PokemonGyms';
+import TypeChart from './pokemon/TypeChart';
+import PokemonAbout from './pokemon/About';
+import TalonHome from './talon/TalonHome';
+import CheatSheet from './talon/cheatsheet/CheatSheet';
+import CustomScripts from './talon/scripts/CustomScripts';
+import styles from './Home.module.scss';
 
 export default function Home() {
   return (
@@ -41,5 +41,5 @@ export default function Home() {
         </Routes>
       </div>
     </div>
-  )
+  );
 }

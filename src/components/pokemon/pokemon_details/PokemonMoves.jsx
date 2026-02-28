@@ -1,4 +1,4 @@
-import styles from './PokemonMoves.module.scss'
+import styles from './PokemonMoves.module.scss';
 
 export default function PokemonMoves({ moves = [] }) {
   return (
@@ -19,5 +19,5 @@ export default function PokemonMoves({ moves = [] }) {
         </tbody>
       </table>
     </div>
-  )
+  );
 }

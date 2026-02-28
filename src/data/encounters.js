@@ -96,9 +96,7 @@ const wildEncounterList = [
       },
       {
         terrain: 'Fishing',
-        pokemon: [
-          { name: 'MAGIKARP', id: 129, level: '5-7' },
-        ],
+        pokemon: [{ name: 'MAGIKARP', id: 129, level: '5-7' }],
       },
     ],
   },

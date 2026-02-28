@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(xargs wc:*)",
-      "Bash(npm install:*)",
-      "Bash(npx vitest:*)"
-    ]
-  }
-}

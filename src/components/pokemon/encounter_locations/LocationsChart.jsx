@@ -1,12 +1,12 @@
-import { useRef, useEffect } from 'react'
-import * as d3 from 'd3'
-import locations from '../../../data/locations'
-import townImg from '../../../assets/images/pokemon/town.png'
-import routeImg from '../../../assets/images/pokemon/route_sign.png'
-import './LocationsChart.scss'
+import { useRef, useEffect } from 'react';
+import * as d3 from 'd3';
+import locations from '../../../data/locations';
+import townImg from '../../../assets/images/pokemon/town.png';
+import routeImg from '../../../assets/images/pokemon/route_sign.png';
+import './LocationsChart.scss';
 
 export default function LocationsChart({ onShowLocationDetails }) {
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const chart = d3
@@ -15,25 +15,25 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .attr('width', 1400)
       .attr('height', 300)
       .append('g')
-      .attr('transform', 'translate(60,60)')
+      .attr('transform', 'translate(60,60)');
 
-    drawHexagons(chart, locations)
+    drawHexagons(chart, locations);
 
     return () => {
-      d3.select(containerRef.current).selectAll('*').remove()
-    }
-  }, [])
+      d3.select(containerRef.current).selectAll('*').remove();
+    };
+  }, []);
 
   function generateHexes(data) {
     return {
       type: 'FeatureCollection',
       features: data.map((hexData) => newHex(hexData)),
-    }
+    };
   }
 
   function newHex(d) {
-    const x = 2 * (d.x + d.y / 2.0)
-    const y = 2 * d.y
+    const x = 2 * (d.x + d.y / 2.0);
+    const y = 2 * d.y;
     return {
       type: 'Feature',
       geometry: {
@@ -55,23 +55,23 @@ export default function LocationsChart({ onShowLocationDetails }) {
         name: d.name,
         type: d.type,
       },
-    }
+    };
   }
 
   function drawHexagons(chart, data) {
-    const hexes = generateHexes(data)
-    const radius = 50
-    const dx = radius * 2 * Math.sin(Math.PI / 3)
-    const dy = radius * 1.5
+    const hexes = generateHexes(data);
+    const radius = 50;
+    const dx = radius * 2 * Math.sin(Math.PI / 3);
+    const dy = radius * 1.5;
     const projection = d3.geoTransform({
       point(x, y) {
         // eslint-disable-next-line no-bitwise
-        return this.stream.point((x * dx) / 2, -(y - (2 - (y & 1)) / 3) * (dy / 2))
+        return this.stream.point((x * dx) / 2, -(y - (2 - (y & 1)) / 3) * (dy / 2));
       },
-    })
-    const pathGenerator = d3.geoPath().projection(projection)
+    });
+    const pathGenerator = d3.geoPath().projection(projection);
 
-    const defs = chart.append('defs')
+    const defs = chart.append('defs');
     defs
       .selectAll('pattern')
       .data(data)
@@ -89,10 +89,10 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .attr('class', 'poke-img')
       .attr('xlink:href', (d) => {
         if (d.type === 'town') {
-          return townImg
+          return townImg;
         }
-        return routeImg
-      })
+        return routeImg;
+      });
 
     chart
       .append('g')
@@ -103,9 +103,9 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .append('path')
       .attr('id', (d) => `hex-bg-${d.properties.order}`)
       .attr('class', (d) => {
-        return d.properties.order === 1 ? 'poke-hex-bg active-hex' : 'poke-hex-bg'
+        return d.properties.order === 1 ? 'poke-hex-bg active-hex' : 'poke-hex-bg';
       })
-      .attr('d', pathGenerator)
+      .attr('d', pathGenerator);
 
     const hexagons = chart
       .append('g')
@@ -117,14 +117,14 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .attr('class', 'poke-hex')
       .attr('d', pathGenerator)
       .attr('id', (d) => `hex-${d.properties.order}`)
-      .style('fill', (d) => `url(#${d.properties.order})`)
+      .style('fill', (d) => `url(#${d.properties.order})`);
 
     const textGroup = chart
       .append('g')
       .attr('class', 'location-name-text')
       .selectAll('text')
       .data(hexes.features)
-      .enter()
+      .enter();
 
     textGroup
       .append('text')
@@ -133,8 +133,8 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .attr('y', (d) => pathGenerator.centroid(d)[1] - radius / 2)
       .attr('text-anchor', 'middle')
       .each(function (d) {
-        const words = d.properties.name.split(' ')
-        const xPos = d3.select(this).attr('x')
+        const words = d.properties.name.split(' ');
+        const xPos = d3.select(this).attr('x');
         d3.select(this)
           .selectAll(null)
           .data(words)
@@ -143,8 +143,8 @@ export default function LocationsChart({ onShowLocationDetails }) {
           .attr('dy', '1.2em')
           .attr('x', xPos)
           .text(String)
-          .attr('text-anchor', 'middle')
-      })
+          .attr('text-anchor', 'middle');
+      });
 
     textGroup
       .append('text')
@@ -154,34 +154,34 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .attr('y', (d) => pathGenerator.centroid(d)[1])
       .attr('text-anchor', 'middle')
       .attr('dy', -radius * (2 / 3))
-      .text((d) => d.properties.order)
+      .text((d) => d.properties.order);
 
     hexagons
       .on('mouseover', handleMouseOver)
       .on('mouseout', handleMouseOut)
-      .on('click', (event, d) => handleMouseClick(event, d))
+      .on('click', (event, d) => handleMouseClick(event, d));
   }
 
   function handleMouseOver(event, d) {
-    const order = d.properties.order
-    d3.select(`#hex-bg-${order}`).style('fill', '#bb005c')
-    d3.select(`#location-name-text-${order}`).style('fill', 'white')
-    d3.select(`#location-order-text-${order}`).style('fill', 'white')
+    const order = d.properties.order;
+    d3.select(`#hex-bg-${order}`).style('fill', '#bb005c');
+    d3.select(`#location-name-text-${order}`).style('fill', 'white');
+    d3.select(`#location-order-text-${order}`).style('fill', 'white');
   }
 
   function handleMouseOut(event, d) {
-    const order = d.properties.order
-    d3.select(`#hex-bg-${order}`).style('fill', '#d3d3d3')
-    d3.select(`#location-name-text-${order}`).style('fill', 'black')
-    d3.select(`#location-order-text-${order}`).style('fill', '#bb005c')
+    const order = d.properties.order;
+    d3.select(`#hex-bg-${order}`).style('fill', '#d3d3d3');
+    d3.select(`#location-name-text-${order}`).style('fill', 'black');
+    d3.select(`#location-order-text-${order}`).style('fill', '#bb005c');
   }
 
   function handleMouseClick(event, d) {
-    const order = d.properties.order
-    d3.select('path.active-hex').classed('active-hex', false)
-    d3.select(`#hex-bg-${order}`).classed('active-hex', true)
-    onShowLocationDetails(order)
+    const order = d.properties.order;
+    d3.select('path.active-hex').classed('active-hex', false);
+    d3.select(`#hex-bg-${order}`).classed('active-hex', true);
+    onShowLocationDetails(order);
   }
 
-  return <div id="locations-chart" ref={containerRef} />
+  return <div id="locations-chart" ref={containerRef} />;
 }

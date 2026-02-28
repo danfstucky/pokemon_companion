@@ -1,9 +1,8 @@
-import { NavLink } from 'react-router-dom'
-import styles from './PokemonTabs.module.scss'
+import { NavLink } from 'react-router-dom';
+import styles from './PokemonTabs.module.scss';
 
 export default function PokemonTabs() {
-  const getLinkClass = ({ isActive }) =>
-    `nav-link${isActive ? ` ${styles.active}` : ''}`
+  const getLinkClass = ({ isActive }) => `nav-link${isActive ? ` ${styles.active}` : ''}`;
 
   return (
     <div className={styles.pokeTabs}>
@@ -25,5 +24,5 @@ export default function PokemonTabs() {
         </NavLink>
       </ul>
     </div>
-  )
+  );
 }

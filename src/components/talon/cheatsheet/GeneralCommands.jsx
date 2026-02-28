@@ -1,5 +1,5 @@
-import talonService from '../../../services/talonService'
-import styles from './GeneralCommands.module.scss'
+import talonService from '../../../services/talonService';
+import styles from './GeneralCommands.module.scss';
 
 export default function GeneralCommands() {
   return (
@@ -24,7 +24,9 @@ export default function GeneralCommands() {
             </tr>
             <tr>
               <td>dictation mode</td>
-              <td>Switch to dictation mode. Your speech is <i>mostly</i> transcribed as plain text.</td>
+              <td>
+                Switch to dictation mode. Your speech is <i>mostly</i> transcribed as plain text.
+              </td>
             </tr>
             <tr>
               <td>command mode</td>
@@ -56,16 +58,17 @@ export default function GeneralCommands() {
                 say {talonService.encloseInAngles('any phrase')}
               </td>
               <td>
-                Instructs talon to treat the words spoken after &quot;phrase/say&quot; as if they were in dictation mode. This means
-                the words will be handled as text instead of commands. It is a helpful shortcut to avoid switching modes
-                when you have a small phrase to enter, such as into a search box.<br />
-                Example: &quot;phrase hello, my dog is named Benji&quot; will type &quot;hello, my dog is named Benji&quot; into the active
-                application.
+                Instructs talon to treat the words spoken after &quot;phrase/say&quot; as if they were in dictation
+                mode. This means the words will be handled as text instead of commands. It is a helpful shortcut to
+                avoid switching modes when you have a small phrase to enter, such as into a search box.
+                <br />
+                Example: &quot;phrase hello, my dog is named Benji&quot; will type &quot;hello, my dog is named
+                Benji&quot; into the active application.
               </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-  )
+  );
 }

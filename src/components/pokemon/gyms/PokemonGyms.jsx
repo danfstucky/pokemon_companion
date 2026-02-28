@@ -1,36 +1,33 @@
-import { useState } from 'react'
-import { usePokemonStore } from '../../../stores/pokemon'
-import gymLeaders from '../../../data/gym_leaders'
-import PokemonDetail from '../pokemon_details/PokemonDetail'
-import styles from './PokemonGyms.module.scss'
+import { useState } from 'react';
+import { usePokemonStore } from '../../../stores/pokemon';
+import gymLeaders from '../../../data/gym_leaders';
+import PokemonDetail from '../pokemon_details/PokemonDetail';
+import styles from './PokemonGyms.module.scss';
 
-const images = import.meta.glob(
-  '../../../assets/images/pokemon/gym_info/*',
-  { eager: true, import: 'default' }
-)
+const images = import.meta.glob('../../../assets/images/pokemon/gym_info/*', { eager: true, import: 'default' });
 
-const pokeImageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+const pokeImageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
 
 function getImgUrl(pic) {
-  return images[`../../../assets/images/pokemon/gym_info/${pic}`]
+  return images[`../../../assets/images/pokemon/gym_info/${pic}`];
 }
 
 export default function PokemonGyms() {
-  const showDetail = usePokemonStore((s) => s.showDetail)
-  const pokemonEntryId = usePokemonStore((s) => s.pokemonEntryId)
-  const showEncounterDetails = usePokemonStore((s) => s.showEncounterDetails)
-  const [selectedGymId, setSelectedGymId] = useState(null)
-  const [gymLeader, setGymLeader] = useState(null)
+  const showDetail = usePokemonStore((s) => s.showDetail);
+  const pokemonEntryId = usePokemonStore((s) => s.pokemonEntryId);
+  const showEncounterDetails = usePokemonStore((s) => s.showEncounterDetails);
+  const [selectedGymId, setSelectedGymId] = useState(null);
+  const [gymLeader, setGymLeader] = useState(null);
 
   function handleGymSelection(gymNum) {
-    setSelectedGymId(gymNum)
-    setGymLeader(gymLeaders.find((gym) => gym.id === gymNum))
+    setSelectedGymId(gymNum);
+    setGymLeader(gymLeaders.find((gym) => gym.id === gymNum));
   }
 
   return (
     <div className={styles.gymsContainer}>
       <div className={styles.gymLeadersWrapper}>
-        {[1,2,3,4,5,6,7,8,9].map((gymNum) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((gymNum) => (
           <img
             key={gymNum}
             className={`${styles.gymLeader}${selectedGymId === gymNum ? ` ${styles.highlight}` : ''}`}
@@ -79,9 +76,7 @@ export default function PokemonGyms() {
         </div>
       )}
 
-      {showDetail && (
-        <PokemonDetail pokemonId={pokemonEntryId} isWildEncounter={false} />
-      )}
+      {showDetail && <PokemonDetail pokemonId={pokemonEntryId} isWildEncounter={false} />}
     </div>
-  )
+  );
 }
