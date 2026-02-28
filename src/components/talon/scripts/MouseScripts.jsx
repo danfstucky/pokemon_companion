@@ -66,8 +66,7 @@ export default function MouseScripts() {
     <ul>
       <li>
         <strong>Voice Command Overview:</strong>
-        <table>
-          <table className="table table-striped table-hover table-bordered">
+        <table className="table table-striped table-hover table-bordered">
             <thead className="thead-dark">
               <tr>
                 <th>Voice Command</th>
@@ -132,7 +131,6 @@ export default function MouseScripts() {
                 <td>Move the mouse right a far amount.</td>
               </tr>
             </tbody>
-          </table>
         </table>
       </li>
       <li>
