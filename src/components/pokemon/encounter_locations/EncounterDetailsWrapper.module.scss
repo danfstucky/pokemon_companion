@@ -1,0 +1,44 @@
+.terrainWrapper {
+  display: inline-block;
+}
+
+.terrainSidebar {
+  margin: -23px 0px -23px -23px;
+  border-radius: 20px;
+  border: white solid 3px;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 26px;
+  color: white;
+}
+
+.terrainBlock {
+  background-color: #d3d3d3;
+  padding: 20px;
+  margin: 10px;
+  border: white solid 3px;
+  box-shadow: 5px 5px 4px;
+  border-radius: 25px;
+}
+
+.terrainLand {
+  background-color: rgb(32, 184, 32);
+}
+
+.terrainSurf {
+  background-color: rgb(2, 78, 192);
+}
+
+.terrainFishing {
+  background-color: rgb(128, 178, 253);
+}
+
+.terrainCave {
+  background-color: #b5651d;
+}
+
+.noResults {
+  font-size: 24px;
+}

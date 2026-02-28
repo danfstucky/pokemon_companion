@@ -1,0 +1,15 @@
+.flexWrapper {
+  display: flex;
+
+  .column {
+    padding: 0px 10px;
+  }
+
+  :global(.card) {
+    margin: 10px;
+  }
+
+  .column2 {
+    flex: 2;
+  }
+}

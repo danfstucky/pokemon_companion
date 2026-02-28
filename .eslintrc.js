@@ -1,16 +1,28 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    browser: true,
+    es2020: true,
   },
   extends: [
-    "plugin:vue/vue3-essential",
-    "plugin:vue/vue3-recommended"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
   ],
   rules: {
-    "no-console": "warn"
+    "no-console": "warn",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
   },
   parserOptions: {
-    "parser": "babel-eslint"
-  }
+    ecmaVersion: "latest",
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
 }

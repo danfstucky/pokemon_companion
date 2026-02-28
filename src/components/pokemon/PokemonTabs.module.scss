@@ -1,0 +1,21 @@
+.pokeTabs {
+  font-size: 22px;
+  margin-bottom: 20px;
+
+  a {
+    color: #007bff;
+
+    &:hover {
+      color: #97c5f6;
+    }
+  }
+
+  .active {
+    color: #0056b3;
+    background-color: white;
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+}

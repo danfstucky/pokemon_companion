@@ -1,0 +1,26 @@
+.pokemonMoves {
+  background-color: #fff;
+  height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+  border: 5px solid rgb(22, 117, 22);
+
+  table {
+    thead {
+      background: rgb(22, 117, 22);
+      color: white;
+
+      th {
+        font-size: 1.75em;
+        border-radius: 20px;
+        border: none;
+        text-align: center;
+      }
+    }
+
+    td {
+      font-size: 18px;
+      text-align: left;
+    }
+  }
+}
