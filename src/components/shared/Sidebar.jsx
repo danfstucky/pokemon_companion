@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import { useUiStore } from '../../stores/ui';
 import styles from './Sidebar.module.scss';
 
 export default function Sidebar() {
   const getLinkClass = ({ isActive }) => (isActive ? styles.active : '');
+  const darkMode = useUiStore((state) => state.darkMode);
+  const toggleDarkMode = useUiStore((state) => state.toggleDarkMode);
 
   return (
     <nav className={styles.sidebar}>
@@ -27,6 +30,20 @@ export default function Sidebar() {
           <li>Genetics Research</li>
         </NavLink>
       </ul>
+      <div className={styles.darkModeToggle}>
+        <div className="form-check form-switch mb-0">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            id="darkModeSwitch"
+            checked={darkMode}
+            onChange={toggleDarkMode}
+          />
+          <label className="form-check-label" htmlFor="darkModeSwitch">
+            Dark Mode
+          </label>
+        </div>
+      </div>
     </nav>
   );
 }

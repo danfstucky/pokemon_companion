@@ -67,3 +67,25 @@
     }
   }
 }
+
+.projectsContainer.dark {
+  background-color: #1e2a27;
+  min-height: 100vh;
+  color: #d4eae4;
+
+  :global(.card) {
+    background-color: #263530;
+    border-color: rgba(99, 172, 153, 0.25);
+    color: #d4eae4;
+  }
+
+  :global(.card-header) {
+    background-color: #1a2e29;
+    color: #63ac99;
+    border-bottom-color: rgba(99, 172, 153, 0.25);
+  }
+
+  a {
+    color: #63ac99;
+  }
+}
