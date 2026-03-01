@@ -11,7 +11,7 @@ const skillData = [
   { text: 'Postgres/SQL', score: 9, color: '#8d18d6' },
   { text: 'AWS', score: 7, color: '#f5ae33' },
   { text: 'HTML/CSS', score: 10, color: '#f78036' },
-  { text: 'Java', score: 4, color: '#e717eb' },
+  { text: 'C#/.NET', score: 4, color: '#e717eb' },
   { text: 'Python', score: 6, color: '#214cdb' },
   { text: 'git', score: 9, color: '#4e4f4e' },
 ];
