@@ -20,6 +20,9 @@ export default function Sidebar() {
         <NavLink to="/dev-projects" className={getLinkClass}>
           <li>Dev Projects</li>
         </NavLink>
+        <NavLink to="/books" className={getLinkClass}>
+          <li>Books</li>
+        </NavLink>
         <NavLink to="/pokemon" className={getLinkClass}>
           <li>Pokemon Salmon Red</li>
         </NavLink>

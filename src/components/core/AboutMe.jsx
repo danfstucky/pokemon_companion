@@ -4,8 +4,9 @@ import { useUiStore } from '../../stores/ui';
 import styles from './AboutMe.module.scss';
 
 const skillData = [
+  { text: 'Agentic AI', score: 9, color: '#1abc9c' },
   { text: 'Ruby/Rails', score: 10, color: '#e32431' },
-  { text: 'JavaScript', score: 9, color: '#f2f23f' },
+  { text: 'Node/JS', score: 9, color: '#f2f23f' },
   { text: 'React', score: 9, color: '#20bde8' },
   { text: 'Vue.js', score: 5, color: '#1eba79' },
   { text: 'Postgres/SQL', score: 9, color: '#8d18d6' },
@@ -27,7 +28,7 @@ export default function AboutMe() {
           <div className={`card-body ${styles.aboutMeCard}`}>
             <img src={danStucky} alt="Dan Stucky" />
             <p>
-              I have been working as a Full-Stack Web Dev for 9 years and am currently employed by a software company
+              I have been working as a Full-Stack Web Dev for 10 years and am currently employed by a software company
               named Storable. Our stack primarily consists of Rails, Node, React, Postgres and AWS. I love writing
               software and working on projects that have a positive and meaningful influence on people&apos;s lives.
               Prior to software development, I obtained a M.S. in molecular genetics and I&apos;d like to someday

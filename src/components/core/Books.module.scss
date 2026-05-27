@@ -1,0 +1,83 @@
+.booksContainer {
+  margin: 10px;
+
+  :global(.card) {
+    margin: 10px;
+  }
+
+  .bookCard {
+    display: flex;
+    gap: 20px;
+
+    .bookCover {
+      width: 200px;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: scale(1.04);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .amazonBtn {
+      display: inline-block;
+      padding: 8px 18px;
+      background-color: #ff9900;
+      color: #111;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #e68a00;
+        color: #111;
+        text-decoration: none;
+      }
+
+      i {
+        margin-right: 6px;
+      }
+    }
+
+    .formats {
+      i {
+        margin-right: 4px;
+      }
+
+      span {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+
+.booksContainer.dark {
+  background-color: #1e2a27;
+  min-height: 100vh;
+  color: #d4eae4;
+
+  :global(.card) {
+    background-color: #263530;
+    border-color: rgba(99, 172, 153, 0.25);
+    color: #d4eae4;
+  }
+
+  :global(.card-header) {
+    background-color: #1a2e29;
+    color: #63ac99;
+    border-bottom-color: rgba(99, 172, 153, 0.25);
+  }
+
+  a {
+    color: #63ac99;
+  }
+
+  .bookCard .bookCover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}

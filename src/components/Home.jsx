@@ -3,6 +3,7 @@ import Sidebar from './shared/Sidebar';
 import AboutMe from './core/AboutMe';
 import DevProjects from './core/DevProjects';
 import BiologyResearch from './core/BiologyResearch';
+import Books from './core/Books';
 import PokemonHome from './pokemon/PokemonHome';
 import Pokedex from './pokemon/pokedex/Pokedex';
 import WildPokemon from './pokemon/encounter_locations/WildPokemon';
@@ -23,6 +24,7 @@ export default function Home() {
           <Route path="/" element={<Navigate to="/about-me" replace />} />
           <Route path="/about-me" element={<AboutMe />} />
           <Route path="/dev-projects" element={<DevProjects />} />
+          <Route path="/books" element={<Books />} />
           <Route path="/research" element={<BiologyResearch />} />
           <Route path="/pokemon" element={<PokemonHome />}>
             <Route index element={<Navigate to="/pokemon/pokedex" replace />} />

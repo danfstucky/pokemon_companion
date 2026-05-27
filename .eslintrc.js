@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     "no-console": "warn",
     "react/prop-types": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
   },
   settings: {
     react: {
