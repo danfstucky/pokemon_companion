@@ -1,11 +1,43 @@
+.bar-chart {
+  width: 100%;
+}
+
 svg.bar-chart-svg {
-  .axis {
-    text {
-      font-size: 16px;
-      padding-right: 10px;
+  display: block;
+  overflow: visible;
+
+  .bar-hit {
+    fill: transparent;
+  }
+
+  .bar-label {
+    fill: var(--text);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .bar-value {
+    fill: var(--text-muted);
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bar-track {
+    fill: var(--surface-3);
+  }
+
+  .bar {
+    fill: var(--accent);
+    transition: fill 0.15s ease;
+  }
+
+  .bar-row:hover {
+    .bar {
+      fill: var(--accent-strong);
     }
-    path {
-      display: none;
+
+    .bar-value {
+      fill: var(--text);
     }
   }
 }

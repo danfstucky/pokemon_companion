@@ -76,7 +76,8 @@ const RadarChart = {
         .style('font-family', 'sans-serif')
         .style('font-size', '10px')
         .attr('transform', `translate(${cfg.w / 2 - levelFactor + cfg.offsetRight}, ${cfg.h / 2 - levelFactor})`)
-        .attr('fill', '#737373')
+        .attr('fill', 'currentColor')
+        .style('opacity', 0.6)
         .text(Math.round((j + 1) * (cfg.maxValue / cfg.levels)));
     }
 
@@ -96,6 +97,7 @@ const RadarChart = {
       .append('text')
       .attr('class', 'legend')
       .text((d) => d)
+      .style('fill', 'currentColor')
       .style('font-family', 'sans-serif')
       .style('font-size', '11px')
       .attr('text-anchor', 'middle')

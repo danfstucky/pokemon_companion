@@ -1,7 +1,13 @@
 .wrapper {
   display: flex;
+  min-height: 100vh;
 
   .mainContentContainer {
-    width: 110%;
+    flex: 1;
+    min-width: 0;
+  }
+
+  @media (max-width: 991.98px) {
+    flex-direction: column;
   }
 }

@@ -2,98 +2,134 @@
   text-align: center;
 
   .gymLeadersWrapper {
-    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 28px;
+    max-width: 1000px;
 
     .gymLeader {
-      margin: 7px;
-      border-radius: 15px;
-      opacity: 0.7;
+      border-radius: var(--radius);
+      border: 3px solid transparent;
+      opacity: 0.65;
+      box-shadow: var(--shadow-sm);
+      transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        border-color 0.15s ease;
 
       &:hover {
-        border: 4px solid white;
-        margin: 3px;
         opacity: 1;
         cursor: pointer;
+        transform: translateY(-2px);
       }
     }
 
     .highlight {
-      border: 6px solid white;
-      margin: 1px;
       opacity: 1;
+      border-color: var(--poke-accent);
+      box-shadow: var(--shadow-md);
     }
   }
 
   .gymCity {
-    border-radius: 15px;
-    border: 3px solid white;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
   }
 
   .disclaimer {
-    color: white;
-    font-size: 12px;
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
   }
 
   .gymDetails {
-    background-color: #d3d3d3;
-    padding: 10px;
-    margin: 10px auto;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 24px;
     text-align: left;
-    border: white solid 3px;
-    box-shadow: 5px 5px 4px;
-    border-radius: 25px;
-    max-width: 950px;
+    background: var(--poke-panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) + 4px);
+    box-shadow: var(--shadow-md);
 
     .gymLeaderDetails {
-      background: radial-gradient(#8ff0ff, #8fffc0);
-      font-size: 18px;
-      border: white solid 3px;
-      border-radius: 25px;
-      padding: 10px;
-      margin-top: 10px;
+      margin-top: 16px;
+      padding: 16px;
+      font-size: 1rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      table {
+        margin-bottom: 12px;
+      }
 
       .label {
-        font-weight: bold;
-        padding-right: 10px;
+        font-weight: 600;
+        padding-right: 12px;
+        color: var(--text-muted);
       }
 
       .gymLeaderPokemon {
         display: grid;
-        grid-template-columns: repeat(6, 130px [col-start]);
-        grid-gap: 10px;
-        max-width: 900px;
-        margin-right: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+        gap: 12px;
 
         article {
-          height: 130px;
-          background-color: #efefef;
+          position: relative;
+          height: 136px;
+          padding: 6px;
+          background: var(--poke-tile);
+          color: var(--text);
           text-align: center;
           text-transform: capitalize;
-          border-radius: 8px;
-          border: #bb005c solid 2px;
-          box-shadow:
-            0 15px 30px rgba(0, 0, 0, 0.2),
-            0 10px 10px rgba(0, 0, 0, 0.2);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-sm);
+          box-shadow: var(--shadow-sm);
+          transition:
+            transform 0.15s ease,
+            box-shadow 0.15s ease,
+            border-color 0.15s ease;
 
           &:hover {
             cursor: pointer;
-            border: white solid 4px;
-            background-color: #bb005c;
-            color: white;
+            transform: translateY(-2px);
+            border-color: var(--poke-accent);
+            box-shadow: var(--shadow-md);
+
+            h5 {
+              color: var(--poke-accent);
+            }
           }
 
           img {
-            margin: 0px 0px 0px -10px;
+            display: block;
+            margin: 2px auto 0;
           }
 
-          h6 {
-            margin: 0px;
+          h5 {
+            margin: 0;
+            font-size: 1rem;
           }
 
           .pokedexNum {
-            float: left;
-            padding-left: 5px;
-            padding-top: 10px;
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            margin: 0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-subtle);
+
+            &::before {
+              content: '#';
+            }
           }
         }
       }

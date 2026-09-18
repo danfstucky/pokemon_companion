@@ -1,10 +1,18 @@
 .cardHeader {
-  background: rgb(211, 168, 235);
+  background: var(--talon-header);
+  color: var(--text);
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 16px 22px;
 }
 
 .cardBorder {
-  border-width: 5px;
-  border-color: rgb(1, 205, 194);
+  max-width: 1120px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden;
+  border-top: 4px solid #13b3a8;
+  box-shadow: var(--shadow-md);
 }
 
 .width20 {

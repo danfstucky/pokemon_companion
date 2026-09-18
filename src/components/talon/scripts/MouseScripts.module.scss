@@ -1,5 +1,8 @@
 .pre {
-  background: rgb(222, 222, 222);
-  padding: 0px 20px;
-  border-radius: 25px;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 16px 22px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
 }

@@ -1,48 +1,402 @@
-.flexWrapper {
-  display: flex;
-
-  .column {
-    padding: 0px 10px;
-  }
-
-  .column2 {
-    flex: 2;
-  }
-
-  .aboutMeCard {
-    img {
-      float: left;
-      padding-right: 10px;
-    }
-  }
-
+.aboutPage {
   :global(.card) {
-    margin: 10px;
+    margin-bottom: 24px;
+  }
+
+  :global(.card-header) h2,
+  h2:global(.card-header) {
+    font-size: 1.05rem;
+    margin: 0;
   }
 }
 
-.flexWrapper.dark {
-  background-color: #1e2a27;
-  min-height: 100vh;
-  color: #d4eae4;
+// ---------------------------------------------------------------- Hero
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  padding: 44px 48px;
+  margin-bottom: 24px;
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(700px 320px at 100% 0%, var(--accent-soft), transparent 70%),
+    radial-gradient(500px 260px at 0% 100%, var(--accent-soft), transparent 70%), var(--surface);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  isolation: isolate;
 
-  :global(.card) {
-    background-color: #263530;
-    border-color: rgba(99, 172, 153, 0.25);
-    color: #d4eae4;
+  &:hover .peeker {
+    transform: translateY(-18px) rotate(-3deg);
   }
 
-  :global(.card-header) {
-    background-color: #1a2e29;
-    color: #63ac99;
-    border-bottom-color: rgba(99, 172, 153, 0.25);
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 22px;
+  }
+}
+
+.heroPortrait {
+  flex-shrink: 0;
+  padding: 5px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow:
+    0 0 0 1px var(--border-strong),
+    var(--shadow-md);
+
+  img {
+    display: block;
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--surface-2);
   }
 
-  :global(.text-secondary) {
-    color: #8fc4b5 !important;
+  @media (max-width: 767.98px) {
+    img {
+      width: 104px;
+      height: 104px;
+    }
+  }
+}
+
+.heroText {
+  min-width: 0;
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    margin: 14px 0 14px;
+    max-width: 20ch;
+
+    em {
+      font-style: normal;
+      color: var(--accent);
+    }
+  }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.lead {
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  max-width: 56ch;
+  margin: 0 0 24px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.buttonPrimary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+
+  &:hover {
+    background: var(--accent-strong);
+    color: var(--accent-contrast);
+  }
+
+  i {
+    font-size: 0.8em;
+  }
+}
+
+.buttonGhost {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text);
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+// Decorative layer: faint "favorite things" icons + a Pokemon peeking up from the bottom edge
+.heroDoodles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  i {
+    position: absolute;
+    color: var(--accent);
+    opacity: 0.13;
+  }
+
+  // Below this width the text fills the panel and the icons would sit behind it
+  @media (max-width: 1279.98px) {
+    display: none;
+  }
+}
+
+.peeker {
+  position: absolute;
+  right: 36px;
+  bottom: -92px;
+  width: 210px;
+  height: auto;
+  z-index: -1;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @media (max-width: 1279.98px) {
+    width: 150px;
+    right: 18px;
+    bottom: -66px;
+  }
+
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------- Highlights
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+
+  li {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (max-width: 767.98px) {
+    gap: 10px;
+  }
+}
+
+.highlightBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 22px;
+}
+
+.highlightLink {
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background-color 0.15s ease;
+
+  .highlightLabel::after {
+    content: '→';
+    display: inline-block;
+    margin-left: 6px;
+    color: var(--accent);
+    transition: transform 0.15s ease;
+  }
+
+  &:hover {
+    background: var(--surface-2);
+    color: inherit;
+
+    .highlightLabel::after {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.highlightValue {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.highlightLabel {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+// ---------------------------------------------------------------- Content grid
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 991.98px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+.prose p {
+  color: var(--text);
+  margin-bottom: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.headerWithMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.headerMeta {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-subtle);
+}
+
+// ---------------------------------------------------------------- Education timeline
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    padding-bottom: 20px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 36px;
+      bottom: 4px;
+      width: 1px;
+      background: var(--border-strong);
+    }
+  }
+}
+
+.timelineIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+.degree {
+  font-weight: 600;
+  line-height: 1.35;
+  padding-top: 5px;
+}
+
+.school {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.year {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+// ---------------------------------------------------------------- Contact
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
   a {
-    color: #63ac99;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
+}
+
+.contactIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-muted);
 }

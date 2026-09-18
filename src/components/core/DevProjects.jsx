@@ -14,12 +14,41 @@ import screenshot10 from '../../assets/images/dev_projects/pokemon/screenshot10.
 import smiteScreenshot1 from '../../assets/images/dev_projects/smite_spec/screenshot1.png';
 import smiteScreenshot2 from '../../assets/images/dev_projects/smite_spec/screenshot2.png';
 import smiteScreenshot3 from '../../assets/images/dev_projects/smite_spec/screenshot3.png';
-import { useUiStore } from '../../stores/ui';
 import styles from './DevProjects.module.scss';
+
+const pokemonScreenshots = [
+  screenshot1,
+  screenshot2,
+  screenshot3,
+  screenshot4,
+  screenshot5,
+  screenshot6,
+  screenshot7,
+  screenshot8,
+  screenshot9,
+  screenshot10,
+];
+
+function Tags({ items }) {
+  return (
+    <ul className={styles.tags}>
+      {items.map((tag) => (
+        <li key={tag}>{tag}</li>
+      ))}
+    </ul>
+  );
+}
+
+function GithubLink({ href }) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer" className={styles.linkButton}>
+      <i className="fab fa-github" aria-hidden="true" /> Project Github Link
+    </a>
+  );
+}
 
 export default function DevProjects() {
   const carouselRef = useRef(null);
-  const darkMode = useUiStore((state) => state.darkMode);
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -28,11 +57,25 @@ export default function DevProjects() {
   }, []);
 
   return (
-    <div className={`${styles.projectsContainer} ${darkMode ? styles.dark : ''}`}>
-      <div className="card">
-        <h4 className="card-header">Pokemon Fan Game</h4>
+    <div className={`page ${styles.projectsContainer}`}>
+      <header className="page-header">
+        <span className="eyebrow">Portfolio</span>
+        <h1>Dev Projects</h1>
+        <p>A few projects I have worked on outside of my day job.</p>
+      </header>
+
+      <article className={`card ${styles.project}`}>
+        <div className={styles.projectHeader}>
+          <div>
+            <h2>Pokemon Fan Game</h2>
+            <Tags items={['Ruby', 'RPG Maker', 'Game design']} />
+          </div>
+          <a href="#/pokemon" className={styles.linkButton}>
+            Explore the companion app <i className="fas fa-arrow-right" aria-hidden="true" />
+          </a>
+        </div>
         <div className={`card-body ${styles.flexWrapper}`}>
-          <div className={`${styles.column} ${styles.column2}`}>
+          <div className={styles.projectText}>
             <img src={salmonRedLogo} className={styles.pokelogo} alt="Salmon Red Logo" />
             <p>
               Pokemon fan game created inside RPG Maker using Ruby scripts to program game mechanics and
@@ -44,10 +87,10 @@ export default function DevProjects() {
             </p>
           </div>
 
-          <div className={`${styles.column} ${styles.column2}`}>
+          <div className={styles.projectMedia}>
             <div id="pokemon-carousel" className="carousel slide" data-bs-ride="carousel" ref={carouselRef}>
               <ol className="carousel-indicators">
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                {pokemonScreenshots.map((_, i) => (
                   <li
                     key={i}
                     data-bs-target="#pokemon-carousel"
@@ -57,18 +100,7 @@ export default function DevProjects() {
                 ))}
               </ol>
               <div className="carousel-inner">
-                {[
-                  screenshot1,
-                  screenshot2,
-                  screenshot3,
-                  screenshot4,
-                  screenshot5,
-                  screenshot6,
-                  screenshot7,
-                  screenshot8,
-                  screenshot9,
-                  screenshot10,
-                ].map((src, i) => (
+                {pokemonScreenshots.map((src, i) => (
                   <div key={i} className={`carousel-item${i === 0 ? ' active' : ''}`}>
                     <img className="d-block w-100" src={src} alt={`Screenshot ${i + 1}`} />
                   </div>
@@ -77,39 +109,47 @@ export default function DevProjects() {
               <a className="carousel-control-prev" href="#pokemon-carousel" role="button" data-bs-slide="prev">
                 <div className={styles.carouselControlWrapper}>
                   <span className="carousel-control-prev-icon" aria-hidden="true" />
-                  <span className="sr-only">Previous</span>
+                  <span className="visually-hidden">Previous</span>
                 </div>
               </a>
               <a className="carousel-control-next" href="#pokemon-carousel" role="button" data-bs-slide="next">
                 <div className={styles.carouselControlWrapper}>
                   <span className="carousel-control-next-icon" aria-hidden="true" />
-                  <span className="sr-only">Next</span>
+                  <span className="visually-hidden">Next</span>
                 </div>
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div className="card">
-        <h4 className="card-header">Tactical Arbitrage Command Line App</h4>
+      <article className={`card ${styles.project}`}>
+        <div className={styles.projectHeader}>
+          <div>
+            <h2>Tactical Arbitrage Command Line App</h2>
+            <Tags items={['Node.js', 'CLI', 'Data analysis']} />
+          </div>
+          <GithubLink href="https://github.com/sulaimonlasisi/clearance-app" />
+        </div>
         <div className="card-body">
-          <p>
+          <p className={styles.projectText}>
             A Node.js command line application for finding great opportunities to buy and sell items from Walmart and
             Amazon at a profit. It pulls down information for millions of items from both sites and outputs a list of
             the top picks based on profit margin, buyer reviews, and consumer demand.
           </p>
-          <i className="fab fa-github" />{' '}
-          <a href="https://github.com/sulaimonlasisi/clearance-app" target="_blank" rel="noreferrer">
-            Project Github Link
-          </a>
         </div>
-      </div>
+      </article>
 
-      <div className="card">
-        <h4 className="card-header">Smite Spec</h4>
+      <article className={`card ${styles.project}`}>
+        <div className={styles.projectHeader}>
+          <div>
+            <h2>Smite Spec</h2>
+            <Tags items={['Android', 'Mobile', 'Game stats']} />
+          </div>
+          <GithubLink href="https://github.com/danfstucky/SmiteSpec" />
+        </div>
         <div className={`card-body ${styles.flexWrapper}`}>
-          <div className={`${styles.column} ${styles.column1}`}>
+          <div className={styles.projectText}>
             <p>
               Smite Spec is intended for all players of the popular multiplayer online battle arena game, Smite. It
               allows users to find player and clan statistics to help improve their play style and team performance in
@@ -118,30 +158,14 @@ export default function DevProjects() {
               favorite and best god characters to play as, and compare their stats to in-game friends. It is only
               available for Android.
             </p>
-            <i className="fab fa-github" />{' '}
-            <a href="https://github.com/danfstucky/SmiteSpec" target="_blank" rel="noreferrer">
-              Project Github Link
-            </a>
           </div>
-          <div className={`${styles.smiteSpecImagesContainer} ${styles.column} ${styles.column3}`}>
-            <table className={styles.smiteSpecImages}>
-              <tbody>
-                <tr>
-                  <td>
-                    <img src={smiteScreenshot1} alt="Smite Spec 1" />
-                  </td>
-                  <td>
-                    <img src={smiteScreenshot2} alt="Smite Spec 2" />
-                  </td>
-                  <td>
-                    <img src={smiteScreenshot3} alt="Smite Spec 3" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className={`${styles.projectMedia} ${styles.smiteSpecImages}`}>
+            <img src={smiteScreenshot1} alt="Smite Spec 1" />
+            <img src={smiteScreenshot2} alt="Smite Spec 2" />
+            <img src={smiteScreenshot3} alt="Smite Spec 3" />
           </div>
         </div>
-      </div>
+      </article>
     </div>
   );
 }

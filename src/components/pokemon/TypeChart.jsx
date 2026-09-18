@@ -16,7 +16,7 @@ function effectivenessMultiplier(type, compareType) {
 
 export default function TypeChart() {
   return (
-    <div>
+    <div className={styles.tableWrapper}>
       <table className={styles.typeTable}>
         <thead>
           <tr>

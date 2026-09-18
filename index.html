@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="Dan Stucky - Senior Software Engineer. Projects, writing, and research." />
+    <meta name="color-scheme" content="light dark" />
     <link rel="shortcut icon" type="image/png" href="favicon.png" />
-    <title>Dan Stucky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+    <title>Dan Stucky - Senior Software Engineer</title>
+    <script>
+      // Set the theme before first paint to avoid a light/dark flash.
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'dark' && theme !== 'light') {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>

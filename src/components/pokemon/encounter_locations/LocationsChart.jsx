@@ -129,6 +129,7 @@ export default function LocationsChart({ onShowLocationDetails }) {
     textGroup
       .append('text')
       .attr('id', (d) => `location-name-text-${d.properties.order}`)
+      .attr('class', (d) => (d.properties.order === 1 ? 'location-name active-hex' : 'location-name'))
       .attr('x', (d) => pathGenerator.centroid(d)[0])
       .attr('y', (d) => pathGenerator.centroid(d)[1] - radius / 2)
       .attr('text-anchor', 'middle')
@@ -149,7 +150,7 @@ export default function LocationsChart({ onShowLocationDetails }) {
     textGroup
       .append('text')
       .attr('id', (d) => `location-order-text-${d.properties.order}`)
-      .attr('class', 'location-order-text')
+      .attr('class', (d) => (d.properties.order === 1 ? 'location-order-text active-hex' : 'location-order-text'))
       .attr('x', (d) => pathGenerator.centroid(d)[0])
       .attr('y', (d) => pathGenerator.centroid(d)[1])
       .attr('text-anchor', 'middle')
@@ -162,24 +163,26 @@ export default function LocationsChart({ onShowLocationDetails }) {
       .on('click', (event, d) => handleMouseClick(event, d));
   }
 
+  function setHovered(order, hovered) {
+    d3.select(`#hex-bg-${order}`).classed('hovered', hovered);
+    d3.select(`#location-name-text-${order}`).classed('hovered', hovered);
+    d3.select(`#location-order-text-${order}`).classed('hovered', hovered);
+  }
+
   function handleMouseOver(event, d) {
-    const order = d.properties.order;
-    d3.select(`#hex-bg-${order}`).style('fill', '#bb005c');
-    d3.select(`#location-name-text-${order}`).style('fill', 'white');
-    d3.select(`#location-order-text-${order}`).style('fill', 'white');
+    setHovered(d.properties.order, true);
   }
 
   function handleMouseOut(event, d) {
-    const order = d.properties.order;
-    d3.select(`#hex-bg-${order}`).style('fill', '#d3d3d3');
-    d3.select(`#location-name-text-${order}`).style('fill', 'black');
-    d3.select(`#location-order-text-${order}`).style('fill', '#bb005c');
+    setHovered(d.properties.order, false);
   }
 
   function handleMouseClick(event, d) {
     const order = d.properties.order;
-    d3.select('path.active-hex').classed('active-hex', false);
+    d3.select(containerRef.current).selectAll('.active-hex').classed('active-hex', false);
     d3.select(`#hex-bg-${order}`).classed('active-hex', true);
+    d3.select(`#location-name-text-${order}`).classed('active-hex', true);
+    d3.select(`#location-order-text-${order}`).classed('active-hex', true);
     onShowLocationDetails(order);
   }
 

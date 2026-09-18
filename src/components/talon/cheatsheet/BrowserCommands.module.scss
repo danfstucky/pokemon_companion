@@ -1,10 +1,18 @@
 .cardHeader {
-  background: rgb(211, 168, 235);
+  background: var(--talon-header);
+  color: var(--text);
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 16px 22px;
 }
 
 .cardBorder {
-  border-width: 5px;
-  border-color: rgb(252, 189, 101);
+  max-width: 1120px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden;
+  border-top: 4px solid #f2a93b;
+  box-shadow: var(--shadow-md);
 }
 
 .width20 {
@@ -12,5 +20,9 @@
 }
 
 .helperText {
-  background: #e9ecef;
+  margin: 0;
+  padding: 14px 22px !important;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
 }

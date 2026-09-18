@@ -1,86 +1,120 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import './HorizontalBarChart.scss';
 
 const defaultConfig = {
   chartId: 'bar-chart',
-  chartWidth: 300,
-  barHeight: 40,
-  barPadding: 4,
-  leftMargin: 100,
-  style: {
-    barColor: 'steelblue',
-    barHoverColor: 'blue',
-  },
+  maxValue: null,
+  rowHeight: 34,
+  barHeight: 10,
+  labelWidth: 118,
+  valueWidth: 44,
 };
 
+// Bars are drawn in the theme accent (via CSS) so they follow light/dark mode.
+// A datum's optional `color` is shown as a small identity dot beside its label.
 export default function HorizontalBarChart({ data, chartOptions = {} }) {
   const containerRef = useRef(null);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const config = {
-      ...defaultConfig,
-      ...chartOptions,
-      style: { ...defaultConfig.style, ...(chartOptions.style || {}) },
-    };
-    const chartHeight = config.barHeight * data.length;
-    const chartWidth = config.chartWidth;
-    const maxScore = d3.max(data, (d) => d.score);
+    const el = containerRef.current;
+    if (!el) return undefined;
+    setWidth(el.clientWidth);
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const observer = new ResizeObserver(([entry]) => setWidth(Math.floor(entry.contentRect.width)));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
-    const xScale = d3
-      .scaleLinear()
-      .domain([0, maxScore])
-      .range([0, chartWidth - config.leftMargin]);
+  useEffect(() => {
+    if (!width) return undefined;
+    const config = { ...defaultConfig, ...chartOptions };
+    const container = d3.select(containerRef.current);
+    const chartHeight = config.rowHeight * data.length;
+    const maxValue = config.maxValue || d3.max(data, (d) => d.score);
+    const trackWidth = Math.max(width - config.labelWidth - config.valueWidth, 40);
 
+    const xScale = d3.scaleLinear().domain([0, maxValue]).range([0, trackWidth]);
     const yScale = d3
       .scaleBand()
       .domain(data.map((d) => d.text))
-      .rangeRound([0, chartHeight]);
+      .range([0, chartHeight]);
 
-    const yAxis = d3.axisLeft(yScale).tickSizeInner(0).tickSizeOuter(0).tickPadding(10);
-
-    const chart = d3
-      .select(containerRef.current)
+    const svg = container
       .append('svg')
-      .attr('width', chartWidth)
+      .attr('width', width)
       .attr('height', chartHeight)
       .attr('class', 'bar-chart-svg')
-      .append('g')
-      .attr('transform', `translate(${config.leftMargin},0)`);
+      .attr('role', 'img')
+      .attr('aria-label', data.map((d) => `${d.text}: ${d.score} of ${maxValue}`).join(', '));
 
-    const rowGroups = chart
-      .selectAll('g.tech-row-group')
+    const rows = svg
+      .selectAll('g.bar-row')
       .data(data)
       .enter()
       .append('g')
-      .attr('class', 'tech-row-group');
+      .attr('class', 'bar-row')
+      .attr('transform', (d) => `translate(0,${yScale(d.text)})`);
 
-    rowGroups
+    // Full-row hit target so hover is forgiving
+    rows.append('rect').attr('class', 'bar-hit').attr('width', width).attr('height', config.rowHeight);
+
+    rows.append('title').text((d) => `${d.text}: ${d.score} / ${maxValue}`);
+
+    const midY = config.rowHeight / 2;
+
+    rows
+      .filter((d) => d.color)
+      .append('circle')
+      .attr('class', 'bar-dot')
+      .attr('cx', 5)
+      .attr('cy', midY)
+      .attr('r', 4)
+      .style('fill', (d) => d.color);
+
+    rows
+      .append('text')
+      .attr('class', 'bar-label')
+      .attr('x', 18)
+      .attr('y', midY)
+      .attr('dy', '0.35em')
+      .text((d) => d.text);
+
+    const barY = midY - config.barHeight / 2;
+    const radius = config.barHeight / 2;
+
+    rows
       .append('rect')
-      .attr('x', 0)
-      .attr('y', (d) => yScale(d.text))
-      .attr('width', (d) => xScale(d.score))
-      .attr('height', config.barHeight - config.barPadding)
-      .style('fill', (d) => d.color || config.style.barColor)
-      .style('stroke', '#000000')
-      .style('stroke-width', '1px')
-      .style('fill-opacity', 0.8);
+      .attr('class', 'bar-track')
+      .attr('x', config.labelWidth)
+      .attr('y', barY)
+      .attr('width', trackWidth)
+      .attr('height', config.barHeight)
+      .attr('rx', radius);
 
-    rowGroups
-      .selectAll('rect')
-      .on('mouseover', function () {
-        d3.select(this).style('fill', config.style.barHoverColor);
-      })
-      .on('mouseout', function (_event, d) {
-        d3.select(this).style('fill', d.color || config.style.barColor);
-      });
+    rows
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('x', config.labelWidth)
+      .attr('y', barY)
+      .attr('width', (d) => Math.max(xScale(d.score), config.barHeight))
+      .attr('height', config.barHeight)
+      .attr('rx', radius);
 
-    chart.append('g').attr('class', 'axis y').attr('transform', 'translate(0,0)').call(yAxis);
+    rows
+      .append('text')
+      .attr('class', 'bar-value')
+      .attr('x', width)
+      .attr('y', midY)
+      .attr('dy', '0.35em')
+      .attr('text-anchor', 'end')
+      .text((d) => `${d.score}/${maxValue}`);
 
     return () => {
-      d3.select(containerRef.current).selectAll('*').remove();
+      container.selectAll('*').remove();
     };
-  }, [data]);
+  }, [data, width]);
 
-  return <div ref={containerRef} />;
+  return <div ref={containerRef} id={chartOptions.chartId} className="bar-chart" />;
 }

@@ -1,21 +1,47 @@
 .pokeTabs {
-  font-size: 22px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
 
-  a {
-    color: #007bff;
+  ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 5px;
+    margin: 0;
+    list-style: none;
+    border-radius: 999px;
+    background: var(--poke-panel);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 
-    &:hover {
-      color: #97c5f6;
+    @media (max-width: 767.98px) {
+      border-radius: var(--radius);
+      justify-content: center;
     }
   }
 
-  .active {
-    color: #0056b3;
-    background-color: white;
+  a {
+    display: block;
+    padding: 7px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
 
     &:hover {
-      color: #007bff;
+      color: var(--text);
+      background: var(--surface-2);
     }
+  }
+
+  .active,
+  .active:hover {
+    color: var(--poke-accent-contrast);
+    background: var(--poke-accent);
   }
 }

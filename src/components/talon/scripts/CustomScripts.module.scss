@@ -1,7 +1,22 @@
 .header {
-  color: #efefef;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  margin-bottom: 8px;
 }
 
 .subheader {
-  color: #efefef;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 70ch;
+  margin: 0 auto 28px;
+  text-wrap: balance;
+}
+
+.accordion {
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius);
 }

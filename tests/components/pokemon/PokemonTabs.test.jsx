@@ -22,6 +22,6 @@ describe('PokemonTabs', () => {
 
   it('renders the tab list as a nav element', () => {
     renderTabs();
-    expect(document.querySelector('.nav.nav-pills')).toBeInTheDocument();
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 });

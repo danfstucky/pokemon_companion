@@ -1,83 +1,102 @@
 .booksContainer {
-  margin: 10px;
-
-  :global(.card) {
-    margin: 10px;
+  :global(.page-header) i {
+    margin-right: 4px;
+    color: var(--text-subtle);
   }
 
   .bookCard {
+    flex-direction: row;
+    gap: 40px;
+    padding: 36px;
+    margin-bottom: 28px;
+    background: radial-gradient(600px 300px at 0% 0%, var(--accent-soft), transparent 70%), var(--surface);
+
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px;
+    }
+  }
+
+  .coverLink {
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  .bookCover {
+    display: block;
+    width: 220px;
+    height: auto;
+    border-radius: 4px 10px 10px 4px;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1) inset,
+      var(--shadow-lg);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px) rotate(-0.5deg);
+    }
+  }
+
+  .bookBody {
+    min-width: 0;
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      line-height: 1.2;
+      margin: 0 0 14px;
+    }
+  }
+
+  .description {
+    color: var(--text);
+    line-height: 1.75;
+    max-width: 70ch;
+  }
+
+  .formats {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
 
-    .bookCover {
-      width: 200px;
-      height: auto;
-      flex-shrink: 0;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-      &:hover {
-        transform: scale(1.04);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      }
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
     }
+  }
 
-    .amazonBtn {
-      display: inline-block;
-      padding: 8px 18px;
-      background-color: #ff9900;
+  .amazonBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #ff9900;
+    color: #111;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      transform 0.15s ease;
+
+    &:hover {
+      background-color: #f08c00;
       color: #111;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: #e68a00;
-        color: #111;
-        text-decoration: none;
-      }
-
-      i {
-        margin-right: 6px;
-      }
+      transform: translateY(-1px);
     }
-
-    .formats {
-      i {
-        margin-right: 4px;
-      }
-
-      span {
-        margin-right: 12px;
-      }
-    }
-  }
-}
-
-.booksContainer.dark {
-  background-color: #1e2a27;
-  min-height: 100vh;
-  color: #d4eae4;
-
-  :global(.card) {
-    background-color: #263530;
-    border-color: rgba(99, 172, 153, 0.25);
-    color: #d4eae4;
-  }
-
-  :global(.card-header) {
-    background-color: #1a2e29;
-    color: #63ac99;
-    border-bottom-color: rgba(99, 172, 153, 0.25);
-  }
-
-  a {
-    color: #63ac99;
-  }
-
-  .bookCard .bookCover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 }

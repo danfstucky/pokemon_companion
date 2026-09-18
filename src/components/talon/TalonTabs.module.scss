@@ -1,21 +1,45 @@
 .talonTabs {
-  font-size: 22px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+
+  ul {
+    display: inline-flex;
+    gap: 4px;
+    padding: 5px;
+    margin: 0;
+    list-style: none;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
 
   a {
-    color: white;
+    display: block;
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
 
     &:hover {
-      color: #d197f0;
+      color: var(--text);
+      background: var(--surface-2);
     }
   }
 
-  .active {
-    color: black;
-    background-color: rgb(191, 146, 215);
+  .active,
+  .active:hover {
+    color: #fff;
+    background: var(--talon-accent);
+  }
 
-    &:hover {
-      color: white;
-    }
+  :global([data-bs-theme='dark']) & .active {
+    color: #1a1024;
   }
 }

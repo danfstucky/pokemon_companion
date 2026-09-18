@@ -10,7 +10,7 @@ export default function CustomScripts() {
         <code>talon/user</code> directory.
       </h5>
 
-      <div className="accordion" id="scripts-accordion">
+      <div className={`accordion ${styles.accordion}`} id="scripts-accordion">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button

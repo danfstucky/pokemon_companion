@@ -1,10 +1,29 @@
 .aboutContainer {
-  background-color: #d3d3d3;
-  padding: 10px;
-  margin: 10px auto;
-  text-align: left;
-  border: white solid 3px;
-  box-shadow: 5px 5px 4px;
-  border-radius: 25px;
-  max-width: 950px;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 36px 44px;
+  background: var(--poke-panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-md);
+
+  h3 {
+    font-size: 1.5rem;
+    margin: 28px 0 10px;
+    color: var(--poke-accent);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 767.98px) {
+    padding: 24px 20px;
+  }
 }

@@ -1,25 +1,25 @@
 .pokemonMoves {
-  background-color: #fff;
+  background-color: var(--poke-panel);
+  color: var(--text);
   height: 100%;
-  padding: 20px;
-  overflow-y: scroll;
-  border: 5px solid rgb(22, 117, 22);
+  padding: 16px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-lg);
 
   table {
-    thead {
+    thead th {
       background: rgb(22, 117, 22);
       color: white;
-
-      th {
-        font-size: 1.75em;
-        border-radius: 20px;
-        border: none;
-        text-align: center;
-      }
+      font-size: 0.85rem;
+      border: none;
+      text-align: center;
     }
 
     td {
-      font-size: 18px;
+      font-size: 0.95rem;
+      text-transform: capitalize;
       text-align: left;
     }
   }

@@ -44,4 +44,16 @@ describe('PokemonSearch', () => {
     });
     expect(usePokemonStore.getState().displayedPokedexEntries).toHaveLength(0);
   });
+
+  it('restores the full list when the search is unmounted (e.g. navigating away)', () => {
+    const { unmount } = render(<PokemonSearch />);
+    fireEvent.change(screen.getByPlaceholderText('Search Pokemon Name'), {
+      target: { value: 'char' },
+    });
+    expect(usePokemonStore.getState().displayedPokedexEntries.length).toBeLessThan(salmonRedPokedex.length);
+
+    unmount();
+
+    expect(usePokemonStore.getState().displayedPokedexEntries).toHaveLength(salmonRedPokedex.length);
+  });
 });

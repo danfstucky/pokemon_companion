@@ -17,8 +17,8 @@ describe('TalonTabs', () => {
     expect(screen.getByText('Custom Scripts')).toBeInTheDocument();
   });
 
-  it('renders the tabs inside a nav pill list', () => {
+  it('renders the tabs inside a nav element', () => {
     renderTabs();
-    expect(document.querySelector('.nav.nav-pills')).toBeInTheDocument();
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 });

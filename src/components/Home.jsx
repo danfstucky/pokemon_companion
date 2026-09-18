@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className={styles.wrapper}>
       <Sidebar />
-      <div className={styles.mainContentContainer}>
+      <main className={styles.mainContentContainer}>
         <Routes>
           <Route path="/" element={<Navigate to="/about-me" replace />} />
           <Route path="/about-me" element={<AboutMe />} />
@@ -41,7 +41,7 @@ export default function Home() {
           </Route>
           <Route path="*" element={<Navigate to="/about-me" replace />} />
         </Routes>
-      </div>
+      </main>
     </div>
   );
 }

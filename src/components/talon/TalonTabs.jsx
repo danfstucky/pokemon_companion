@@ -2,18 +2,22 @@ import { NavLink } from 'react-router-dom';
 import styles from './TalonTabs.module.scss';
 
 export default function TalonTabs() {
-  const getLinkClass = ({ isActive }) => `nav-link me-2${isActive ? ` ${styles.active}` : ''}`;
+  const getLinkClass = ({ isActive }) => (isActive ? styles.active : '');
 
   return (
-    <div className={styles.talonTabs}>
-      <ul className="nav nav-pills">
-        <NavLink className={getLinkClass} to="/talon/cheatsheet">
-          <li>Cheatsheet</li>
-        </NavLink>
-        <NavLink className={getLinkClass} to="/talon/scripts">
-          <li>Custom Scripts</li>
-        </NavLink>
+    <nav className={styles.talonTabs} aria-label="Talon sections">
+      <ul>
+        <li>
+          <NavLink className={getLinkClass} to="/talon/cheatsheet">
+            Cheatsheet
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={getLinkClass} to="/talon/scripts">
+            Custom Scripts
+          </NavLink>
+        </li>
       </ul>
-    </div>
+    </nav>
   );
 }
