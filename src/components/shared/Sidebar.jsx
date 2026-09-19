@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useUiStore } from '../../stores/ui';
 import danStucky from '../../assets/images/dan_stucky.png';
 import styles from './Sidebar.module.scss';
@@ -25,6 +25,10 @@ const navGroups = [
 
 export default function Sidebar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Links close the menu themselves; this also covers the back/forward buttons.
+  useEffect(() => setMenuOpen(false), [pathname]);
   const darkMode = useUiStore((state) => state.darkMode);
   const setDarkMode = useUiStore((state) => state.setDarkMode);
   const getLinkClass = ({ isActive }) => `${styles.navLink}${isActive ? ` ${styles.active}` : ''}`;

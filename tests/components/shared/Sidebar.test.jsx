@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter, Link } from 'react-router-dom';
 import Sidebar from '../../../src/components/shared/Sidebar';
 
 function renderSidebar(initialPath = '/') {
@@ -29,5 +29,19 @@ describe('Sidebar', () => {
   it('renders a nav element', () => {
     renderSidebar();
     expect(screen.getByRole('navigation')).toBeInTheDocument();
+  });
+
+  it('closes the mobile menu when the route changes from outside the menu (e.g. the back button)', () => {
+    render(
+      <MemoryRouter initialEntries={['/about-me']}>
+        <Sidebar />
+        <Link to="/books">external navigation</Link>
+      </MemoryRouter>
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+    expect(screen.getByRole('button', { name: 'Close menu' })).toHaveAttribute('aria-expanded', 'true');
+
+    fireEvent.click(screen.getByText('external navigation'));
+    expect(screen.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'false');
   });
 });
