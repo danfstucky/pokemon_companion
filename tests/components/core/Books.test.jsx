@@ -32,10 +32,20 @@ describe('Books', () => {
     expect(amazonLink).toHaveAttribute('target', '_blank');
   });
 
+  it('renders the Listen on Audible button linking to the audiobook', () => {
+    const audibleLink = screen.getByRole('link', { name: /Listen on Audible/ });
+    expect(audibleLink).toHaveAttribute(
+      'href',
+      'https://www.audible.com/pd/AI-Simply-Explained-by-a-Software-Engineer-Audiobook/B0HD84JJKQ'
+    );
+    expect(audibleLink).toHaveAttribute('target', '_blank');
+  });
+
   it('renders availability formats', () => {
     expect(screen.getByText('Paperback')).toBeInTheDocument();
     expect(screen.getByText('Hardcover')).toBeInTheDocument();
     expect(screen.getByText('Kindle')).toBeInTheDocument();
+    expect(screen.getByText('Audiobook')).toBeInTheDocument();
   });
 
   it('wraps the book cover in a link to Amazon', () => {

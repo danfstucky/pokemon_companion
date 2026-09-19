@@ -1,6 +1,7 @@
 import HorizontalBarChart from '../shared/HorizontalBarChart';
 import danStucky from '../../assets/images/dan_stucky.png';
 import growlithe from '../../assets/images/growlithe.png';
+import benji from '../../assets/images/benji.png';
 import styles from './AboutMe.module.scss';
 
 const skillData = [
@@ -54,6 +55,9 @@ export default function AboutMe() {
           ))}
         </div>
         <img src={growlithe} alt="" className={styles.peeker} />
+        <div className={styles.dogPeeker} aria-hidden="true">
+          <img src={benji} alt="" />
+        </div>
         <div className={styles.heroPortrait}>
           <img src={danStucky} alt="Dan Stucky" />
         </div>
@@ -62,7 +66,7 @@ export default function AboutMe() {
             <span className={styles.statusDot} aria-hidden="true" /> Senior Software Engineer · Kansas City, MO
           </span>
           <h1>
-            Code, books, design, games, dogs <em>&amp; tea</em>.
+            Code, books, designs, games, dogs <em>&amp; tea</em>.
           </h1>
           <p className={styles.lead}>
             I&apos;m Dan - a full-stack engineer working across Rails, Node, React, Postgres and AWS, with a background

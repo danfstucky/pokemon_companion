@@ -31,6 +31,10 @@
     transform: translateY(-18px) rotate(-3deg);
   }
 
+  &:hover .dogPeeker {
+    transform: rotate(var(--dog-rotate)) translateY(var(--dog-shown));
+  }
+
   @media (max-width: 767.98px) {
     flex-direction: column;
     align-items: flex-start;
@@ -198,6 +202,38 @@
     width: 150px;
     right: 18px;
     bottom: -66px;
+  }
+
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+}
+
+// The dog hangs upside down over the top edge near the left corner. The wrapper is a zero-size
+// point on the top edge that the photo's cropped neck edge is pinned to, so rotating and sliding it
+// keeps the cut edge outside the panel. The photo itself also fades out toward the crop, so the
+// bouncy overshoot never reveals a hard edge.
+.dogPeeker {
+  --dog-rotate: 165deg;
+  --dog-hidden: 215px;
+  --dog-shown: 36px;
+  position: absolute;
+  top: 0;
+  left: 72px;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  pointer-events: none;
+  transform: rotate(var(--dog-rotate)) translateY(var(--dog-hidden));
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    left: -82px;
+    width: 170px;
+    height: auto;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
   }
 
   @media (max-width: 991.98px) {

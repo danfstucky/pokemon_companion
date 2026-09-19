@@ -79,24 +79,57 @@
     }
   }
 
-  .amazonBtn {
+  .buyButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .amazonBtn,
+  .audibleBtn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 10px 20px;
-    background-color: #ff9900;
-    color: #111;
     font-weight: 600;
     border-radius: 999px;
+    border: 1px solid transparent;
     text-decoration: none;
     transition:
       background-color 0.2s ease,
+      border-color 0.2s ease,
       transform 0.15s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .amazonBtn {
+    background-color: #ff9900;
+    color: #111;
 
     &:hover {
       background-color: #f08c00;
       color: #111;
-      transform: translateY(-1px);
+    }
+  }
+
+  // Audible's brand pairing: its orange logo on black. The border keeps it visible in dark mode.
+  .audibleBtn {
+    background-color: #000;
+    border-color: rgba(247, 153, 28, 0.45);
+    color: #fff;
+
+    i {
+      color: #f7991c;
+      font-size: 1.15em;
+    }
+
+    &:hover {
+      background-color: #1c1c1c;
+      border-color: #f7991c;
+      color: #fff;
     }
   }
 }

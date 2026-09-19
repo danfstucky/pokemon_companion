@@ -7,6 +7,7 @@ const books = [
     cover: aiSimplyExplainedCover,
     alt: 'AI Simply Explained book cover',
     link: 'https://www.amazon.com/dp/B0H2SFDS9P',
+    audibleLink: 'https://www.audible.com/pd/AI-Simply-Explained-by-a-Software-Engineer-Audiobook/B0HD84JJKQ',
     description:
       'A comprehensive guide to understanding AI without needing a technical background. Written by a senior software ' +
       "engineer with over a decade of hands-on experience, it covers how the technology actually works, who's building " +
@@ -52,11 +53,23 @@ export default function Books() {
                 <i className="fas fa-tablet-alt" aria-hidden="true" />
                 Kindle
               </li>
+              <li>
+                <i className="fas fa-headphones" aria-hidden="true" />
+                Audiobook
+              </li>
             </ul>
-            <a href={book.link} target="_blank" rel="noreferrer" className={styles.amazonBtn}>
-              <i className="fab fa-amazon" aria-hidden="true" />
-              View on Amazon
-            </a>
+            <div className={styles.buyButtons}>
+              <a href={book.link} target="_blank" rel="noreferrer" className={styles.amazonBtn}>
+                <i className="fab fa-amazon" aria-hidden="true" />
+                View on Amazon
+              </a>
+              {book.audibleLink && (
+                <a href={book.audibleLink} target="_blank" rel="noreferrer" className={styles.audibleBtn}>
+                  <i className="fab fa-audible" aria-hidden="true" />
+                  Listen on Audible
+                </a>
+              )}
+            </div>
           </div>
         </article>
       ))}
