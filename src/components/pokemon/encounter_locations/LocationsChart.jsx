@@ -65,7 +65,6 @@ export default function LocationsChart({ onShowLocationDetails }) {
     const dy = radius * 1.5;
     const projection = d3.geoTransform({
       point(x, y) {
-        // eslint-disable-next-line no-bitwise
         return this.stream.point((x * dx) / 2, -(y - (2 - (y & 1)) / 3) * (dy / 2));
       },
     });

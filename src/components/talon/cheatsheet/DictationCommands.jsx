@@ -1,3 +1,4 @@
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import talonService from '../../../services/talonService';
 import styles from './DictationCommands.module.scss';
 
