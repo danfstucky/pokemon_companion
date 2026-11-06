@@ -21,7 +21,7 @@ const skillData = [
 const highlights = [
   { value: '10+', label: 'Years as a full-stack web developer' },
   { value: 'M.S.', label: 'Molecular genetics, Kansas State' },
-  { value: '1', label: 'Published books', href: '#/books' },
+  { value: '2', label: 'Published books', href: '#/books' },
 ];
 
 // Faint icons scattered behind the hero; positions are percentages of the panel
