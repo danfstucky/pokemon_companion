@@ -8,6 +8,23 @@ vi.mock('bootstrap', () => ({
 describe('DevProjects', () => {
   beforeEach(() => render(<DevProjects />));
 
+  it('renders ComplianceWatch as the first project', () => {
+    const [first] = document.querySelectorAll('article');
+    expect(first).toHaveAccessibleName('ComplianceWatch');
+  });
+
+  it('renders the ComplianceWatch promo video lazily, with a text alternative', () => {
+    const video = screen.getByLabelText('ComplianceWatch promo video');
+    expect(video.tagName).toBe('VIDEO');
+    expect(video).not.toHaveAttribute('src');
+    expect(video).toHaveAccessibleDescription(/Never get blindsided by a new regulation/);
+  });
+
+  it('renders the ComplianceWatch highlights', () => {
+    expect(screen.getByText('Federal and state coverage')).toBeInTheDocument();
+    expect(screen.getByText('Built-in audit trail')).toBeInTheDocument();
+  });
+
   it('renders the Pokemon Fan Game card', () => {
     expect(screen.getByText('Pokemon Fan Game')).toBeInTheDocument();
   });

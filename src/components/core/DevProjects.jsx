@@ -14,7 +14,44 @@ import screenshot10 from '../../assets/images/dev_projects/pokemon/screenshot10.
 import smiteScreenshot1 from '../../assets/images/dev_projects/smite_spec/screenshot1.png';
 import smiteScreenshot2 from '../../assets/images/dev_projects/smite_spec/screenshot2.png';
 import smiteScreenshot3 from '../../assets/images/dev_projects/smite_spec/screenshot3.png';
+import { complianceWatchReel, WIDE_QUERY } from '../../data/complianceWatchReel';
+import PromoVideo from '../shared/PromoVideo';
 import styles from './DevProjects.module.scss';
+
+const REEL_DESCRIPTION_ID = 'compliancewatch-reel-description';
+
+const complianceWatchHighlights = [
+  {
+    icon: 'fa-landmark',
+    title: 'Federal and state coverage',
+    text: 'Federal agencies plus a growing list of states, checked daily.',
+  },
+  {
+    icon: 'fa-magic',
+    title: 'AI-powered analysis',
+    text: 'Dense legal text turned into plain-English summaries.',
+  },
+  {
+    icon: 'fa-bullseye',
+    title: 'Relevance scoring',
+    text: 'Each alert is matched to your business with a confidence score.',
+  },
+  {
+    icon: 'fa-envelope-open-text',
+    title: 'Alerts and digests',
+    text: 'Email alerts the moment a rule lands, or daily and weekly digests.',
+  },
+  {
+    icon: 'fa-clipboard-check',
+    title: 'Built-in audit trail',
+    text: 'Statuses, notes, and due dates, logged to an exportable compliance record.',
+  },
+  {
+    icon: 'fa-credit-card',
+    title: 'Simple pricing',
+    text: 'Three plans, each with a 14-day free trial.',
+  },
+];
 
 const pokemonScreenshots = [
   screenshot1,
@@ -63,6 +100,81 @@ export default function DevProjects() {
         <h1>Dev Projects</h1>
         <p>A few projects I have worked on outside of my day job.</p>
       </header>
+
+      <article className={`card ${styles.project} ${styles.featured}`} aria-labelledby="compliancewatch-title">
+        <div className={styles.projectHeader}>
+          <div className={styles.brandTitle}>
+            <svg className={styles.brandMark} viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                className={styles.brandShield}
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+              />
+              <path className={styles.brandCheck} d="m9 12 2 2 4-4" />
+            </svg>
+            <div>
+              <h2 id="compliancewatch-title">ComplianceWatch</h2>
+              <p className={styles.tagline}>Regulatory compliance monitoring for US small businesses</p>
+              <Tags
+                items={['TypeScript', 'React', 'Node.js + Express', 'PostgreSQL', 'BullMQ', 'Gemini AI', 'Stripe']}
+              />
+            </div>
+          </div>
+          <span className={styles.status}>
+            <span className={styles.statusDot} aria-hidden="true" />
+            Launching soon
+          </span>
+        </div>
+        <div className={`card-body ${styles.featuredBody}`}>
+          <PromoVideo
+            reel={complianceWatchReel}
+            wideQuery={WIDE_QUERY}
+            label="ComplianceWatch promo video"
+            describedBy={REEL_DESCRIPTION_ID}
+          />
+          {/* Text alternative for the reel's on-screen copy; the video has music but no speech. */}
+          <p id={REEL_DESCRIPTION_ID} className="visually-hidden">
+            Rules change. Nobody tells you. ComplianceWatch watches federal and state sources daily, turns legalese into
+            plain English, matches each new rule to your business, and records every status change so you can track it
+            and prove it. 66 federal agencies are watched for you, plus state registers, checked every 24 hours. Never
+            get blindsided by a new regulation.
+          </p>
+
+          <div className={styles.featuredDetails}>
+            <div className={styles.projectText}>
+              <p>
+                ComplianceWatch is a subscription web app I designed and built to keep small businesses ahead of new
+                regulations. An owner describes their business once (industry, location, and what they do), and
+                ComplianceWatch watches official government sources around the clock. When a new rule is likely to
+                affect them, it sends a plain-English alert explaining what changed, how confident the match is, and
+                when action is due.
+              </p>
+              <p>
+                It covers federal agencies along with a growing list of states, and uses AI to cut through dense legal
+                language so owners don&apos;t have to. Alerts arrive by email or in a daily or weekly digest, and owners
+                work through them on a simple dashboard where every status change, note, and due date is saved to a
+                compliance record they can export at any time.
+              </p>
+            </div>
+
+            <div className={styles.highlightsPanel}>
+              <h3 className={styles.highlightsHeading}>Highlights</h3>
+              <ul className={styles.highlights}>
+                {complianceWatchHighlights.map(({ icon, title, text }) => (
+                  <li key={title}>
+                    <span className={styles.highlightIcon} aria-hidden="true">
+                      <i className={`fas ${icon}`} />
+                    </span>
+                    <div>
+                      <strong>{title}</strong>
+                      <span>{text}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <article className={`card ${styles.project}`}>
         <div className={styles.projectHeader}>

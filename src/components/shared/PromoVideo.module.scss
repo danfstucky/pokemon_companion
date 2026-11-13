@@ -1,0 +1,201 @@
+// The frame's shape switches with PromoVideo's `wideQuery` (min-width: 576px), so the file that plays
+// always matches the frame it plays in. Keep the two breakpoints in step.
+$tall-max: 575.98px;
+
+.frame {
+  // The reel's own background and accent: loading, letterboxing and controls never clash with it.
+  --reel-bg: #0b0f14;
+  --reel-accent: #14b8a6;
+  --reel-accent-hover: #2dd4bf;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  // Never taller than the viewport, so a landscape phone still sees the whole frame.
+  max-width: calc((100vh - 32px) * 16 / 9);
+  max-width: calc((100svh - 32px) * 16 / 9);
+  margin-inline: auto;
+  border-radius: var(--radius);
+  background: var(--reel-bg);
+  box-shadow: var(--shadow-lg);
+
+  // Below 992px the site's sticky top bar (65px) also takes screen height.
+  @media (max-width: 991.98px) {
+    max-width: calc((100vh - 100px) * 16 / 9);
+    max-width: calc((100svh - 100px) * 16 / 9);
+  }
+
+  // Hairline ring above the video, so the frame keeps a crisp edge on dark page backgrounds too.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+  }
+
+  @media (max-width: $tall-max) {
+    aspect-ratio: 9 / 16;
+    width: min(100%, 400px);
+    width: min(100%, 400px, calc((100svh - 100px) * 9 / 16));
+    max-width: none;
+  }
+}
+
+.video,
+.poster,
+.poster img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video {
+  cursor: pointer;
+}
+
+.poster {
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.posterHidden {
+  opacity: 0;
+}
+
+.progress {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.progressVisible {
+  opacity: 1;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--reel-accent);
+  transform-origin: left center;
+}
+
+%button-focus {
+  &:focus-visible {
+    outline: 2px solid var(--reel-accent-hover);
+    outline-offset: 3px;
+  }
+}
+
+.bigPlay {
+  @extend %button-focus;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  margin: auto;
+  border: 0;
+  border-radius: 50%;
+  background: var(--reel-accent);
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow:
+    0 10px 30px rgba(20, 184, 166, 0.35),
+    0 0 0 8px rgba(20, 184, 166, 0.18);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+
+  i {
+    margin-left: 5px; // optically centre the triangle
+  }
+
+  &:hover {
+    background: var(--reel-accent-hover);
+    transform: scale(1.05);
+  }
+}
+
+.controls {
+  position: absolute;
+  right: 12px;
+  bottom: 14px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  @extend %button-focus;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(11, 15, 20, 0.62);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background: rgba(11, 15, 20, 0.88);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  // Comfortable touch targets on phones and tablets.
+  @media (pointer: coarse) {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+// Element fullscreen: fill the screen and show the whole frame, letterboxed on the reel's own colour.
+.frame:fullscreen,
+.fullscreen {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  border-radius: 0;
+  box-shadow: none;
+
+  .video,
+  .poster img {
+    object-fit: contain;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bigPlay:hover {
+    transform: none;
+  }
+}
